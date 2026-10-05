@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>京剧 · 国粹 · 美育课堂</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link rel="stylesheet" type="text/css" href="css/css.css"/>
+</head>
+<body>
+
+  <!-- 水墨开场 -->
+  <div class="ink-intro" id="inkIntro">
+    <canvas class="ink-canvas" id="inkCanvas"></canvas>
+    <div class="ink-text">京 · 剧</div>
+  </div>
+
+  <!-- ===== 导航 ===== -->
+  <nav class="navbar">
+    <a href="index.html"><div class="logo"><i class="fas fa-mask"></i>国粹·京剧</div></a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="shouye.html" style="color: white;">首页</a ></li>
+      <li><a href="hangdang.html">行当</a ></li>
+      <li><a href="lianpu.html">脸谱</a ></li>
+      <li><a href="fushi.html">服饰</a ></li>
+      <li><a href="3D.html">3D戏台课堂</a ></li>
+      <li><a href="chuancheng.html">传承</a ></li>
+      <li><a href="chuangguan.html">答题</a ></li>
+    </ul>
+    <div class="nav-toggle" id="navToggle"><i class="fas fa-bars"></i></div>
+  </nav>
+
+  <!-- ===== Hero ===== -->
+  <section class="hero" id="home">
+    <video class="hero-bg-video" autoplay muted loop playsinline preload="metadata">
+      <source src="images/视频1.mov" type="video/mp4">
+    </video>
+    <div class="hero-overlay"></div>
+    <div class="hero-glow"></div>
+    <div class="hero-glow"></div>
+    <canvas id="particles-canvas"></canvas>
+		   <div class="hero-content">
+      <div class="hero-badge">
+        <i class="fas fa-circle" style="font-size: 0.35rem; color: #d4a373;"></i>
+        <span>· 美 育 课 堂  ·  京 剧 文 化  ·</span>
+        <i class="fas fa-circle" style="font-size: 0.35rem; color: #d4a373;"></i>
+      </div>
+      <h1 class="hero-title">国 粹 京 剧</h1>
+      <div class="hero-sub">· 生 旦 净 末 丑  ·  手 眼 身 法 步  ·</div>
+      <div class="hero-divider"></div>
+      <p class="hero-desc">
+        <i class="fas fa-circle" style="font-size: 0.25rem; vertical-align: middle; color: #c99e6d;"></i>
+        走进京剧 · 感受东方美学 · 传承非遗文化
+        <i class="fas fa-circle" style="font-size: 0.25rem; vertical-align: middle; color: #c99e6d;"></i>
+      </p >
+      <div class="hero-cta">
+        <button class="btn-primary" id="exploreBtn"><i class="fas fa-chevron-circle-right"></i> 开始学习</button>
+        <button class="btn-secondary" id="watchVideoBtn"><i class="fas fa-play-circle"></i> 观看视频</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 行当 ===== -->
+  <section class="section" id="roles">
+    <h2 class="section-title">京 剧 行 当</h2>
+    <p class="section-sub" style="color: white;">— 生旦净末丑 · 演绎百态人生 —</p >
+    <div class="role-grid">
+      <div class="role-card">
+        <a href="hangdang.html"><img src="images/7.jpg" style="width: 100%; height: 55%; border-radius: 20px;"/><br />
+        <h3>生</h3>
+        <div class="pinyin">Shēng</div>
+        <p>男性角色，分老生、小生、武生等。老生沉稳，小生儒雅，武生英武。</p >
+      </div></a>
+      <div class="role-card">
+        <a href="hangdang.html"><img src="images/8.jpg" style="width: 100%; height: 55%; border-radius: 20px;"/><br />
+        <h3>旦</h3>
+        <div class="pinyin">Dàn</div>
+        <p>女性角色，分青衣、花旦、武旦、老旦等。青衣端庄，花旦活泼。</p >
+      </div></a>
+      <div class="role-card">
+        <a href="hangdang.html"><img src="images/9.jpg" style="width: 100%; height: 55%; border-radius: 20px;"/><br />
+        <h3>净</h3>
+        <div class="pinyin">Jìng</div>
+        <p>花脸，多为性格豪迈或奸诈的角色。用脸谱区分，唱腔洪亮。</p >
+      </div></a>
+      <div class="role-card">
+        <a href="hangdang.html"><img src="images/10.jpg" style="width: 100%; height: 55%; border-radius: 20px;"/><br />
+        <h3>末</h3> 
+        <div class="pinyin">Mò</div>
+        <p>中年男性配角，多扮演家院、老仆等。如今已融入生行。</p >
+      </div></a>
+      <div class="role-card">
+        <a href="hangdang.html"><img src="images/11.jpg" style="width: 100%; height: 55%; border-radius: 20px;"/><br />
+        <h3>丑</h3>
+        <div class="pinyin">Chǒu</div>
+        <p>喜剧角色，分文丑和武丑。鼻梁画白块，插科打诨，诙谐幽默。</p >
+      </div></a>
+    </div>
+  </section>
+
+  <!-- ===== 脸谱 ===== -->
+  <section class="section" id="masks" style="margin-top: -100px;">
+    <h2 class="section-title">脸 谱 艺 术</h2>
+    <p class="section-sub" style="color: white;">— 色彩寓意 · 忠奸善恶 —</p >
+    <div class="mask-gallery" style="margin-top: -70px;">
+      <div class="mask-item">
+        <a href="lianpu.html"><img src="images/12.jpg" style="width: 100%; height: 100%; border-radius: 20px; object-fit: cover;"/><br />
+        <h4>红脸</h4><br />
+        <p>象征：忠勇赤诚、耿直侠义、重情义、有血性，大多为正面忠臣义士。
+代表人物：
+关羽：最经典红脸，义薄云天，忠义无双。
+姜维：红脸，额头画太极，代表足智多谋、忠蜀报国。
+吴汉、黄忠。</p >
+      </div></a>
+      <div class="mask-item">
+        <a href="lianpu.html"><img src="images/13.jpg" style="width: 100%; height: 100%; border-radius: 20px; object-fit: cover;"/><br />
+        <h4>黑脸</h4><br />
+        <p>象征：刚正无私、铁面耿直、勇猛粗犷、性格憨直，不都是粗暴莽汉，很多是清官贤臣。
+代表人物：
+包拯（包公）：黑脸 + 额头月牙，铁面无私，日断阳夜断阴。
+张飞：勇猛豪爽、性情暴躁粗旷。
+尉迟恭、李逵。</p >
+      </div></a>
+      <div class="mask-item">
+        <a href="lianpu.html"><img src="images/14.jpg" style="width: 100%; height: 100%; border-radius: 20px; object-fit: cover;"/><br />
+        <h4>黄脸</h4><br />
+        <p>象征：骁勇彪悍，性格暴戾、凶狠工于心计，勇猛但性情残忍阴狠。
+代表人物：
+典韦：三国猛将，黄脸代表。
+庞涓、宇文成都。</p >
+      </div></a>
+      <div class="mask-item">
+        <a href="lianpu.html"><img src="images/15.jpg" style="width: 100%; height: 100%; border-radius: 20px; object-fit: cover;"/><br />
+        <h4>紫脸</h4><br />
+        <p>象征：介于红、黑之间，沉稳肃穆、刚正威严，不阿权贵，老谋持重，也可形容相貌奇特的人物。
+代表人物：
+廉颇：战国老将，持重刚正。
+徐延昭、专诸。</p >
+      </div></a>
+      <div class="mask-item">
+        <a href="lianpu.html"><img src="images/16.jpg" style="width: 100%; height: 100%; border-radius: 20px; object-fit: cover;"/><br />
+        <h4>金脸</h4><br />
+        <p>象征：神佛、仙妖、帝王神将，代表神圣、威严、虚幻，超凡脱俗，凡人极少用金脸。
+代表人物：如来佛祖、二郎神、孙悟空、各路天神妖王。
+银色脸谱寓意和金色接近，多用于鬼怪、仙将。</p >
+      </div></a>
+      <div class="mask-item">
+        <a href="lianpu.html"><img src="images/17.jpg" style="width: 100%; height: 100%; border-radius: 20px; object-fit: cover;"/><br />
+        <h4>白脸</h4><br />
+        <p>象征：奸诈多疑、虚伪阴险、权欲重，多为反派权臣，分油白、粉白两种。
+代表人物：
+曹操：经典粉白脸，代表奸雄狡诈。
+司马懿、严嵩。</p >
+      </div></a>
+    </div>
+  </section>
+
+  <!-- ===== 流派 ===== -->
+  <section class="section" id="schools">
+    <h2 class="section-title">京 剧 流 派</h2>
+    <p class="section-sub" style="color: white;">— 四大名旦 · 各领风骚 —</p >
+    <div class="school-grid">
+      <div class="school-card">
+        <span class="school-icon"><i class="fas fa-feather-alt"></i></span>
+        <h4>梅派</h4>
+        <div class="school-sub">梅兰芳 · 典雅大方</div>
+        <p>核心风格：雍容端庄、中和典雅，珠圆玉润，文武兼备
+嗓音：圆润甜亮，行腔舒展流畅，不搞险腔怪调，大方从容，讲究神韵气度。
+表演：歌舞并重，扮相华美，身段大方，擅长贵族女子、仙女、大家闺秀，人物温柔大气，外柔内刚。
+特点：“样”，指台风、扮相、身段气度，是旦行的标杆范式，影响最大国家大剧院。
+代表剧目：《贵妃醉酒》《霸王别姬》《宇宙锋》《穆桂英挂帅》《天女散花》《断桥》
+代表传人：梅葆玖、李胜素、史依弘</p >
+      </div>
+      <div class="school-card">
+        <span class="school-icon"><i class="fas fa-water"></i></span>
+        <h4>程派</h4>
+        <div class="school-sub">程砚秋 · 幽咽婉转</div>
+        <p>核心风格：幽咽凄婉、深沉悲愤，外柔内刚，悲剧见长國立傳統藝...
+嗓音：偏中低音区，唱腔跌宕曲折、若断若续，多用颤音，凄冷哀怨，情感浓烈。
+表演：水袖造诣极高，十字诀：勾、挑、撑、冲、拨、扬、掸、甩、打、抖，用水袖抒发内心悲愤；多演命运悲苦、性格刚烈的底层女子抖音百科。
+特点：“唱”，以唱腔韵味取胜，重内心情绪表达。
+代表剧目：《锁麟囊》《荒山泪》《春闺梦》《朱痕记》《青霜剑》《英台抗婚》國立傳統藝...
+代表传人：李世济、张火丁、吕洋</p >
+      </div>
+      <div class="school-card">
+        <span class="school-icon"><i class="fas fa-mountain"></i></span>
+        <h4>尚派</h4>
+        <div class="school-sub">尚小云 · 刚健挺拔</div>
+        <p>核心风格：刚健飒爽、铁嗓钢喉，文武并重，侠女巾帼抖音百科
+嗓音：高亢洪亮，气力十足，铿锵有力，调门高，力量感强。
+表演：武戏功底扎实，文戏武唱，身段挺拔利落，擅长巾帼英雄、侠女烈妇，女子身上有英气。
+特点：“棒”，指功底扎实、做功勇猛，刚中带柔。
+代表剧目：《昭君出塞》《梁红玉》《十三妹》《乾坤福寿镜》《二进宫》
+代表传人：尚慧敏、孙明珠</p >
+      </div>
+      <div class="school-card">
+        <span class="school-icon"><i class="fas fa-cloud"></i></span>
+        <h4>荀派</h4>
+        <div class="school-sub">荀慧生 · 活泼灵动</div>
+        <p>核心风格：娇俏活泼、柔媚灵动，花旦本色，少女情态抖音百科
+嗓音：柔媚婉转，念白多用京白，生活化，口语感强。
+表演：吸收梆子戏长处，身段灵动娇媚，擅长天真少女、小家碧玉、泼辣多情的民间女子，人物鲜活有烟火气。
+特点：“浪”，不是轻浮，指灵动鲜活、风情活泼的表演气质。
+代表剧目：《红娘》《金玉奴》《勘玉钏》《钗头凤》《鱼藻宫》
+代表传人：童芷苓、孙毓敏、耿巧云
+</p >
+      </div>
+    </div>
+  </section>
+	<section class="quote-section" style="margin-top: -50px;">
+        <div class="container">
+            <blockquote class="quote">
+                "京剧是中国文化传统的重要表征之一。它是'地方戏时代'出现的最重要的剧种，是雅文化在中国文化整体中渐趋衰落的时代变革中的产物。"
+                <span class="quote-author" style="color: white;">—— 著名戏曲理论家 傅谨</span>
+            </blockquote>
+        </div>
+        <section class="masters-section">
+        <div class="container">
+            <h2 class="section-title">京剧名家风采</h2><br />
+            <div class="masters-grid">
+                <div class="master-card">
+                    <div class="master-img">
+                        <img src="images/50.jpg" alt="梅兰芳">
+                    </div>
+                    <div class="master-info">
+                    	<h3>梅兰芳</h3><br />
+                        <p>生平
+出身梨园世家，8 岁学戏，11 岁登台；多次赴日本、美国、苏联演出，第一个把京剧推向世界的艺术家。抗日战争时期蓄须明志，拒绝为日伪演出。新中国成立后任中国京剧院院长，著作《舞台生活四十年》，1961 年病逝抖音百科。
+艺术风格
+追求中和之美，雍容华贵、端庄典雅。
+唱腔：嗓音圆润甜亮，珠圆玉润，行腔舒展大方，不追求险腔怪调，讲究气韵，文武兼备。
+表演：首创花衫行当，融合青衣、花旦、刀马旦，歌舞并重；对化妆、服饰、舞蹈、身段全面改革，扮相绝美，重神韵气质，也就是所说 “梅的样”。
+人物擅长：贵妃、仙女、大家闺秀，外柔内刚的贵族女性。
+代表剧目
+《贵妃醉酒》《霸王别姬》《宇宙锋》《天女散花》《凤还巢》《断桥》《穆桂英挂帅》（晚年巅峰之作）。
+代表传人
+梅葆玖（儿子）、李胜素、史依弘。</p >
+                    </div>
+                </div>
+                <div class="master-card">
+                    <div class="master-img">
+                        <img src="images/47.jpg" alt="程砚秋">
+                    </div>
+                    <div class="master-info">
+                    	<h3>程砚秋</h3><br />
+                        <p>生平
+幼年家贫，刻苦学艺，曾受梅兰芳指点。根据自身嗓音条件独创程腔；新中国成立后任中国戏曲研究院副院长，1958 年心脏病突发离世。
+艺术风格
+幽咽凄婉、深沉悲愤，外柔内刚，悲剧见长，即 “程的唱”。
+唱腔：多用中低音区，跌宕曲折、若断若续，颤音丰富，讲究四声音韵，追求声、情、美、永，听感凄冷哀怨，情感感染力极强。
+表演：水袖造诣登峰造极，总结水袖十字诀：勾、挑、撑、冲、拨、扬、掸、甩、打、抖，用水袖表达人物内心痛苦悲愤。
+人物擅长：封建社会受压迫、命运悲苦但性格刚烈的底层女子。
+代表剧目
+《锁麟囊》《荒山泪》《春闺梦》《朱痕记》《青霜剑》《英台抗婚》《鸳鸯冢》。
+代表传人
+李世济、张火丁、吕洋。</p >
+                    </div>
+                </div>
+                <div class="master-card">
+                    <div class="master-img">
+                        <img src="images/48.jpg" alt="荀慧生">
+                    </div>
+                    <div class="master-info">
+                    	<h3>荀慧生</h3><br />
+                        <p>生平
+幼年学习河北梆子，艺名 “白牡丹”，后改唱京剧，吸收梆子戏表演精华融入京剧花旦，自成一派，擅长刻画民间普通少女。
+艺术风格
+娇俏活泼、柔媚灵动，生活气息浓厚，即 “荀的浪”（褒义，指鲜活灵动，并非轻浮）。
+唱腔：婉转柔媚，唱腔多小弯小腔；大量使用京白（生活化口语念白），贴近民间人物。
+表演：眼神灵动，身段娇俏，表情丰富，做工细腻，善于刻画少女的喜怒哀乐。
+人物擅长：小家碧玉、天真少女、民间底层女子，性格鲜活，烟火气强。
+代表剧目
+《红娘》《金玉奴》《勘玉钏》《钗头凤》《鱼藻宫》《杜十娘》《红楼二尤》。
+代表传人
+童芷苓、孙毓敏、耿巧云、宋长荣。</p >
+                    </div>
+                </div>
+                <div class="master-card">
+                    <div class="master-img">
+                        <img src="images/49.jpg" alt="尚小云">
+                    </div>
+                    <div class="master-info">
+                    	<h3>尚小云</h3><br />
+                        <p>生平
+幼年科班学艺，先习武生，后改旦角；功底极其扎实，重视戏曲教育，一生培养两百多名学生，其子尚长荣是著名花脸表演艺术家。
+艺术风格
+刚健飒爽、铁嗓钢喉，文戏武唱，文武并重，即 “尚的棒”。
+唱腔：嗓音高亢洪亮，中气十足，铿锵有力，调门高，力量感强，善用顿挫、颤音，刚中带柔。
+表演：武功底子深厚，身段挺拔利落，工架大气，不局限于柔弱闺阁女子，大量塑造巾帼侠女。
+人物擅长：巾帼英雄、侠女烈妇，有英气、有骨气的女性。
+代表剧目
+《昭君出塞》《梁红玉》《十三妹》《乾坤福寿镜》《双阳公主》《二进宫》抖音百科。
+代表传人
+尚慧敏、孙明珠。</p >
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+   </section>
+
+  <!-- ===== 知识拓展 ===== -->
+  <section class="section" id="knowledge" style="margin-top: -100px;">
+    <h2 class="section-title">知 识 拓 展</h2>
+    <p class="section-sub" style="color: white;">— 走进京剧 · 感受东方美学 —</p >
+    <div class="knowledge-grid">
+      <div class="knowledge-card">
+        <span class="k-icon"><i class="fas fa-theater-masks"></i></span>
+        <h4>四功五法</h4>
+        <p>四功：唱、念、做、打。五法：手、眼、身、法、步。是京剧演员的基本功。</p >
+      </div>
+      <div class="knowledge-card">
+        <span class="k-icon"><i class="fas fa-dragon"></i></span>
+        <h4>非遗传承</h4>
+        <p>2010年，京剧被列入联合国教科文组织非物质文化遗产名录，成为世界瑰宝。</p >
+      </div>
+      <div class="knowledge-card">
+        <span class="k-icon"><i class="fas fa-history"></i></span>
+        <h4>徽班进京</h4>
+        <p>清乾隆年间，四大徽班进京，融合昆曲、秦腔等，逐渐形成了京剧艺术。</p >
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 全屏教育视频板块 ===== -->
+  <section class="video-section" id="videoSection">
+    <video class="bg-video" autoplay muted loop playsinline preload="metadata">
+      <source src="images/video2.mp4" type="video/mp4">
+    </video>
+    <div class="video-overlay-glow"></div>
+    <div class="video-overlay-glow"></div>
+
+    <div class="video-content">
+      <h2 class="video-title">京 剧 课 堂</h2>
+      <p class="video-sub" style="color: white;">— 沉浸式学习 · 感受国粹魅力 —</p >
+
+      <div class="video-wrapper" id="mainVideoWrapper">
+        <video src="images/video4.mov" autoplay loop muted controls style="width: 700px;"></video>
+    </div>
+  </section>
+<section class="section" id="knowledge" style="margin-top: -100px;">
+    <h2 class="section-title">了解更多</h2>
+    <p class="section-sub" style="color: white;">— 走进京剧 · 感受东方美学 —</p >
+    <div class="knowledge-grid1">
+      <a href="hangdang.html"><div class="knowledge-card">
+        <img src="images/79.png" style="width: 200px; height: 200px; object-fit: cover; border-radius: 30px;"/><br />
+        <h4>行当 ></h4>
+      </div></a>
+      <a href="lianpu.html"><div class="knowledge-card">
+        <img src="images/80.png" style="width: 200px; height: 200px; object-fit: cover; border-radius: 30px;"/><br />
+        <h4>脸谱 ></h4>
+      </div></a>
+      <a href="fushi.html"><div class="knowledge-card">
+        <img src="images/81.png" style="width: 200px; height: 200px; object-fit: cover; border-radius: 30px;"/><br />
+        <h4>服饰 ></h4>
+      </div></a>
+      <a href="3D.html"><div class="knowledge-card">
+        <img src="images/82.png" style="width: 200px; height: 200px; object-fit: cover; border-radius: 30px;"/><br />
+        <h4>3D课堂 ></h4>
+      </div></a>
+    </div>
+  </section>
+  <!-- ===== 底部 ===== -->
+  <footer class="footer" id="footer">
+    <div class="social">
+      <a href=" "><i class="fab fa-weixin"></i></a >
+      <a href="#"><i class="fab fa-weibo"></i></a >
+      <a href="#"><i class="fab fa-bilibili"></i></a >
+      <a href="#"><i class="fab fa-youtube"></i></a >
+    </div>
+    <p>© 2026 国粹·京剧 ｜ 美育课堂 ｜ 传承非遗文化</p >
+  </footer>
+
+  <!-- 音乐提示 -->
+  <div class="music-hint" id="musicHint">♫ 点击任意位置 · 聆听戏韵</div>
+
+  <script>
+    (function() {
+      // ===== 背景音乐 =====
+      const bgMusic = document.getElementById('bgMusic');
+      const musicHint = document.getElementById('musicHint');
+      let musicStarted = false;
+
+      document.addEventListener('click', function() {
+        if (!musicStarted) {
+          bgMusic.play().then(() => { musicStarted = true; musicHint.classList.add('hidden'); }).catch(() => {});
+        }
+      }, { once: false });
+      setTimeout(() => {
+        bgMusic.play().then(() => { musicStarted = true; musicHint.classList.add('hidden'); }).catch(() => {});
+      }, 1200);
+
+      // ===== 水墨开场 =====
+      const inkIntro = document.getElementById('inkIntro');
+      const inkCanvas = document.getElementById('inkCanvas');
+      const ictx = inkCanvas.getContext('2d');
+
+      function resizeInk() { inkCanvas.width = window.innerWidth; inkCanvas.height = window.innerHeight; }
+      resizeInk();
+      window.addEventListener('resize', resizeInk);
+
+      let inkParticles = [];
+      const INK_COUNT = 70;
+      class InkParticle {
+        constructor() {
+          this.x = Math.random() * inkCanvas.width;
+          this.y = Math.random() * inkCanvas.height;
+          this.size = Math.random() * 55 + 15;
+          this.speedX = (Math.random() - 0.5) * 0.9;
+          this.speedY = (Math.random() - 0.5) * 0.9 - 0.3;
+          this.opacity = Math.random() * 0.15 + 0.04;
+          this.growth = Math.random() * 0.5 + 0.1;
+        }
+        update() {
+          this.x += this.speedX; this.y += this.speedY;
+          this.size += this.growth * 0.15;
+          if (this.x < 0 || this.x > inkCanvas.width) this.speedX *= -1;
+          if (this.y < 0 || this.y > inkCanvas.height) this.speedY *= -1;
+          if (this.size > 110) this.size = 15;
+        }
+        draw() {
+          const gradient = ictx.createRadialGradient(this.x, this.y, 0, this.x, this.y, this.size);
+          gradient.addColorStop(0, `rgba(80, 60, 40, ${this.opacity * 1.5})`);
+          gradient.addColorStop(0.4, `rgba(50, 35, 25, ${this.opacity})`);
+          gradient.addColorStop(1, `rgba(20, 15, 10, 0)`);
+          ictx.fillStyle = gradient;
+          ictx.beginPath();
+          ictx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+          ictx.fill();
+        }
+      }
+      for (let i = 0; i < INK_COUNT; i++) inkParticles.push(new InkParticle());
+
+      function animateInk() {
+        ictx.clearRect(0, 0, inkCanvas.width, inkCanvas.height);
+        inkParticles.forEach(p => { p.update(); p.draw(); });
+        requestAnimationFrame(animateInk);
+      }
+      animateInk();
+
+      setTimeout(() => {
+        inkIntro.classList.add('fade-out');
+        setTimeout(() => { inkIntro.style.display = 'none'; }, 1600);
+      }, 2400);
+
+      // ===== 粒子背景 =====
+      const canvas = document.getElementById('particles-canvas');
+      const ctx = canvas.getContext('2d');
+      let w, h, particles = [];
+       const COUNT = 120;
+
+      function resizeCanvas() {
+        const hero = document.querySelector('.hero');
+        w = hero.offsetWidth; h = hero.offsetHeight;
+        canvas.width = w; canvas.height = h;
+      }
+      window.addEventListener('resize', resizeCanvas);
+
+      class Particle {
+        constructor() { this.reset(); }
+        reset() {
+          this.x = Math.random() * w; this.y = Math.random() * h;
+          this.size = Math.random() * 5 + 1.5;
+          this.speedX = (Math.random() - 0.5) * 0.4;
+          this.speedY = (Math.random() - 0.5) * 0.4;
+          this.opacity = Math.random() * 0.35 + 0.1;
+          const colors = [`rgba(220,190,160,${this.opacity})`, `rgba(200,160,120,${this.opacity})`, `rgba(240,210,180,${this.opacity})`, `rgba(180,140,100,${this.opacity})`];
+          this.color = colors[Math.floor(Math.random() * colors.length)];
+          this.glow = this.size > 3;
+        }
+        update() {
+          this.x += this.speedX; this.y += this.speedY;
+          if (this.x < 0 || this.x > w) this.speedX *= -1;
+          if (this.y < 0 || this.y > h) this.speedY *= -1;
+        }
+        draw() {
+          ctx.beginPath();
+          ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+          ctx.fillStyle = this.color;
+          ctx.fill();
+          if (this.glow) {
+            ctx.shadowColor = 'rgba(200,170,140,0.2)';
+            ctx.shadowBlur = 18;
+            ctx.fill();
+            ctx.shadowBlur = 0;
+          }
+        }
+      }
+      function initParticles() { particles = []; for (let i = 0; i < COUNT; i++) particles.push(new Particle()); }
+      function animateParticles() {
+        ctx.clearRect(0, 0, w, h);
+        particles.forEach(p => { p.update(); p.draw(); });
+        requestAnimationFrame(animateParticles);
+      }
+
+      setTimeout(() => { resizeCanvas(); initParticles(); animateParticles(); }, 100);
+
+      window.addEventListener('scroll', function() {
+        const sections = document.querySelectorAll('section[id], footer[id]');
+        const scrollY = window.scrollY + 120;
+        sections.forEach(sec => {
+          const top = sec.offsetTop, height = sec.offsetHeight, id = sec.getAttribute('id');
+          if (scrollY >= top && scrollY < top + height) {
+            document.querySelectorAll('.nav-links a').forEach(l => {
+              l.classList.remove('active');
+              if (l.getAttribute('href') === '#' + id) l.classList.add('active');
+            });
+          }
+        });
+      });
+
+      document.getElementById('exploreBtn').addEventListener('click', function() {
+        document.getElementById('roles').scrollIntoView({ behavior: 'smooth' });
+      });
+      document.getElementById('watchVideoBtn').addEventListener('click', function() {
+        document.getElementById('videoSection').scrollIntoView({ behavior: 'smooth' });
+      });
+
+      // ===== 全屏视频交互 =====
+      const mainVideo = document.getElementById('mainVideo');
+      const videoWrapper = document.getElementById('mainVideoWrapper');
+      const playBtn = document.getElementById('videoPlayBtn');
+      const overlayUI = document.getElementById('videoOverlayUI');
+      const progressBar = document.getElementById('progressBar');
+      const progressFill = document.getElementById('progressFill');
+      const currentTimeEl = document.getElementById('currentTime');
+      const totalTimeEl = document.getElementById('totalTime');
+
+      let isPlaying = false;
+      let isDragging = false;
+
+      // 播放/暂停
+      function togglePlay() {
+        if (mainVideo.paused) {
+          mainVideo.play().catch(() => {});
+          isPlaying = true;
+          playBtn.querySelector('i').className = 'fas fa-pause';
+          videoWrapper.classList.add('playing');
+        } else {
+          mainVideo.pause();
+          isPlaying = false;
+          playBtn.querySelector('i').className = 'fas fa-play';
+          videoWrapper.classList.remove('playing');
+        }
+      }
+
+      playBtn.addEventListener('click', function(e) {
+        e.stopPropagation();
+        togglePlay();
+      });
+
+      videoWrapper.addEventListener('click', function(e) {
+        if (e.target === videoWrapper || e.target.closest('.video-overlay-ui')) {
+          togglePlay();
+        }
+      });
+
+      // 视频时间更新
+      mainVideo.addEventListener('timeupdate', function() {
+        if (!isDragging) {
+          const percent = (mainVideo.currentTime / mainVideo.duration) * 100;
+          progressFill.style.width = percent + '%';
+          currentTimeEl.textContent = formatTime(mainVideo.currentTime);
+        }
+      });
+
+      mainVideo.addEventListener('loadedmetadata', function() {
+        totalTimeEl.textContent = formatTime(mainVideo.duration);
+      });
+      // 进度条拖拽
+      progressBar.addEventListener('mousedown', function(e) {
+        isDragging = true;
+        updateProgress(e);
+        document.addEventListener('mousemove', onDragMove);
+        document.addEventListener('mouseup', onDragEnd);
+      });
+
+      progressBar.addEventListener('touchstart', function(e) {
+        isDragging = true;
+        updateProgressTouch(e);
+        document.addEventListener('touchmove', onDragMoveTouch);
+        document.addEventListener('touchend', onDragEndTouch);
+      });
+
+      function updateProgress(e) {
+        const rect = progressBar.getBoundingClientRect();
+        const x = (e.clientX - rect.left) / rect.width;
+        const clamped = Math.max(0, Math.min(1, x));
+        progressFill.style.width = (clamped * 100) + '%';
+        if (mainVideo.duration) {
+          mainVideo.currentTime = clamped * mainVideo.duration;
+          currentTimeEl.textContent = formatTime(mainVideo.currentTime);
+        }
+      }
+
+      function updateProgressTouch(e) {
+        const touch = e.touches[0];
+        const rect = progressBar.getBoundingClientRect();
+        const x = (touch.clientX - rect.left) / rect.width;
+        const clamped = Math.max(0, Math.min(1, x));
+        progressFill.style.width = (clamped * 100) + '%';
+        if (mainVideo.duration) {
+          mainVideo.currentTime = clamped * mainVideo.duration;
+          currentTimeEl.textContent = formatTime(mainVideo.currentTime);
+        }
+      }
+
+      function onDragMove(e) { updateProgress(e); }
+      function onDragEnd() { isDragging = false; document.removeEventListener('mousemove', onDragMove); document.removeEventListener('mouseup', onDragEnd); }
+      function onDragMoveTouch(e) { e.preventDefault(); updateProgressTouch(e); }
+      function onDragEndTouch() { isDragging = false; document.removeEventListener('touchmove', onDragMoveTouch); document.removeEventListener('touchend', onDragEndTouch); }
+
+      // 视频结束重置
+      mainVideo.addEventListener('ended', function() {
+        isPlaying = false;
+        playBtn.querySelector('i').className = 'fas fa-play';
+        videoWrapper.classList.remove('playing');
+        progressFill.style.width = '0%';
+        currentTimeEl.textContent = '0:00';
+      });
+
+      // 全屏
+      document.addEventListener('dblclick', function(e) {
+        if (e.target.closest('.video-wrapper')) {
+          if (mainVideo.requestFullscreen) {
+            mainVideo.requestFullscreen();
+          } else if (mainVideo.webkitRequestFullscreen) {
+            mainVideo.webkitRequestFullscreen();
+          }
+        }
+      });
+
+      // 键盘空格控制
+      document.addEventListener('keydown', function(e) {
+        if (e.key === ' ' && document.activeElement?.tagName !== 'INPUT') {
+          const videoSection = document.getElementById('videoSection');
+          const rect = videoSection.getBoundingClientRect();
+          if (rect.top < window.innerHeight && rect.bottom > 0) {
+            e.preventDefault();
+            togglePlay();
+          }
+        }
+      });
+
+      function formatTime(seconds) {
+        if (!seconds || isNaN(seconds)) return '0:00';
+        const mins = Math.floor(seconds / 60);
+        const secs = Math.floor(seconds % 60);
+        return mins + ':' + (secs < 10 ? '0' : '') + secs;
+      }
+
+      // 自动播放尝试
+      mainVideo.muted = true;
+      mainVideo.play().catch(() => {});
+
+      window.addEventListener('resize', () => { resizeCanvas(); initParticles(); resizeInk(); });
+
+    })();
+  </script>
+</body>
+</html>

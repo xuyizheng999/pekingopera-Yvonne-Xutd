@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>京剧 · 闯关 · 答题</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link rel="stylesheet" type="text/css" href="css/chuangguan.css"/>
+  <style type="text/css">
+  	body{
+  		background: url(images/44.jpg);
+  		background-size: cover;
+  	}
+  </style>
+</head>
+<body>
+
+  <!-- 水墨开场 -->
+  <div class="ink-intro" id="inkIntro">
+    <canvas class="ink-canvas" id="inkCanvas"></canvas>
+    <div class="ink-text">闯 · 关</div>
+  </div>
+
+  <!-- ===== 导航 ===== -->
+  <nav class="navbar">
+    <a href="index.html"><div class="logo"><i class="fas fa-mask"></i>国粹·京剧</div></a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="shouye.html">首页</a ></li>
+      <li><a href="hangdang.html">行当</a ></li>
+      <li><a href="lianpu.html">脸谱</a ></li>
+      <li><a href="fushi.html">服饰</a ></li>
+      <li><a href="3D.html">3D戏台课堂</a ></li>
+      <li><a href="chuancheng.html">传承</a ></li>
+      <li><a href="chuangguan.html" style="color: white;">答题</a ></li>
+    </ul>
+    <div class="nav-toggle" id="navToggle"><i class="fas fa-bars"></i></div>
+  </nav>
+
+  <!-- ===== 游戏区域 ===== -->
+  <div class="game-wrapper" id="game">
+    <div class="game-container">
+      <!-- 游戏头部 -->
+      <div class="game-header">
+        <div class="level-info">
+          <div class="level-badge" style="color: white;">🎭 第 <span id="levelNum">1</span> 关</div>
+          <div class="level-badge" style="color: white;">📖 京剧知识</div>
+        </div>
+        <div class="stats">
+          <div class="stat-item" style="color: white;"><i class="fas fa-star"></i> 得分 <span id="scoreNum">0</span></div>
+          <div class="stat-item" style="color: white;"><i class="fas fa-clock"></i> <span id="timerDisplay">00:30</span></div>
+        </div>
+      </div>
+
+      <!-- 进度条 + 小人 -->
+      <div class="progress-track" id="progressTrack">
+        <div class="progress-fill" id="progressFill">
+          <div class="progress-glow"></div>
+        </div>
+        <div class="runner" id="runner">
+          <span class="runner-icon">🏃</span>
+          <div class="runner-shadow"></div>
+        </div>
+      </div>
+      <div class="progress-label">
+        <span style="color: white;">🚩 出发</span>
+        <span id="progressText" style="color: white;">0 / 10</span>
+        <span style="color: white;">🏁 终点</span>
+      </div>
+
+      <!-- 游戏主体 -->
+      <div class="game-body" id="gameBody">
+
+        <!-- 开始界面 -->
+        <div class="start-screen" id="startScreen">
+          <div class="start-bg-img"></div>
+          <span class="game-icon"><i class="fas fa-mask"></i></span>
+          <h2>京 剧 闯 关</h2>
+          <p>— 答对全部题目 · 小人与你同行 —</p >
+          <button class="btn-start" id="startBtn"><i class="fas fa-chevron-circle-right"></i> 开 始 挑 战</button>
+        </div>
+
+        <!-- 答题界面 -->
+        <div class="quiz-screen" id="quizScreen">
+          <div class="question-text" id="questionText">加载题目中...</div>
+          <div class="options-grid" id="optionsContainer"></div>
+        </div>
+
+        <!-- 结果界面 -->
+        <div class="result-screen" id="resultScreen">
+          <div class="result-bg"></div>
+          <span class="result-icon" id="resultIcon"><i class="fas fa-trophy"></i></span>
+          <h2 id="resultTitle">闯关成功！</h2>
+          <div class="result-score" id="resultScore">10 / 10</div>
+          <p class="result-desc" id="resultDesc">恭喜你完成全部挑战！</p >
+          <button class="btn-restart" id="restartBtn"><i class="fas fa-redo"></i> 再 来 一 次</button>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== 反馈弹窗 ===== -->
+  <div class="feedback-overlay" id="feedbackOverlay">
+    <div class="feedback-card">
+      <span class="fb-icon" id="fbIcon"><i class="fas fa-check-circle"></i></span>
+      <h3 id="fbTitle">回答正确！</h3>
+      <p class="fb-desc" id="fbDesc">太棒了，继续前进吧！</p >
+      <button class="btn-next" id="nextBtn">下一题 →</button>
+    </div>
+  </div>
+
+  <style>
+    .music-hint.hidden { opacity: 0; }
+    @keyframes hintPulse { 0%,100% { opacity: 0.06; } 50% { opacity: 0.2; } }
+  </style>
+
+  <script>
+    (function() {
+      // ===== 背景音乐 =====
+      var bgMusic = document.getElementById('bgMusic');
+      var musicHint = document.getElementById('musicHint');
+      var musicStarted = false;
+
+      document.addEventListener('click', function() {
+        if (!musicStarted) {
+          bgMusic.play().then(function() { musicStarted = true; musicHint.classList.add('hidden'); }).catch(function() {});
+        }
+      }, { once: false });
+      setTimeout(function() {
+        bgMusic.play().then(function() { musicStarted = true; musicHint.classList.add('hidden'); }).catch(function() {});
+      }, 1200);
+
+      // ===== 水墨开场 =====
+      var inkIntro = document.getElementById('inkIntro');
+      var inkCanvas = document.getElementById('inkCanvas');
+      var ictx = inkCanvas.getContext('2d');
+
+      function resizeInk() { inkCanvas.width = window.innerWidth; inkCanvas.height = window.innerHeight; }
+      resizeInk();
+      window.addEventListener('resize', resizeInk);
+
+      var inkParticles = [];
+      var INK_COUNT = 70;
+
+      function InkParticle() {
+        this.x = Math.random() * inkCanvas.width;
+        this.y = Math.random() * inkCanvas.height;
+        this.size = Math.random() * 55 + 15;
+        this.speedX = (Math.random() - 0.5) * 0.9;
+        this.speedY = (Math.random() - 0.5) * 0.9 - 0.3;
+        this.opacity = Math.random() * 0.15 + 0.04;
+        this.growth = Math.random() * 0.5 + 0.1;
+        this.update = function() {
+          this.x += this.speedX;
+          this.y += this.speedY;
+          this.size += this.growth * 0.15;
+          if (this.x < 0 || this.x > inkCanvas.width) this.speedX *= -1;
+          if (this.y < 0 || this.y > inkCanvas.height) this.speedY *= -1;
+          if (this.size > 110) this.size = 15;
+        };
+        this.draw = function() {
+          var gradient = ictx.createRadialGradient(this.x, this.y, 0, this.x, this.y, this.size);
+          gradient.addColorStop(0, 'rgba(80, 60, 40, ' + (this.opacity * 1.5) + ')');
+          gradient.addColorStop(0.4, 'rgba(50, 35, 25, ' + this.opacity + ')');
+          gradient.addColorStop(1, 'rgba(20, 15, 10, 0)');
+          ictx.fillStyle = gradient;
+          ictx.beginPath();
+          ictx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+          ictx.fill();
+        };
+      }
+
+      for (var i = 0; i < INK_COUNT; i++) {
+        inkParticles.push(new InkParticle());
+      }
+
+      function animateInk() {
+        ictx.clearRect(0, 0, inkCanvas.width, inkCanvas.height);
+        for (var i = 0; i < inkParticles.length; i++) {
+          inkParticles[i].update();
+          inkParticles[i].draw();
+        }
+        requestAnimationFrame(animateInk);
+      }
+      animateInk();
+
+      setTimeout(function() {
+        inkIntro.classList.add('fade-out');
+        setTimeout(function() { inkIntro.style.display = 'none'; }, 1600);
+      }, 2200);
+
+      // ===== 导航 =====
+      var navToggle = document.getElementById('navToggle');
+      var navLinks = document.getElementById('navLinks');
+      navToggle.addEventListener('click', function() { navLinks.classList.toggle('open'); });
+      var navAnchors = document.querySelectorAll('.nav-links a');
+      for (var i = 0; i < navAnchors.length; i++) {
+      	navAnchors[i].addEventListener('click', function() {
+          navLinks.classList.remove('open');
+          for (var j = 0; j < navAnchors.length; j++) {
+            navAnchors[j].classList.remove('active');
+          }
+          this.classList.add('active');
+        });
+      }
+
+      // ============================================================
+      // ===== 闯关游戏逻辑 =====
+      // ============================================================
+
+      // ---- 题目数据 ----
+      var questions = [{
+        question: '京剧中的"生"行当主要扮演什么角色？',
+        options: ['女性角色', '男性角色', '儿童角色', '老年角色'],
+        correct: 1
+      }, {
+        question: '以下哪位是"梅派"艺术的创始人？',
+        options: ['程砚秋', '尚小云', '梅兰芳', '荀慧生'],
+        correct: 2
+      }, {
+        question: '京剧脸谱中，红色通常象征什么？',
+        options: ['奸诈', '忠勇', '刚直', '骁勇'],
+        correct: 1
+      }, {
+        question: '"唱念做打"中"打"指的是什么？',
+        options: ['打击乐', '武打动作', '打拍子', '打手势'],
+        correct: 1
+      }, {
+        question: '以下哪个是京剧的经典剧目？',
+        options: ['《红楼梦》', '《霸王别姬》', '《西游记》', '《水浒传》'],
+        correct: 1
+      }, {
+        question: '京剧中的"旦"行当不包括以下哪种？',
+        options: ['青衣', '花旦', '老生', '武旦'],
+        correct: 2
+      }, {
+        question: '京剧被列入联合国非遗名录是在哪一年？',
+        options: ['2008年', '2010年', '2012年', '2015年'],
+        correct: 1
+      }, {
+        question: '以下哪位是"程派"艺术的创始人？',
+        options: ['梅兰芳', '程砚秋', '尚小云', '荀慧生'],
+        correct: 1
+      }, {
+        question: '京剧脸谱中，黑色通常象征什么？',
+        options: ['忠勇', '奸诈', '刚直', '骁勇'],
+        correct: 2
+      }, {
+        question: '"四大徽班"进京是在哪个朝代？',
+        options: ['明朝', '清朝', '民国', '元朝'],
+        correct: 1
+      }];
+
+      // ---- DOM 元素 ----
+      var startScreen = document.getElementById('startScreen');
+      var quizScreen = document.getElementById('quizScreen');
+      var resultScreen = document.getElementById('resultScreen');
+      var startBtn = document.getElementById('startBtn');
+      var questionText = document.getElementById('questionText');
+      var optionsContainer = document.getElementById('optionsContainer');
+      var feedbackOverlay = document.getElementById('feedbackOverlay');
+      var fbIcon = document.getElementById('fbIcon');
+      var fbTitle = document.getElementById('fbTitle');
+      var fbDesc = document.getElementById('fbDesc');
+      var nextBtn = document.getElementById('nextBtn');
+      var resultIcon = document.getElementById('resultIcon');
+      var resultTitle = document.getElementById('resultTitle');
+      var resultScore = document.getElementById('resultScore');
+      var resultDesc = document.getElementById('resultDesc');
+      var restartBtn = document.getElementById('restartBtn');
+      var scoreNum = document.getElementById('scoreNum');
+      var levelNum = document.getElementById('levelNum');
+      var progressFill = document.getElementById('progressFill');
+      var runner = document.getElementById('runner');
+      var progressText = document.getElementById('progressText');
+      var timerDisplay = document.getElementById('timerDisplay');
+
+      // ---- 游戏状态 ----
+      var currentIndex = 0;
+      var score = 0;
+      var isAnswered = false;
+      var totalQuestions = questions.length;
+      var correctAnswers = 0;
+      var timerInterval = null;
+      var timeLeft = 30;
+      var isGameActive = false;
+
+      // ---- 工具函数 ----
+      function shuffleArray(arr) {
+        for (var i = arr.length - 1; i > 0; i--) {
+          var j = Math.floor(Math.random() * (i + 1));
+          var temp = arr[i];
+          arr[i] = arr[j];
+          arr[j] = temp;
+        }
+        return arr;
+      }
+
+      // ---- 更新进度条和小人 ----
+      function updateProgress() {
+        var percent = (currentIndex / totalQuestions) * 100;
+        progressFill.style.width = percent + '%';
+        runner.style.left = percent + '%';
+        progressText.textContent = currentIndex + ' / ' + totalQuestions;
+      }
+
+      // ---- 计时器 ----
+      function startTimer() {
+        timeLeft = 30;
+        timerDisplay.textContent = '00:' + (timeLeft < 10 ? '0' : '') + timeLeft;
+        if (timerInterval) clearInterval(timerInterval);
+        timerInterval = setInterval(function() {
+          timeLeft--;
+          timerDisplay.textContent = '00:' + (timeLeft < 10 ? '0' : '') + timeLeft;
+          if (timeLeft <= 0) {
+            clearInterval(timerInterval);
+            handleTimeUp();
+          }
+        }, 1000);
+      }
+
+      function stopTimer() {
+        if (timerInterval) {
+          clearInterval(timerInterval);
+          timerInterval = null;
+        }
+      }
+
+      function handleTimeUp() {
+        if (!isGameActive) return;
+        if (isAnswered) return;
+        var q = questions[currentIndex];
+        var options = optionsContainer.querySelectorAll('.option-btn');
+        options.forEach(function(btn) {
+          btn.classList.add('disabled');
+        });
+        options.forEach(function(btn, idx) {
+          if (idx === q.correct) {
+            btn.classList.add('show-correct');
+          }
+        });
+        isAnswered = true;
+        showFeedback(false, q.options[q.correct]);
+      }
+
+      // ---- 加载题目 ----
+      function loadQuestion(index) {
+        if (index >= totalQuestions) {
+          showResult();
+          return;
+        }
+
+        isAnswered = false;
+        var q = questions[index];
+        questionText.textContent = (index + 1) + '. ' + q.question;
+        levelNum.textContent = index + 1;
+
+        optionsContainer.innerHTML = '';
+        for (var i = 0; i < q.options.length; i++) {
+          var btn = document.createElement('button');
+          btn.className = 'option-btn';
+          btn.textContent = String.fromCharCode(65 + i) + '. ' + q.options[i];
+          btn.dataset.index = i;
+          btn.addEventListener('click', function(e) {
+            if (isAnswered) return;
+            var selected = parseInt(this.dataset.index);
+            handleAnswer(selected);
+          });
+          optionsContainer.appendChild(btn);
+        }
+
+        updateProgress();
+        quizScreen.classList.add('active');
+        feedbackOverlay.classList.remove('active');
+
+        stopTimer();
+        startTimer();
+        isGameActive = true;
+      }
+
+      // ---- 处理答题 ----
+      function handleAnswer(selected) {
+        if (isAnswered || !isGameActive) return;
+        isAnswered = true;
+        stopTimer();
+
+        var q = questions[currentIndex];
+        var isCorrect = (selected === q.correct);
+        var options = optionsContainer.querySelectorAll('.option-btn');
+
+        options.forEach(function(btn) {
+          btn.classList.add('disabled');
+        });
+
+        options.forEach(function(btn, idx) {
+          if (idx === q.correct) {
+            btn.classList.add('show-correct');
+          }
+          if (idx === selected) {
+            if (isCorrect) {
+              btn.classList.add('selected-correct');
+            } else {
+              btn.classList.add('selected-wrong');
+            }
+          }
+        });
+
+        if (isCorrect) {
+          score += 10;
+          correctAnswers++;
+          scoreNum.textContent = score;
+        }
+
+        showFeedback(isCorrect, q.options[q.correct]);
+      }
+
+      // ---- 显示反馈 ----
+      function showFeedback(isCorrect, correctAnswer) {
+        if (isCorrect) {
+          fbIcon.className = 'fb-icon correct';
+          fbIcon.innerHTML = '<i class="fas fa-check-circle"></i>';
+          fbTitle.textContent = '🎉 回答正确！';
+          fbDesc.textContent = '太棒了，继续前进！ +10分';
+        } else {
+          fbIcon.className = 'fb-icon wrong';
+          fbIcon.innerHTML = '<i class="fas fa-times-circle"></i>';
+          fbTitle.textContent = '😅 再想想...';
+          fbDesc.textContent = '正确答案：' + correctAnswer;
+        }
+
+        if (currentIndex + 1 >= totalQuestions) {
+          nextBtn.textContent = '查看结果 →';
+        } else {
+          nextBtn.textContent = '下一题 →';
+        }
+
+        feedbackOverlay.classList.add('active');
+      }
+
+      // ---- 下一题 ----
+      function goToNext() {
+        feedbackOverlay.classList.remove('active');
+        currentIndex++;
+        if (currentIndex >= totalQuestions) {
+          showResult();
+        } else {
+          loadQuestion(currentIndex);
+        }
+      }
+
+      // ---- 显示结果 ----
+      function showResult() {
+        isGameActive = false;
+        stopTimer();
+        quizScreen.classList.remove('active');
+        feedbackOverlay.classList.remove('active');
+        resultScreen.classList.add('active');
+
+        var percent = Math.round((correctAnswers / totalQuestions) * 100);
+        resultScore.textContent = correctAnswers + ' / ' + totalQuestions + '  (得分: ' + score + ')';
+
+        if (percent === 100) {
+          resultIcon.className = 'result-icon perfect';
+          resultIcon.innerHTML = '<i class="fas fa-crown"></i>';
+          resultTitle.textContent = '🌟 完美通关！';
+          resultDesc.textContent = '你是真正的京剧小达人！太厉害了！';
+        } else if (percent >= 70) {
+          resultIcon.className = 'result-icon pass';
+          resultIcon.innerHTML = '<i class="fas fa-trophy"></i>';
+          resultTitle.textContent = '🎉 闯关成功！';
+          resultDesc.textContent = '恭喜你完成挑战，继续加油学习吧！';
+        } else {
+          resultIcon.className = 'result-icon fail';
+          resultIcon.innerHTML = '<i class="fas fa-book"></i>';
+          resultTitle.textContent = '📖 继续努力！';
+          resultDesc.textContent = '多了解京剧知识，再来挑战一次吧！';
+        }
+
+        progressFill.style.width = '100%';
+        runner.style.left = '100%';
+        progressText.textContent = totalQuestions + ' / ' + totalQuestions;
+      }
+
+      // ---- 重置游戏 ----
+      function resetGame() {
+        stopTimer();
+        isGameActive = false;
+        currentIndex = 0;
+        score = 0;
+        correctAnswers = 0;
+        isAnswered = false;
+        scoreNum.textContent = '0';
+        levelNum.textContent = '1';
+        timeLeft = 30;
+        timerDisplay.textContent = '00:30';
+
+        shuffleArray(questions);
+
+        resultScreen.classList.remove('active');
+        quizScreen.classList.remove('active');
+        feedbackOverlay.classList.remove('active');
+        startScreen.style.display = 'block';
+
+        progressFill.style.width = '0%';
+        runner.style.left = '0%';
+        progressText.textContent = '0 / ' + totalQuestions;
+      }
+
+      // ---- 开始游戏 ----
+      function startGame() {
+        startScreen.style.display = 'none';
+        currentIndex = 0;
+        score = 0;
+        correctAnswers = 0;
+        isAnswered = false;
+        scoreNum.textContent = '0';
+        shuffleArray(questions);
+        isGameActive = true;
+        loadQuestion(0);
+      }
+
+      // ---- 事件绑定 ----
+      startBtn.addEventListener('click', startGame);
+      nextBtn.addEventListener('click', goToNext);
+      restartBtn.addEventListener('click', resetGame);
+
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Enter' || e.key === ' ') {
+          if (feedbackOverlay.classList.contains('active')) {
+            goToNext();
+          }
+        }
+      });
+
+      resetGame();
+
+      window.addEventListener('resize', function() { resizeInk(); });
+
+    })();
+  </script>
+</body>
+</html>

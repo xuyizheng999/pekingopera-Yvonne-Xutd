@@ -1,0 +1,500 @@
+ <!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>京剧 · 传承 · 国粹</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link rel="stylesheet" type="text/css" href="css/chuancheng.css"/>
+</head>
+<body>
+
+  <!-- 水墨开场 -->
+  <div class="ink-intro" id="inkIntro">
+    <canvas class="ink-canvas" id="inkCanvas"></canvas>
+    <div class="ink-text">传 · 承</div>
+  </div>
+
+  <!-- ===== 导航 ===== -->
+  <nav class="navbar">
+    <a href="index.html"><div class="logo"><i class="fas fa-mask"></i>国粹·京剧</div></a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="shouye.html">首页</a ></li>
+      <li><a href="hangdang.html">行当</a ></li>
+      <li><a href="lianpu.html">脸谱</a ></li>
+      <li><a href="fushi.html">服饰</a ></li>
+      <li><a href="3D.html">3D戏台课堂</a ></li>
+      <li><a href="chuancheng.html" style="color: white;">传承</a ></li>
+      <li><a href="chuangguan.html">答题</a ></li>
+    </ul>
+    <div class="nav-toggle" id="navToggle"><i class="fas fa-bars"></i></div>
+  </nav>
+  
+  <!-- ===== 全屏滚动 ===== -->
+  <div class="fullpage" id="fullpage">
+
+    <!-- Section 1: Hero -->
+    <section class="section hero-section" id="section1">
+      <video class="bg-video" autoplay muted loop playsinline preload="metadata">
+        <source src="images/视频1.mov" type="video/mp4">
+      </video>
+      <div class="overlay"></div>
+      <div class="glow-orb"></div>
+      <div class="glow-orb"></div>
+      <div class="glow-orb"></div>
+      <canvas id="particles-canvas" style="position:absolute;inset:0;width:100%;height:100%;z-index:2;pointer-events:none;opacity:0.5;"></canvas>
+
+      <div class="content">
+        <div class="badge">
+          <i class="fas fa-circle" style="font-size:0.35rem;color:#d4a373;"></i>
+          <span>· 薪 火 相 传  ·  国 粹 永 续  ·</span>
+          <i class="fas fa-circle" style="font-size:0.35rem;color:#d4a373;"></i>
+        </div>
+        <h1>传 承</h1>
+        <div class="sub">· 守 正 创 新  ·  生 生 不 息  ·</div>
+        <div class="divider"></div>
+        <p class="desc">
+          <i class="fas fa-circle" style="font-size:0.25rem;vertical-align:middle;color:#c99e6d;"></i>
+          从徽班进京到非遗瑰宝 ｜ 百年京剧 薪火相传
+          <i class="fas fa-circle" style="font-size:0.25rem;vertical-align:middle;color:#c99e6d;"></i>
+        </p >
+      </div>
+      <div class="scroll-hint"><i class="fas fa-chevron-down"></i> 滚 动 探 索</div>
+    </section>
+	
+    <!-- Section 2: 传承之路 -->
+    <section class="section timeline-section" style="margin-top: 100px;">
+      <div class="timeline">
+        <div class="timeline-item">
+          <img class="timeline-img" src="images/33.jpg" alt="徽班进京">
+          <span class="year">1790</span>
+          <h4>徽班进京</h4>
+          <p>四大徽班进京，京剧雏形初现</p >
+        </div>
+        <div class="timeline-item">
+          <img class="timeline-img" src="images/34.jpg" alt="京剧形成">
+          <span class="year">1840</span>
+          <h4>京剧形成</h4>
+          <p>徽秦合流，皮黄并奏，京剧艺术正式形成</p >
+        </div>
+        <div class="timeline-item">
+          <img class="timeline-img" src="images/35.jpg" alt="鼎盛时期">
+          <span class="year">1910</span>
+          <h4>鼎盛时期</h4>
+          <p>梅兰芳等大师涌现，京剧走向世界</p >
+        </div>
+        <div class="timeline-item">
+          <img class="timeline-img" src="images/36.jpg" alt="新生">
+          <span class="year">1949</span>
+          <h4>新生</h4>
+          <p>新中国建立，京剧艺术焕发新生</p >
+        </div>
+        <div class="timeline-item">
+          <img class="timeline-img" src="images/37.jpg" alt="非遗名录">
+          <span class="year">2010</span>
+          <h4>非遗名录</h4>
+          <p>联合国教科文组织列入非遗名录</p >
+        </div>
+        <div class="timeline-item">
+          <img class="timeline-img" src="images/38.jpg" alt="传承创新">
+          <span class="year">2026</span>
+          <h4>传承创新</h4>
+          <p>守正创新，京剧走进新时代</p >
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 3: 名家传承 -->
+    <section class="section masters-section" id="section3" style="margin-top: -250px;">
+      <h2 class="section-title">名 家 传 承</h2>
+        <div class="masters-grid">
+        <div class="master-card">
+          <div class="glow-ring"></div>
+          <img class="master-img" src="images/39.jpg" alt="梅兰芳">
+          <h4>梅兰芳</h4>
+          <p>梅派 · 一代宗师</p >
+        </div>
+        <div class="master-card">
+          <div class="glow-ring"></div>
+          <img class="master-img" src="images/40.jpg" alt="程砚秋">
+          <h4>程砚秋</h4>
+          <p>程派 · 幽咽婉转</p >
+        </div>
+        <div class="master-card">
+          <div class="glow-ring"></div>
+          <img class="master-img" src="images/41.jpg" alt="尚小云">
+          <h4>尚小云</h4>
+          <p>尚派 · 刚健挺拔</p >
+        </div>
+        <div class="master-card">
+          <div class="glow-ring"></div>
+          <img class="master-img" src="images/42.jpg" alt="荀慧生">
+          <h4>荀慧生</h4>
+          <p>荀派 · 活泼灵动</p >
+        </div>
+      </div>
+    </section>
+	
+	<!-- UNESCO认证区域 -->
+    <section class="unesco-section">
+        <div class="container" style="margin:0 auto; max-width: 1300px;">
+            <div class="unesco-container">
+                <div class="unesco-badge">
+                    <img src="images/46.jpg" style="width: 500px;"/>
+                    <h3 class="badge-title">人类非物质文化遗产</h3>
+                    <p class="badge-desc">联合国教科文组织认证</p >
+                </div>
+                <div class="unesco-content">
+                    <h2 class="unesco-title">京剧的世界认可</h2>
+                    <p class="unesco-desc" style="width: 700px;">2010年，京剧被联合国教科文组织列入人类非物质文化遗产代表作名录。这是国际社会对京剧艺术价值的充分肯定，认可京剧作为中国传统表演艺术的杰出代表，具有丰富的历史、文化和艺术价值。</p >
+                    
+                    <div class="unesco-features">
+                        <div class="feature-item">
+                            <div class="feature-icon">
+                                <i class="fas fa-globe"></i>
+                            </div>
+                            <h3 class="feature-title">世界性认可</h3>
+                            <p class="feature-desc">京剧作为中国文化代表获得国际认可</p >
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon">
+                                <i class="fas fa-history"></i>
+                            </div>
+                            <h3 class="feature-title">百年传承</h3>
+                            <p class="feature-desc">200多年发展历史的文化积淀</p >
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon">
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <h3 class="feature-title">艺术完整性</h3>
+                            <p class="feature-desc">唱念做打完美结合的综合艺术</p >
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon">
+                                <i class="fas fa-users"></i>
+                            </div>
+                            <h3 class="feature-title">文化多样性</h3>
+                            <p class="feature-desc">体现中华民族多元文化融合</p >
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 保护措施区域 -->
+    <section class="protection-section" style="margin:0 auto; max-width: 1300px; margin-top: -50px;">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">保护措施与计划</h2>
+                <p class="section-subtitle">为确保京剧艺术的活态传承，中国政府制定并实施了一系列保护措施</p >
+            </div>
+            
+            <div class="protection-grid">
+                <div class="protection-card">
+                    <div class="protection-icon">
+                        <i class="fas fa-user-graduate"></i>
+                    </div>
+                    <h3 class="protection-name">传承人制度</h3>
+                    <p class="protection-desc">建立国家级、省级京剧非遗传承人认定制度，支持传承人开展传习活动，培养新一代京剧人才。</p >
+                </div>
+                
+                <div class="protection-card">
+                    <div class="protection-icon">
+                        <i class="fas fa-book"></i>
+                    </div>
+                    <h3 class="protection-name">记录工程</h3>
+                    <p class="protection-desc">系统收集、整理京剧文献资料，利用现代技术手段对传统剧目进行数字化保存。</p >
+                </div>
+                
+                <div class="protection-card">
+                    <div class="protection-icon">
+                        <i class="fas fa-school"></i>
+                    </div>
+                    <h3 class="protection-name">京剧进校园</h3>
+                    <p class="protection-desc">开展"京剧进校园"活动，在中小学校普及京剧知识，培养青少年对传统文化的兴趣。</p >
+                </div>
+                
+                <div class="protection-card">
+                    <div class="protection-icon">
+                        <i class="fas fa-theater-masks"></i>
+                    </div>
+                    <h3 class="protection-name">剧团支持</h3>
+                    <p class="protection-desc">加大对京剧表演团体的扶持力度，支持剧团创作新剧目和开展国内外演出交流。</p >
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 传承人区域 -->
+    <section class="inheritors-section" style="margin:0 auto; max-width: 1300px; margin-top: -50px;">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">代表性传承人</h2>
+                 <p class="section-subtitle">这些艺术家为京剧的传承与发展做出了卓越贡献</p >
+            </div>
+            
+            <div class="inheritors-grid">
+                <div class="inheritor-card">
+                    <div class="inheritor-img">
+                    	<img src="images/57.jpg" /> 
+                    </div>
+                    <div class="inheritor-content">
+                        <h3 class="inheritor-name">梅葆玖</h3>
+                        <p class="inheritor-title">梅派艺术传承人</p >
+                        <p class="inheritor-desc">生平
+祖籍江苏泰州，梅兰芳最小的儿子，第二批国家级非遗京剧传承人，北京京剧院梅兰芳京剧团团长，全国政协委员。10 岁学艺，13 岁登台，开蒙王幼卿，兼学昆曲。青年时期曾和父亲梅兰芳同台演出。特殊年代被迫做音响工作；改革开放之后扛起梅派大旗，整理恢复大量梅派失传剧目，一生致力于梅派传承传播，2016 年病逝，享年 82 岁光明数字报。
+艺术风格
+完整继承梅派雍容华贵、中正平和的艺术内核。嗓音甜美纯净圆润，吐字讲究，行腔舒展大方；身段端庄典雅，恪守梅兰芳 “移步不换形” 艺术主张。男旦表演，青衣、花衫、刀马旦、昆曲样样精通，不追求花哨险腔，重在神韵气度人民网文化。
+代表剧目
+《贵妃醉酒》《霸王别姬》《穆桂英挂帅》《凤还巢》《天女散花》《洛神》《太真外传》《玉堂春》；昆曲《游园惊梦》《断桥》人民网文化。
+传承贡献
+收弟子五十余人，李胜素、董圆圆、张晶等都是其门下；整理抢救梅派旧戏；推动京剧进校园、对外文化交流，推广戏歌《梨花颂》，扩大梅派在大众之间影响力光明数字报。</p >
+                    </div>
+                </div>
+                
+                <div class="inheritor-card">
+                    <div class="inheritor-img">
+                    	<img src="images/58.jpg" /> 
+                    </div>
+                    <div class="inheritor-content">
+                        <h3 class="inheritor-name">尚长荣</h3>
+                        <p class="inheritor-title">京剧表演艺术家</p >
+                        <p class="inheritor-desc">生平
+生于北京，四大名旦尚小云第三子，工净行（花脸），首批国家级非遗传承人，中国戏剧第一位梅花大奖得主，上海京剧院艺术指导，中国剧协名誉主席中国文学艺。五岁登台，十岁正式拜师学花脸，师从侯喜瑞、陈富瑞等花脸前辈。早年在陕西京剧院，后到上海京剧院。不仅演传统戏，更大力推动新编京剧，把花脸艺术推向新时代高峰。
+艺术风格
+打破铜锤花脸与架子花脸的界限，提出 **“架子花脸铜锤唱，铜锤花脸架子演”。既有铜锤的醇厚洪亮唱功，又有架子花脸丰富身段、念白与内心刻画。表演重人物内心，不脸谱化，擅长塑造复杂立体历史人物，追求人物真实人性，是当代净行标杆。
+代表剧目
+传统戏：《将相和》（廉颇）、《连环套》（窦尔敦）、《野猪林》（鲁智深）、《李逵探母》《敬德装疯》
+新编京剧 “尚长荣三部曲”：《曹操与杨修》《贞观盛事》《廉吏于成龙》，被誉为新时期戏曲里程碑作品；拍摄多部 3D 京剧电影，传播京剧艺术抖音百科。
+传承贡献
+课徒传艺，高校授课；推动京剧电影工程；提倡守正创新，强调 “演戏先做人”，培养大批青年花脸演员中国戏曲学。</p ><br />
+                    </div>
+                </div>
+                
+                <div class="inheritor-card">
+                    <div class="inheritor-img">
+                    	<img src="images/59.jpg" /> 
+                    </div>
+                    <div class="inheritor-content">
+                        <h3 class="inheritor-name">李世济</h3>
+                        <p class="inheritor-title">程派艺术传承人</p >
+                        <p class="inheritor-desc">祖籍广东梅县，出身书香门第。11 岁拜程砚秋为义父，得到程砚秋亲授，也曾受梅兰芳指点，国家京剧院一级演员，国家级非遗传承人。原本学医，放弃学业投身京剧。改革开放后率先恢复上演被搁置多年的程派经典《锁麟囊》，让程派重焕光彩，被称为 “新程派” 代表人物，2016 年逝世人民网文化。
+艺术风格
+立足程砚秋原有的幽咽凄婉底色，结合自己清亮通透嗓音条件做革新。唱腔增加亮度，音域拓宽；丈夫琴师唐在炘革新伴奏，增加笙等乐器，丰富伴奏层次。相比老程派，整体更加明快流畅，更容易被普通观众接受，扩大程派群众基础。擅长悲剧女性，也创排大量新编历史戏、现代戏人民网文化。
+代表剧目
+程派传统：《锁麟囊》《荒山泪》《春闺梦》《六月雪》《贺后骂殿》《文姬归汉》
+改编新编：《陈三两爬堂》《梅妃》《则天武后》；现代戏《刘三姐》《党的女儿》等抖音百科。
+传承贡献
+整理、复排大量程派失传剧目；广收弟子，推动程派普及，带动一大批年轻人喜爱程派艺术，扩大程派影响力国家京剧院。</p ><br />
+                    </div>
+                </div>
+                
+                <div class="inheritor-card">
+                    <div class="inheritor-img">
+                    	<img src="images/60.jpg" /> 
+                    </div>
+                    <div class="inheritor-content">
+                        <h3 class="inheritor-name">叶少兰</h3>
+                        <p class="inheritor-title">叶派小生传承人</p >
+                        <p class="inheritor-desc">生平
+安徽太湖人，叶派小生创始人叶盛兰之子，第二批国家级非遗传承人，首届中国戏剧梅花奖获得者，国家一级演员，战友京剧团艺术指导，戏曲学院研究生导师中国非物质。7 岁随父学艺，考入中国戏曲学校，又拜昆曲大师俞振飞深造。历经坎坷，八十年代重新把叶派小生全部经典剧目复排重现舞台，被称为 “京剧王子”，同时也是优秀戏曲导演，导演三十多部京剧剧目中国国家京。
+艺术风格
+叶派小生文武兼备，翎子生、扇子生、官生、武小生样样精通。嗓音宽亮高亢，“娃娃调” 功力极强；身段工架潇洒英武，注重人物情感刻画，文戏儒雅，武戏英气逼人，表演讲究阳刚之美，改变小生一味柔弱的刻板印象，继承又适度强化人物情绪表达，有时代气息中国国家京。
+代表剧目
+传统叶派：《吕布与貂蝉》（吕布）、《群英会》（周瑜）、《罗成》《周仁献嫂》《八大锤》《辕门射戟》《柳荫记》（梁山伯）
+新编创作：《洛神赋》（曹植），获多项大奖抖音百科。
+传承贡献
+复排抢救大量叶派濒临失传小生戏；开设叶派小生研修班，培养李宏图、江其虎、宋小川等大批小生人才，同时从事戏曲导演，推动小生行当的整体发展中国戏曲学。</p ><br />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+	
+    <!-- Section 4: 传承行动 -->
+    <section class="section action-section" id="section4">
+      <div class="action-bg-img"></div>
+      <div class="overlay-dark"></div>
+      <div class="content">
+        <h2>传 承 行 动</h2>
+        <p>— 守正创新 · 让京剧艺术薪火相传 —</p >
+        <button class="btn-glow" id="joinBtn"><i class="fas fa-chevron-circle-right"></i> 加 入 传 承</button>
+      </div>
+    </section>
+
+  </div>
+
+  <!-- ===== 底部 ===== -->
+  <footer class="footer" id="footer">
+    <div class="social">
+      <a href=" "><i class="fab fa-weixin"></i></a >
+      <a href="#"><i class="fab fa-weibo"></i></a >
+      <a href="#"><i class="fab fa-bilibili"></i></a >
+      <a href="#"><i class="fab fa-youtube"></i></a >
+    </div>
+    <p>© 2026 传承·国粹 ｜ 薪火相传 ｜ 生生不息</p >
+  </footer>
+
+  <script>
+    (function() {
+      // ===== 背景音乐 =====
+      var bgMusic = document.getElementById('bgMusic');
+      var musicHint = document.getElementById('musicHint');
+      var musicStarted = false;
+
+      document.addEventListener('click', function() {
+        if (!musicStarted) {
+          bgMusic.play().then(function() { musicStarted = true; musicHint.classList.add('hidden'); }).catch(function() {});
+        }
+      }, { once: false });
+      setTimeout(function() {
+        bgMusic.play().then(function() { musicStarted = true; musicHint.classList.add('hidden'); }).catch(function() {});
+      }, 1200);
+
+      // ===== 水墨开场 =====
+      var inkIntro = document.getElementById('inkIntro');
+      var inkCanvas = document.getElementById('inkCanvas');
+      var ictx = inkCanvas.getContext('2d');
+
+      function resizeInk() { inkCanvas.width = window.innerWidth; inkCanvas.height = window.innerHeight; }
+      resizeInk();
+      window.addEventListener('resize', resizeInk);
+
+      var inkParticles = [];
+      var INK_COUNT = 70;
+
+      function InkParticle() {
+        this.x = Math.random() * inkCanvas.width;
+        this.y = Math.random() * inkCanvas.height;
+        this.size = Math.random() * 55 + 15;
+        this.speedX = (Math.random() - 0.5) * 0.9;
+        this.speedY = (Math.random() - 0.5) * 0.9 - 0.3;
+        this.opacity = Math.random() * 0.15 + 0.04;
+        this.growth = Math.random() * 0.5 + 0.1;
+        this.update = function() {
+          this.x += this.speedX;
+          this.y += this.speedY;
+          this.size += this.growth * 0.15;
+          if (this.x < 0 || this.x > inkCanvas.width) this.speedX *= -1;
+          if (this.y < 0 || this.y > inkCanvas.height) this.speedY *= -1;
+          if (this.size > 110) this.size = 15;
+        };
+        this.draw = function() {
+          var gradient = ictx.createRadialGradient(this.x, this.y, 0, this.x, this.y, this.size);
+          gradient.addColorStop(0, 'rgba(80, 60, 40, ' + (this.opacity * 1.5) + ')');
+          gradient.addColorStop(0.4, 'rgba(50, 35, 25, ' + this.opacity + ')');
+          gradient.addColorStop(1, 'rgba(20, 15, 10, 0)');
+          ictx.fillStyle = gradient;
+          ictx.beginPath();
+          ictx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+          ictx.fill();
+        };
+      }
+
+      for (var i = 0; i < INK_COUNT; i++) {
+        inkParticles.push(new InkParticle());
+      }
+
+      function animateInk() {
+        ictx.clearRect(0, 0, inkCanvas.width, inkCanvas.height);
+        for (var i = 0; i < inkParticles.length; i++) {
+          inkParticles[i].update();
+          inkParticles[i].draw();
+        }
+        requestAnimationFrame(animateInk);
+      }
+      animateInk();
+
+      setTimeout(function() {
+        inkIntro.classList.add('fade-out');
+        setTimeout(function() { inkIntro.style.display = 'none'; }, 1600);
+      }, 2200);
+
+      // ===== Hero粒子背景 =====
+      var canvas = document.getElementById('particles-canvas');
+      var ctx = canvas.getContext('2d');
+      var w, h, particles = [];
+      var COUNT = 180;
+
+      function resizeCanvas() {
+        var hero = document.querySelector('.hero-section');
+        w = hero.offsetWidth;
+        h = hero.offsetHeight;
+        canvas.width = w;
+        canvas.height = h;
+      }
+      window.addEventListener('resize', resizeCanvas);
+
+      function Particle2() {
+        this.x = Math.random() * w;
+        this.y = Math.random() * h;
+        this.size = Math.random() * 7 + 2;
+        this.speedX = (Math.random() - 0.5) * 0.4;
+        this.speedY = (Math.random() - 0.5) * 0.4;
+        this.opacity = Math.random() * 0.4 + 0.05;
+        var colors = [
+          'rgba(220,190,160,' + this.opacity + ')',
+          'rgba(200,160,120,' + this.opacity + ')',
+          'rgba(240,210,180,' + this.opacity + ')',
+          'rgba(200,170,140,' + this.opacity + ')'
+        ];
+        this.color = colors[Math.floor(Math.random() * colors.length)];
+        this.update = function() {
+          this.x += this.speedX;
+          this.y += this.speedY;
+          if (this.x < 0 || this.x > w) this.speedX *= -1;
+          if (this.y < 0 || this.y > h) this.speedY *= -1;
+        };
+        this.draw = function() {
+          ctx.beginPath();
+          ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+          ctx.fillStyle = this.color;
+          ctx.fill();
+          ctx.shadowColor = 'rgba(200,170,140,0.06)';
+          ctx.shadowBlur = 20;
+          ctx.fill();
+          ctx.shadowBlur = 0;
+        };
+      }
+
+      function initParticles() {
+        particles = [];
+        for (var i = 0; i < COUNT; i++) {
+          particles.push(new Particle2());
+        }
+      }
+
+      function animateParticles() {
+        ctx.clearRect(0, 0, w, h);
+        for (var i = 0; i < particles.length; i++) {
+          particles[i].update();
+          particles[i].draw();
+        }
+        requestAnimationFrame(animateParticles);
+      }
+
+      setTimeout(function() { resizeCanvas(); initParticles(); animateParticles(); }, 100);
+
+      // ===== 加入传承按钮 =====
+      var joinBtn = document.getElementById('joinBtn');
+      joinBtn.addEventListener('click', function() {
+        this.innerHTML = '❤️ 感谢传承';
+        this.style.letterSpacing = '8px';
+        var self = this;
+        setTimeout(function() {
+          self.innerHTML = '<i class="fas fa-chevron-circle-right"></i> 加 入 传 承';
+          self.style.letterSpacing = '14px';
+        }, 2000);
+      });
+
+      window.addEventListener('resize', function() { resizeCanvas(); initParticles(); resizeInk(); });
+
+    })();
+  </script>
+</body>
+</html>

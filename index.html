@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>京剧 · 戏韵 · 开场</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link rel="stylesheet" type="text/css" href="css/style.css"/>
+</head>
+<body>
+  <!-- 水墨开场 -->
+  <div class="ink-intro" id="inkIntro">
+    <canvas class="ink-canvas" id="inkCanvas"></canvas>
+    <div class="ink-text">京 · 剧</div>
+  </div>
+
+  <!-- 背景音乐 (隐藏) -->
+  <audio id="bgMusic" loop preload="auto">
+    <source src="images/音乐.mov" type="audio/mpeg">
+  </audio>
+
+  <section class="hero" id="home">
+    <video class="hero-bg-video" autoplay muted loop playsinline preload="metadata">
+      <source src="images/背景.mov" type="video/mp4">
+    </video>
+
+    <div class="hero-overlay"></div>
+    <div class="hero-glow"></div>
+    <div class="hero-glow"></div>
+    <div class="hero-glow"></div>
+
+    <canvas id="particles-canvas"></canvas>
+
+    <!-- 右侧面板 -->
+    <div class="right-panel">
+      <div class="role-word-single" id="roleWordSingle">
+        <span class="word" data-index="0">生</span>
+        <span class="word" data-index="1">旦</span>
+        <span class="word" data-index="2">净</span>
+        <span class="word" data-index="3">末</span>
+        <span class="word" data-index="4">丑</span>
+         </div>
+      <div class="right-ornament">
+        <div class="stroke"></div>
+        <div class="seal"><i class="fas fa-print"></i> 戏 · 韵</div>
+        <div class="stroke" style="animation-delay: 1.5s;"></div>
+      </div>
+      <div class="right-sub">· 传 统 之 美 ·</div>
+    </div>
+
+    <!-- 主内容 -->
+    <div class="hero-content">
+      <div class="hero-badge">
+        <i class="fas fa-mask"></i>
+        <span>· 京 剧  ·  戏 韵  ·</span>
+        <i class="fas fa-chevron-right" style="font-size: 0.6rem; opacity: 0.2;"></i>
+      </div>
+      <h1 class="hero-title">武 神</h1>
+      <div class="hero-title-sub">· 鼓 乐  ·  皮 黄  ·</div>
+      <div class="hero-divider"></div>
+      <p class="hero-desc">
+        <i class="fas fa-circle" style="font-size: 0.35rem; vertical-align: middle;"></i>
+        唱念做打 · 手眼身法
+        <i class="fas fa-circle" style="font-size: 0.35rem; vertical-align: middle;"></i>
+      </p >
+
+      <div class="video-card-wrapper" id="videoCard">
+        <div class="video-card">
+          <video id="heroVideo" autoplay controls muted loop playsinline preload="metadata">
+            <source src="images/视频.mov" type="video/mp4">
+          </video>
+          <div class="video-overlay">
+            <div class="video-overlay-top">
+              <span class="tag"><i class="fas fa-play"></i> 00:01 / 00:08</span>
+              <span class="tag"><i class="fas fa-expand"></i> 倍速</span>
+            </div>
+            <div class="video-overlay-bottom">
+              <div class="left">
+                <i class="fas fa-eye"></i><span>1.1万</span>
+                <i class="fas fa-heart" style="color: #d4737a;"></i><span>92</span>
+                <i class="fas fa-comment"></i><span>1.0万</span>
+              </div>
+              <div class="right"><i class="fas fa-expand"></i> 全屏观看</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <a href="shouye.html"><button class="btn-enter">
+        <i class="fas fa-chevron-circle-right"></i> 入 戏 · 首 页
+      </button></a>
+
+      <div class="hero-footer">
+        <span><i class="fas fa-dragon"></i> 生</span>
+        <span><i class="fas fa-feather"></i> 旦</span>
+        <span><i class="fas fa-fire"></i> 净</span>
+        <span><i class="fas fa-moon"></i> 末</span>
+        <span><i class="fas fa-star"></i> 丑</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- 音乐播放提示 -->
+  <div class="music-hint" id="musicHint">♫ 点击任意位置 · 聆听戏韵</div>
+
+  <script>
+    (function() {
+      // ===== 背景音乐控制 =====
+      const bgMusic = document.getElementById('bgMusic');
+      const musicHint = document.getElementById('musicHint');
+      let musicStarted = false;
+
+      // 点击任意位置播放音乐
+      document.addEventListener('click', function() {
+        if (!musicStarted) {
+          bgMusic.play().then(() => {
+            musicStarted = true;
+            musicHint.classList.add('hidden');
+          }).catch(() => {});
+        }
+      }, { once: false });
+
+      // 尝试自动播放 (部分浏览器允许)
+      setTimeout(() => {
+        bgMusic.play().then(() => {
+          musicStarted = true;
+          musicHint.classList.add('hidden');
+        }).catch(() => {});
+      }, 1000);
+
+      // ===== 水墨开场 =====
+      const inkIntro = document.getElementById('inkIntro');
+      const inkCanvas = document.getElementById('inkCanvas');
+      const ictx = inkCanvas.getContext('2d');
+
+      function resizeInk() {
+        inkCanvas.width = window.innerWidth;
+        inkCanvas.height = window.innerHeight;
+      }
+      resizeInk();
+      window.addEventListener('resize', resizeInk);
+
+      let inkParticles = [];
+      const INK_COUNT = 60;
+
+      class InkParticle {
+        constructor() {
+          this.x = Math.random() * inkCanvas.width;
+          this.y = Math.random() * inkCanvas.height;
+          this.size = Math.random() * 50 + 15;
+          this.speedX = (Math.random() - 0.5) * 0.8;
+          this.speedY = (Math.random() - 0.5) * 0.8 - 0.4;
+          this.opacity = Math.random() * 0.15 + 0.04;
+          this.growth = Math.random() * 0.5 + 0.1;
+        }
+        update() {
+          this.x += this.speedX;
+          this.y += this.speedY;
+          this.size += this.growth * 0.15;
+          if (this.x < 0 || this.x > inkCanvas.width) this.speedX *= -1;
+          if (this.y < 0 || this.y > inkCanvas.height) this.speedY *= -1;
+          if (this.size > 100) this.size = 15;
+        }
+        draw() {
+          const gradient = ictx.createRadialGradient(this.x, this.y, 0, this.x, this.y, this.size);
+          gradient.addColorStop(0, `rgba(80, 60, 40, ${this.opacity * 1.5})`);
+          gradient.addColorStop(0.4, `rgba(50, 35, 25, ${this.opacity})`);
+          gradient.addColorStop(1, `rgba(20, 15, 10, 0)`);
+          ictx.fillStyle = gradient;
+          ictx.beginPath();
+          ictx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+          ictx.fill();
+        }
+      }
+
+      for (let i = 0; i < INK_COUNT; i++) {
+        inkParticles.push(new InkParticle());
+      }
+
+      function animateInk() {
+        ictx.clearRect(0, 0, inkCanvas.width, inkCanvas.height);
+        inkParticles.forEach(p => { p.update(); p.draw(); });
+        requestAnimationFrame(animateInk);
+      }
+      animateInk();
+
+      setTimeout(() => {
+        inkIntro.classList.add('fade-out');
+        setTimeout(() => {
+          inkIntro.style.display = 'none';
+        }, 1400);
+      }, 2200);
+
+      // ===== 粒子背景 =====
+      const canvas = document.getElementById('particles-canvas');
+      const ctx = canvas.getContext('2d');
+      let w, h, particles = [];
+      const COUNT = 130;
+
+      function resizeCanvas() {
+        const hero = document.querySelector('.hero');
+        w = hero.offsetWidth;
+        h = hero.offsetHeight;
+        canvas.width = w;
+        canvas.height = h;
+      }
+      window.addEventListener('resize', resizeCanvas);
+
+      class Particle {
+        constructor() { this.reset(); }
+        reset() {
+          this.x = Math.random() * w;
+          this.y = Math.random() * h;
+          this.size = Math.random() * 6 + 1.5;
+          this.speedX = (Math.random() - 0.5) * 0.5;
+          this.speedY = (Math.random() - 0.5) * 0.5;
+          this.opacity = Math.random() * 0.4 + 0.12;
+          const colors = [
+            `rgba(220, 190, 160, ${this.opacity})`,
+            `rgba(200, 160, 120, ${this.opacity})`,
+            `rgba(240, 210, 180, ${this.opacity})`,
+            `rgba(180, 140, 100, ${this.opacity})`
+          ];
+          this.color = colors[Math.floor(Math.random() * colors.length)];
+          this.glow = this.size > 3.5;
+        }
+        update() {
+          this.x += this.speedX;
+          this.y += this.speedY;
+          if (this.x < 0 || this.x > w) this.speedX *= -1;
+          if (this.y < 0 || this.y > h) this.speedY *= -1;
+        }
+        draw() {
+          ctx.beginPath();
+          ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+          ctx.fillStyle = this.color;
+          ctx.fill();
+          if (this.glow) {
+            ctx.shadowColor = 'rgba(200, 170, 140, 0.25)';
+            ctx.shadowBlur = 20;
+            ctx.fill();
+            ctx.shadowBlur = 0;
+            ctx.beginPath();
+            ctx.arc(this.x, this.y, this.size * 2.2, 0, Math.PI * 2);
+            ctx.fillStyle = `rgba(200, 170, 140, ${this.opacity * 0.10})`;
+            ctx.fill();
+          }
+        }
+      }
+
+      function initParticles() {
+        particles = [];
+        for (let i = 0; i < COUNT; i++) particles.push(new Particle());
+      }
+
+      function animateParticles() {
+        ctx.clearRect(0, 0, w, h);
+        particles.forEach(p => { p.update(); p.draw(); });
+        requestAnimationFrame(animateParticles);
+      }
+
+      setTimeout(() => {
+        resizeCanvas();
+        initParticles();
+        animateParticles();
+      }, 80);
+
+      // ===== 单个大字替换 =====
+      const words = document.querySelectorAll('#roleWordSingle .word');
+      let currentIndex = 0;
+      let intervalId = null;
+      let isAnimating = false;
+
+      function switchWord(index) {
+        if (isAnimating) return;
+        isAnimating = true;
+        words.forEach(w => {
+          w.classList.remove('active');
+          w.classList.add('exit');
+        });
+        setTimeout(() => {
+          words.forEach(w => w.classList.remove('exit'));
+          if (words[index]) {
+            words[index].classList.add('active');
+          }
+          isAnimating = false;
+        }, 400);
+      }
+
+      function nextWord() {
+        if (isAnimating) return;
+        currentIndex = (currentIndex + 1) % words.length;
+        switchWord(currentIndex);
+      }
+
+      setTimeout(() => {
+        words.forEach(w => w.classList.add('exit'));
+        setTimeout(() => {
+          words.forEach(w => w.classList.remove('exit'));
+          if (words[0]) words[0].classList.add('active');
+        }, 300);
+      }, 300);
+
+      intervalId = setInterval(nextWord, 3000);
+
+      // ===== 首页按钮 =====
+      const goHomeBtn = document.getElementById('goHomeBtn');
+      goHomeBtn.addEventListener('click', function(e) {
+        e.preventDefault();
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+        this.style.transform = 'scale(0.95)';
+        setTimeout(() => { this.style.transform = ''; }, 150);
+        video.currentTime = 0;
+        video.play().catch(() => {});
+        if (intervalId) {
+          clearInterval(intervalId);
+          currentIndex = 0;
+          switchWord(0);
+          intervalId = setInterval(nextWord, 3000);
+        }
+      });
+
+      document.querySelector('.video-overlay-bottom .right')?.addEventListener('click', function(e) {
+        e.stopPropagation();
+        if (video.requestFullscreen) video.requestFullscreen().catch(() => {});
+        else if (video.webkitRequestFullscreen) video.webkitRequestFullscreen();
+      });
+
+      video.addEventListener('error', function() {
+        this.style.background = '#1a0f0a';
+      });
+
+      window.addEventListener('resize', () => {
+        resizeCanvas();
+        initParticles();
+        resizeInk();
+      });
+
+    })();
+  </script>
+</body>
+</html>

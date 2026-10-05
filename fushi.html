@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>京剧 · 华裳 · 服饰大展</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" type="text/css" href="css/fushi.css"/>
+</head>
+<body>
+
+    <!-- 水墨开场 -->
+    <div class="ink-intro" id="inkIntro">
+        <canvas class="ink-canvas" id="inkCanvas"></canvas>
+        <div class="ink-text">华 · 裳</div>
+    </div>
+    <!-- ===== 导航 ===== -->
+    <nav class="navbar">
+    <a href="index.html"><div class="logo"><i class="fas fa-mask"></i>国粹·京剧</div></a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="shouye.html">首页</a ></li>
+      <li><a href="hangdang.html">行当</a ></li>
+      <li><a href="lianpu.html">脸谱</a ></li>
+      <li><a href="fushi.html" style="color: white;">服饰</a ></li>
+      <li><a href="3D.html">3D戏台课堂</a ></li>
+      <li><a href="chuancheng.html">传承</a ></li>
+      <li><a href="chuangguan.html">答题</a ></li>
+    </ul>
+    <div class="nav-toggle" id="navToggle"><i class="fas fa-bars"></i></div>
+  </nav>
+    <!-- ===== Hero ===== -->
+    <section class="hero" id="home">
+        <video class="bg-video" autoplay muted loop playsinline preload="metadata">
+            <source src="images/视频.mov" type="video/mp4">
+        </video>
+        <div class="overlay"></div>
+        <div class="glow-orb"></div>
+        <div class="glow-orb"></div>
+        <div class="glow-orb"></div>
+        <canvas id="particles-canvas"></canvas>
+
+        <div class="content">
+            <div class="badge">
+                <i class="fas fa-circle" style="font-size:0.35rem;color:#d4a373;"></i>
+                <span>· 衣 冠 之 美  ·  戏 服 之 韵  ·</span>
+                <i class="fas fa-circle" style="font-size:0.35rem;color:#d4a373;"></i>
+            </div>
+            <h1>华 裳</h1>
+            <div class="sub">· 蟒 袍 靠 衣  ·  褶 子 宫 装  ·</div>
+            <div class="divider"></div>
+            <p class="desc">
+                <i class="fas fa-circle" style="font-size:0.25rem;vertical-align:middle;color:#c99e6d;"></i>
+                一袭华服 · 演绎百态人生  ｜  盔帽冠冕 · 尽显角色风流
+                <i class="fas fa-circle" style="font-size:0.25rem;vertical-align:middle;color:#c99e6d;"></i>
+            </p >
+        </div>
+        <div class="scroll-hint"><i class="fas fa-chevron-down"></i> 探 索 华 裳</div>
+    </section>
+
+    <!-- ===== 自动滚动展览 ===== -->
+    <section class="exhibition" id="exhibition">
+        <h2 class="section-title">戏 服 华 章</h2>
+        <p class="section-sub">— 蟒靠褶衣 · 色彩与形制 —</p >
+
+        <div class="scroll-exhibition">
+            <div class="scroll-track" id="scrollTrack">
+                <!-- 第一组 (6个) -->
+                <div class="scroll-item">
+                        <img src="images/61.jpg" style="width: 100%; height: 75%;"/>
+                    <div class="scroll-body">
+                        <div class="scroll-name">关羽 · 红蟒绿靠</div>
+                        <div class="scroll-sub">🟥 忠勇 · 武圣</div>
+                    </div>
+                </div>
+                <div class="scroll-item">
+                    <img src="images/81.jpg" style="width: 100%; height: 75%;"/>
+                    <div class="scroll-body">
+                        <div class="scroll-name">穆桂英 · 女靠</div>
+                        <div class="scroll-sub">🟥 巾帼 · 元帅</div>
+                    </div>
+                </div>
+                <div class="scroll-item">
+                    <img src="images/63.jpg" style="width: 100%; height: 75%;"/>
+                    <div class="scroll-body">
+                        <div class="scroll-name">杨贵妃 · 宫装</div>
+                        <div class="scroll-sub">🟨 华贵 · 雍容</div>
+                    </div>
+                </div>
+                <div class="scroll-item">
+                    <img src="images/64.jpg" style="width: 100%; height: 75%;"/>
+                    <div class="scroll-body">
+                        <div class="scroll-name">包拯 · 黑蟒</div>
+                        <div class="scroll-sub">⬛ 刚正 · 清廉</div>
+                    </div>
+                </div>
+                <div class="scroll-item">
+                    <img src="images/65.jpg" style="width: 100%; height: 75%;"/>
+                    <div class="scroll-body">
+                        <div class="scroll-name">武生 · 靠甲</div>
+                        <div class="scroll-sub">🟦 英武 · 矫健</div>
+                    </div>
+                </div>
+                <div class="scroll-item">
+                    <img src="images/66.jpg" style="width: 100%; height: 75%;"/>
+                    <div class="scroll-body">
+                        <div class="scroll-name">旦角 · 褶子</div>
+                        <div class="scroll-sub">🟩 典雅 · 柔美</div>
+                    </div>
+                </div>
+
+                <!-- 第二组 (复制, 用于无缝循环) -->
+                <div class="scroll-item">
+                    <img src="images/67.jpg" style="width: 100%; height: 75%;"/>
+                    <div class="scroll-body">
+                        <div class="scroll-name">关羽 · 红蟒绿靠</div>
+                        <div class="scroll-sub">🟥 忠勇 · 武圣</div>
+                    </div>
+                </div>
+                <div class="scroll-item">
+                    <img src="images/68.jpg" style="width: 100%; height: 75%;"/>
+                    <div class="scroll-body">
+                        <div class="scroll-name">穆桂英 · 女靠</div>
+                        <div class="scroll-sub">🟥 巾帼 · 元帅</div>
+                    </div>
+                </div>
+                <div class="scroll-item">
+                    <img src="images/69.jpg" style="width: 100%; height: 75%;"/>
+                    <div class="scroll-body">
+                        <div class="scroll-name">杨贵妃 · 宫装</div>
+                        <div class="scroll-sub">🟨 华贵 · 雍容</div>
+                    </div>
+                </div>
+                <div class="scroll-item">
+                    <img src="images/64.jpg" style="width: 100%; height: 75%;"/>
+                    <div class="scroll-body">
+                        <div class="scroll-name">包拯 · 黑蟒</div>
+                        <div class="scroll-sub">⬛ 刚正 · 清廉</div>
+                    </div>
+                </div>
+                <div class="scroll-item">
+                    <img src="images/65.jpg" style="width: 100%; height: 75%;"/>
+                    <div class="scroll-body">
+                        <div class="scroll-name">武生 · 靠甲</div>
+                        <div class="scroll-sub">🟦 英武 · 矫健</div>
+                    </div>
+                </div>
+                <div class="scroll-item">
+                    <img src="images/66.jpg" style="width: 100%; height: 75%;"/>
+                    <div class="scroll-body">
+                        <div class="scroll-name">旦角 · 褶子</div>
+                        <div class="scroll-sub">🟩 典雅 · 柔美</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 滚动控制按钮 -->
+        <div style="text-align:center;margin-top:2rem;display:flex;justify-content:center;gap:1rem;flex-wrap:wrap;">
+            <button id="pauseBtn" style=" padding:0.4rem 1.5rem;background:rgba(20,12,8,0.2);border:1px solid rgba(200,170,140,0.04);border-radius:40px;color:white;font-size:0.55rem;letter-spacing:4px;font-family:'Noto Serif SC',serif;cursor:pointer;transition:all 0.3s ease;">
+                <i class="fas fa-pause"></i> 暂停
+            </button>
+            <button id="speedBtn" style="padding:0.4rem 1.5rem;background:rgba(20,12,8,0.2);border:1px solid rgba(200,170,140,0.04);border-radius:40px;color:white;font-size:0.55rem;letter-spacing:4px;font-family:'Noto Serif SC',serif;cursor:pointer;transition:all 0.3s ease;">
+                <i class="fas fa-forward"></i> 加速
+            </button>
+        </div>
+
+        <!-- ===== 详细文字介绍区 ===== -->
+        <div class="detail-intro">
+            <div class="intro-title">📖 戏 服 文 化 图 鉴</div>
+            <div class="intro-grid">
+                <div class="intro-item">
+                    <div class="intro-label">🎭 蟒 袍</div>
+                    <div class="intro-value">
+                        <i class="fas fa-circle"></i> 帝王将相专用，上绣蟒纹<br>
+                        <i class="fas fa-circle"></i> 五爪为龙（帝王），四爪为蟒（王侯）<br>
+                        <i class="fas fa-circle"></i> 黄蟒（帝王）· 红蟒（忠臣）· 绿蟒（关羽）· 黑蟒（包拯）
+                    </div>
+                </div>
+                <div class="intro-item">
+                    <div class="intro-label">⚔️ 靠 甲</div>
+                    <div class="intro-value">
+                        <i class="fas fa-circle"></i> 武将戎装，分男靠与女靠<br>
+                        <i class="fas fa-circle"></i> 鱼鳞纹 · 云纹 · 靠旗装饰<br>
+                        <i class="fas fa-circle"></i> 男靠威武雄壮，女靠英姿飒爽
+                    </div>
+                </div>
+                <div class="intro-item">
+                    <div class="intro-label">👘 宫 装</div>
+                    <div class="intro-value">
+                        <i class="fas fa-circle"></i> 贵妃公主华服，黄/红为主<br>
+                        <i class="fas fa-circle"></i> 凤穿牡丹 · 龙凤呈祥图案<br>
+                        <i class="fas fa-circle"></i> 下摆丝绦 · 水袖飘逸
+                    </div>
+                </div>
+                <div class="intro-item">
+                    <div class="intro-label">🪭 褶 子</div>
+                    <div class="intro-value">
+                        <i class="fas fa-circle"></i> 旦角日常穿着，素雅柔美<br>
+                        <i class="fas fa-circle"></i> 淡蓝 · 粉 · 白色为主<br>
+                        <i class="fas fa-circle"></i> 绣花 · 领托 · 水袖搭配
+                    </div>
+                </div>
+                <div class="intro-item">
+                    <div class="intro-label">🎨 色 彩 寓 意</div>
+                     <div class="intro-value">
+                        <i class="fas fa-circle"></i> 🔴 红色：忠勇 · 正义（关羽、穆桂英）<br>
+                        <i class="fas fa-circle"></i> ⬛ 黑色：刚正 · 清廉（包拯）<br>
+                        <i class="fas fa-circle"></i> 🟨 黄色：皇权 · 尊贵（杨贵妃）<br>
+                        <i class="fas fa-circle"></i> 🟩 绿色：侠义 · 忠义（关羽）
+                    </div>
+                </div>
+                <div class="intro-item">
+                    <div class="intro-label">🧵 刺 绣 工 艺</div>
+                    <div class="intro-value">
+                        <i class="fas fa-circle"></i> 盘金绣 · 平绣 · 打籽绣<br>
+                        <i class="fas fa-circle"></i> 蟒龙纹 · 凤纹 · 牡丹纹<br>
+                        <i class="fas fa-circle"></i> 每一针每一线皆为匠心
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== 盔头专题 ===== -->
+    <section class="helmet-section" id="helmets" style="margin-top: -100px;">
+        <h2 class="section-title">盔 头 冠 冕</h2>
+        <p class="section-sub">— 盔帽冠巾 · 角色的标志 —</p >
+
+        <div class="helmet-grid">
+            <div class="helmet-card">
+                <img src="images/70.jpg" style="width: 100%; height: 60%; border-radius: 10px;"/><br /><br />
+                <h4>夫子盔</h4>
+                <div class="helmet-sub">关羽 · 武将</div>
+                <div class="helmet-desc">红色绒球为"英雄胆"，金色装饰象征武将的威严与尊贵，是关羽等武圣角色的标志性盔头。盔顶的绒球数量也有讲究，一般为三颗，代表"三纲五常"。</div>
+            </div>
+            <div class="helmet-card">
+                <img src="images/71.jpg" style="width: 100%; height: 60%; border-radius: 10px;"/><br /><br />
+                <h4>凤冠</h4>
+                <div class="helmet-sub">杨贵妃 · 穆桂英</div>
+                <div class="helmet-desc">金色凤凰为主体，点缀珍珠宝石，是贵妃、公主等尊贵女性角色的标志性头饰，华美至极。凤冠上的凤凰数量代表身份等级，杨贵妃佩戴的是"九凤冠"。</div>
+            </div>
+            <div class="helmet-card">
+                <img src="images/72.jpg" style="width: 100%; height: 60%; border-radius: 10px;"/><br /><br />
+                <h4>相帽</h4>
+                <div class="helmet-sub">包拯 · 文官</div>
+                <div class="helmet-desc">黑色为主，金色装饰，帽翅平直，象征文官的稳重与威严，是宰相级文官的标志。帽翅的材质多为硬纱，上有金色纹饰，彰显身份。</div>
+            </div>
+            <div class="helmet-card">
+                <img src="images/73.jpg" style="width: 100%; height: 60%; border-radius: 10px;"/><br /><br />
+                <h4>雉翎冠</h4>
+                <div class="helmet-sub">穆桂英 · 武旦</div>
+                <div class="helmet-desc">插两根长长的雉翎，是女将、元帅的标志，彰显其英姿飒爽、统帅千军的豪迈气概。雉翎的长度可达一米以上，在舞台上翻飞时极具视觉冲击力。</div>
+            </div>
+            <div class="helmet-card">
+                <img src="images/74.jpg" style="width: 100%; height: 60%; border-radius: 10px;"/><br /><br />
+                <h4>盔头</h4>
+                <div class="helmet-sub">武生 · 武将</div>
+                <div class="helmet-desc">铁质或皮制，上饰绒球、珠花，是武将上战场时佩戴的头盔，造型威武，极具阳刚之气。盔头的前额部分称为"额子"，常饰有兽面纹。</div>
+            </div>
+            <div class="helmet-card">
+                <img src="images/75.jpg" style="width: 100%; height: 60%; border-radius: 10px;"/><br /><br />
+                <h4>水纱</h4>
+                <div class="helmet-sub">旦角 · 通用</div>
+                <div class="helmet-desc">黑色网状头饰，用于束发和固定珠花，是旦角演员最基本的头饰，简约而实用。水纱的材质多为丝绸，透气性好，佩戴舒适，是演员化妆前的基础装备。</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== 压轴 ===== -->
+    <section class="finale-section" id="finale" style="margin-top: -130px;">
+        <h2 class="section-title">🌟 华 裳 之 巅</h2>
+        <p class="section-sub">— 服饰艺术的极致 · 视觉的盛宴 —</p >
+
+        <div class="finale-grid">
+            <div class="finale-card">
+                <div class="finale-glow"></div>
+                <img src="images/76.jpg" style="width: 100%; height: 60%; border-radius: 10px;"/><br /><br />
+                <h3>蟒 袍</h3>
+                <div class="finale-sub">帝王将相 · 龙蟒之尊</div>
+                <div class="finale-desc">蟒袍是京剧中最尊贵的服装，上绣蟒纹，五爪为龙，四爪为蟒。帝王穿黄蟒，忠臣穿红蟒或绿蟒，清官穿黑蟒。蟒袍的形制与色彩，是角色身份与性格的直观体现。</div>
+            </div>
+            <div class="finale-card">
+                <div class="finale-glow"></div>
+                <img src="images/77.jpg" style="width: 100%; height: 60%; border-radius: 10px;"/><br /><br />
+                <h3>靠 甲</h3>
+                <div class="finale-sub">武将戎装 · 英武之姿</div>
+                <div class="finale-desc">靠甲是武将的戎装，分为男靠和女靠。男靠威武雄壮，女靠英姿飒爽。靠甲上的鱼鳞纹、云纹、靠旗，都是武将身份与勇武精神的象征，是京剧舞台最抢眼的服饰之一。</div>
+            </div>
+            <div class="finale-card">
+                <div class="finale-glow"></div>
+                <img src="images/78.jpg" style="width: 100%; height: 60%; border-radius: 10px;"/><br /><br />
+                <h3>宫 装</h3>
+                <div class="finale-sub">贵妃公主 · 雍容华贵</div>
+                <div class="finale-desc">宫装是贵妃、公主等尊贵女性角色的华服，以黄色、红色为主，绣有凤穿牡丹、龙凤呈祥等图案。宫装下摆的丝绦与水袖，是旦角舞台最美的一道风景线。</div>
+            </div>
+        </div>
+
+        <div style="max-width:900px;margin:3rem auto 0;text-align:center;padding:2rem 2.5rem;background:rgba(20,12,8,0.15);border-radius:28px;border:1px solid rgba(200,170,140,0.03);backdrop-filter:blur(8px);">
+            <p style="font-size:1rem;color:rgba(200,180,160,0.9);letter-spacing:6px;line-height:2.2;font-weight:300;">
+                <i class="fas fa-quote-left" style="color:white;opacity:0.2;font-size:1.4rem;display:block;margin-bottom:0.5rem;"></i>
+                一件戏服，半部京剧史。从蟒袍到靠甲，从宫装到褶子，<br>
+                每一针每一线，都凝结着匠心与智慧。<br>
+                华裳之美，美在形制，美在色彩，美在传承。<br>
+                生旦净末丑，一袭华服演绎百态人生。
+                <i class="fas fa-quote-right" style="color:#c99e6d;opacity:0.2;font-size:1.4rem;display:block;margin-top:0.5rem;"></i>
+            </p >
+        </div>
+    </section>
+
+    <!-- ===== 底部 ===== -->
+    <footer class="footer" id="footer">
+        <div class="social">
+            <a href=" "><i class="fab fa-weixin"></i></a >
+            <a href="#"><i class="fab fa-weibo"></i></a >
+            <a href="#"><i class="fab fa-bilibili"></i></a >
+            <a href="#"><i class="fab fa-youtube"></i></a >
+        </div>
+        <p>© 2026 华裳·京韵 ｜ 衣冠之美 ｜ 戏服之韵</p >
+    </footer>
+
+    <!-- 音乐提示 -->
+    <div class="music-hint" id="musicHint">♫ 点击任意位置 · 聆听戏韵</div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js">
+    </script>
+    <script>
+        (function() {
+            'use strict';
+
+            // ===== 背景音乐 =====
+            var bgMusic = document.getElementById('bgMusic');
+            var musicHint = document.getElementById('musicHint');
+            var musicStarted = false;
+			document.addEventListener('click', function() {
+                if (!musicStarted) {
+                    bgMusic.play().then(function() {
+                        musicStarted = true;
+                        musicHint.classList.add('hidden');
+                    }).catch(function() {});
+                }
+            }, { once: false });
+            setTimeout(function() {
+                bgMusic.play().then(function() {
+                    musicStarted = true;
+                    musicHint.classList.add('hidden');
+                }).catch(function() {});
+            }, 1200);
+
+            // ===== 水墨开场 =====
+            var inkIntro = document.getElementById('inkIntro');
+            var inkCanvas = document.getElementById('inkCanvas');
+            var ictx = inkCanvas.getContext('2d');
+
+            function resizeInk() {
+                inkCanvas.width = window.innerWidth;
+                inkCanvas.height = window.innerHeight;
+            }
+            resizeInk();
+            window.addEventListener('resize', resizeInk);
+
+            var inkParticles = [];
+            var INK_COUNT = 70;
+
+            function InkParticle() {
+                this.x = Math.random() * inkCanvas.width;
+                this.y = Math.random() * inkCanvas.height;
+                this.size = Math.random() * 55 + 15;
+                this.speedX = (Math.random() - 0.5) * 0.9;
+                this.speedY = (Math.random() - 0.5) * 0.9 - 0.3;
+                this.opacity = Math.random() * 0.15 + 0.04;
+                this.growth = Math.random() * 0.5 + 0.1;
+                this.update = function() {
+                    this.x += this.speedX;
+                    this.y += this.speedY;
+                    this.size += this.growth * 0.15;
+                    if (this.x < 0 || this.x > inkCanvas.width) this.speedX *= -1;
+                    if (this.y < 0 || this.y > inkCanvas.height) this.speedY *= -1;
+                    if (this.size > 110) this.size = 15;
+                };
+                this.draw = function() {
+                    var gradient = ictx.createRadialGradient(this.x, this.y, 0, this.x, this.y, this.size);
+                    gradient.addColorStop(0, 'rgba(80, 60, 40, ' + (this.opacity * 1.5) + ')');
+                    gradient.addColorStop(0.4, 'rgba(50, 35, 25, ' + this.opacity + ')');
+                    gradient.addColorStop(1, 'rgba(20, 15, 10, 0)');
+                    ictx.fillStyle = gradient;
+                    ictx.beginPath();
+                    ictx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                    ictx.fill();
+                };
+            }
+
+            for (var i = 0; i < INK_COUNT; i++) {
+                inkParticles.push(new InkParticle());
+            }
+
+            function animateInk() {
+                ictx.clearRect(0, 0, inkCanvas.width, inkCanvas.height);
+                for (var i = 0; i < inkParticles.length; i++) {
+                    inkParticles[i].update();
+                    inkParticles[i].draw();
+                }
+                requestAnimationFrame(animateInk);
+            }
+            animateInk();
+
+            setTimeout(function() {
+                inkIntro.classList.add('fade-out');
+                setTimeout(function() {
+                    inkIntro.style.display = 'none';
+                }, 1600);
+            }, 2200);
+
+            // ===== 粒子背景 =====
+            var canvas = document.getElementById('particles-canvas');
+            var ctx = canvas.getContext('2d');
+            var w, h, particles = [];
+            var COUNT = 150;
+
+            function resizeCanvas() {
+                var hero = document.querySelector('.hero');
+                w = hero.offsetWidth;
+                h = hero.offsetHeight;
+                canvas.width = w;
+                canvas.height = h;
+            }
+            window.addEventListener('resize', resizeCanvas);
+
+            function Particle2() {
+                this.x = Math.random() * w;
+                this.y = Math.random() * h;
+                this.size = Math.random() * 5 + 1.5;
+                this.speedX = (Math.random() - 0.5) * 0.3;
+                this.speedY = (Math.random() - 0.5) * 0.3;
+                this.opacity = Math.random() * 0.3 + 0.05;
+                var colors = [
+                    'rgba(220,190,160,' + this.opacity + ')',
+                    'rgba(200,160,120,' + this.opacity + ')',
+                    'rgba(240,210,180,' + this.opacity + ')',
+                    'rgba(200,170,140,' + this.opacity + ')'
+                ];
+                this.color = colors[Math.floor(Math.random() * colors.length)];
+                this.update = function() {
+                    this.x += this.speedX;
+                    this.y += this.speedY;
+                    if (this.x < 0 || this.x > w) this.speedX *= -1;
+                    if (this.y < 0 || this.y > h) this.speedY *= -1;
+                };
+                this.draw = function() {
+                    ctx.beginPath();
+                    ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                    ctx.fillStyle = this.color;
+                    ctx.fill();
+                    ctx.shadowColor = 'rgba(200,170,140,0.05)';
+                    ctx.shadowBlur = 15;
+                    ctx.fill();
+                    ctx.shadowBlur = 0;
+                };
+            }
+
+            function initParticles() {
+                particles = [];
+                for (var i = 0; i < COUNT; i++) {
+                    particles.push(new Particle2());
+                }
+            }
+
+            function animateParticles() {
+                ctx.clearRect(0, 0, w, h);
+                for (var i = 0; i < particles.length; i++) {
+                    particles[i].update();
+                    particles[i].draw();
+                }
+                requestAnimationFrame(animateParticles);
+            }
+
+            setTimeout(function() {
+                resizeCanvas();
+                initParticles();
+                animateParticles();
+            }, 100);
+
+            // ===== 导航 =====
+            var navToggle = document.getElementById('navToggle');
+            var navLinks = document.getElementById('navLinks');
+            navToggle.addEventListener('click', function() {
+                navLinks.classList.toggle('open');
+            });
+            var navAnchors = document.querySelectorAll('.nav-links a');
+            for (var i = 0; i < navAnchors.length; i++) {
+                navAnchors[i].addEventListener('click', function() {
+                    navLinks.classList.remove('open');
+                    for (var j = 0; j < navAnchors.length; j++) {
+                        navAnchors[j].classList.remove('active');
+                    }
+                    this.classList.add('active');
+                });
+            }
+
+            // ===== 滚动高亮导航 =====
+            window.addEventListener('scroll', function() {
+                var sections = document.querySelectorAll('section[id]');
+                var scrollY = window.scrollY + 120;
+                sections.forEach(function(sec) {
+                    var top = sec.offsetTop;
+                    var height = sec.offsetHeight;
+                    var id = sec.getAttribute('id');
+                    if (scrollY >= top && scrollY < top + height) {
+                        navAnchors.forEach(function(a) {
+                            a.classList.remove('active');
+                            if (a.getAttribute('href') === '#' + id) {
+                                a.classList.add('active');
+                            }
+                        });
+                    }
+                });
+            });
+
+            // ============================================================
+            // 自动滚动展览控制
+            // ============================================================
+            var scrollTrack = document.getElementById('scrollTrack');
+            var currentSpeed = 30;
+            var isPaused = false;
+
+            function updateAnimation() {
+                if (scrollTrack) {
+                    if (isPaused) {
+                        scrollTrack.style.animationPlayState = 'paused';
+                    } else {
+                        scrollTrack.style.animationPlayState = 'running';
+                        scrollTrack.style.animationDuration = currentSpeed + 's';
+                    }
+                }
+            }
+
+            var pauseBtn = document.getElementById('pauseBtn');
+            if (pauseBtn) {
+                pauseBtn.addEventListener('click', function() {
+                    isPaused = !isPaused;
+                    if (isPaused) {
+                        this.innerHTML = '<i class="fas fa-play"></i> 播放';
+                        this.style.color = 'rgba(180,160,140,0.25)';
+                    } else {
+                        this.innerHTML = '<i class="fas fa-pause"></i> 暂停';
+                        this.style.color = 'rgba(180,160,140,0.15)';
+                    }
+                    updateAnimation();
+                });
+            }
+
+            var speedBtn = document.getElementById('speedBtn');
+            if (speedBtn) {
+                var speedLevels = [20, 15, 10, 30];
+                var speedIndex = 0;
+                speedBtn.addEventListener('click', function() {
+                    speedIndex = (speedIndex + 1) % speedLevels.length;
+                    currentSpeed = speedLevels[speedIndex];
+                    updateAnimation();
+                    var speedText = currentSpeed <= 10 ? '极速' :
+                        currentSpeed <= 15 ? '快速' :
+                        currentSpeed <= 20 ? '中速' : '正常';
+                    this.innerHTML = '<i class="fas fa-forward"></i> ' + speedText;
+                });
+            }
+
+            if (scrollTrack) {
+                scrollTrack.addEventListener('mouseenter', function() {
+                    if (!isPaused) {
+                        this.style.animationPlayState = 'paused';
+                    }
+                });
+                scrollTrack.addEventListener('mouseleave', function() {
+                    if (!isPaused) {
+                        this.style.animationPlayState = 'running';
+                    }
+                });
+            }
+
+            // ===== 鼠标跟随光效 =====
+            document.querySelectorAll('.finale-card').forEach(function(card) {
+                card.addEventListener('mousemove', function(e) {
+                    var rect = this.getBoundingClientRect();
+                    var x = ((e.clientX - rect.left) / rect.width) * 100;
+                    var y = ((e.clientY - rect.top) / rect.height) * 100;
+                    this.style.setProperty('--mouse-x', x + '%');
+                    this.style.setProperty('--mouse-y', y + '%');
+                });
+            });
+
+            window.addEventListener('resize', function() {
+                resizeCanvas();
+                initParticles();
+                resizeInk();
+            });
+
+        })();
+    </script>
+
+</body>
+</html>

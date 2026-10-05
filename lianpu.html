@@ -1,0 +1,748 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>京剧 · 脸谱 · 艺术</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link rel="stylesheet" type="text/css" href="css/lianpu.css"/>
+</head>
+<body>
+
+  <!-- 水墨开场 -->
+  <div class="ink-intro" id="inkIntro">
+    <canvas class="ink-canvas" id="inkCanvas"></canvas>
+    <div class="ink-text">脸 · 谱</div>
+  </div>
+
+  <!-- ===== 导航 ===== -->
+  <nav class="navbar">
+    <a href="index.html"><div class="logo"><i class="fas fa-mask"></i>国粹·京剧</div></a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="shouye.html">首页</a ></li>
+      <li><a href="hangdang.html">行当</a ></li>
+      <li><a href="lianpu.html" style="color: white;">脸谱</a ></li>
+      <li><a href="fushi.html">服饰</a ></li>
+      <li><a href="3D.html">3D戏台课堂</a ></li>
+      <li><a href="chuancheng.html">传承</a ></li>
+      <li><a href="chuangguan.html">答题</a ></li>
+    </ul>
+    <div class="nav-toggle" id="navToggle"><i class="fas fa-bars"></i></div>
+  </nav>
+
+  <!-- ===== Hero ===== -->
+  <section class="hero-mask" id="home">
+    <video class="hero-bg-video" autoplay muted loop playsinline preload="metadata">
+      <source src="images/video2.mp4" type="video/mp4">
+    </video>
+    <div class="hero-overlay"></div>
+    <div class="hero-glow"></div>
+    <div class="hero-glow"></div>
+    <canvas id="particles-canvas"></canvas>
+
+    <div class="hero-content">
+      <div class="hero-badge">
+        <i class="fas fa-circle" style="font-size: 0.35rem; color: #d4a373;"></i>
+        <span>· 脸 谱 艺 术  ·  忠 奸 善 恶  ·</span>
+        <i class="fas fa-circle" style="font-size: 0.35rem; color: #d4a373;"></i>
+      </div>
+      <h1 class="hero-title">脸 谱 之 美</h1>
+      <div class="hero-sub">· 红 黄 蓝 白 黑  ·  色 彩 寓 人 心  ·</div>
+      <div class="hero-divider"></div>
+      <p class="hero-desc">
+        <i class="fas fa-circle" style="font-size: 0.25rem; vertical-align: middle; color: #c99e6d;"></i>
+        一笔一画 · 勾勒世间百态 ｜ 一色一意 · 道尽忠奸善恶
+        <i class="fas fa-circle" style="font-size: 0.25rem; vertical-align: middle; color: #c99e6d;"></i>
+      </p >
+      <div class="hero-cta">
+        <button class="btn-primary" id="openVideoBtn"><i class="fas fa-play-circle"></i> 科普视频</button>
+        <button class="btn-secondary" id="exploreBtn"><i class="fas fa-chevron-circle-right"></i> 探索脸谱</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 脸谱画廊 ===== -->
+  <section class="mask-gallery-section" id="gallery">
+    <h2 class="section-title">脸 谱 画 廊</h2>
+    <p class="section-sub" style="color: white;">— 色彩与线条 · 塑造经典角色 —</p >
+
+    <div class="mask-masonry">
+      <div class="mask-card" style="background: url(images/12.jpg);background-size: cover;">
+        <div class="card-bg-glow"></div>
+        <h3 style="color: white; font-size: 40px;">红 脸</h3>
+        <div class="mask-sub">忠勇正义 · 关羽</div>
+        <div class="mask-desc">红色象征忠勇、正义、耿直。关羽面如重枣，是红脸的代表人物。</div>
+        <div class="corner-deco"></div>
+      </div>
+
+      <div class="mask-card" style="background: url(images/13.jpg);background-size: cover;">
+        <div class="card-bg-glow"></div>
+        <h3 style="color: white; font-size: 40px;">黑 脸</h3>
+        <div class="mask-sub">刚正不阿 · 包拯</div>
+        <div class="mask-desc">黑色象征刚直、铁面无私、智勇。包拯黑脸月牙，是为民请命的清官。</div>
+        <div class="corner-deco"></div>
+      </div>
+
+      <div class="mask-card" style="background: url(images/14.jpg);background-size: cover;">
+        <div class="card-bg-glow"></div>
+        <h3 style="color: white; font-size: 40px;">黄 脸</h3>
+        <div class="mask-sub">骁勇剽悍 · 典韦</div>
+        <div class="mask-desc">黄色象征骁勇、剽悍、残暴。典韦黄脸，勇猛过人。</div>
+        <div class="corner-deco"></div>
+      </div>
+
+      <div class="mask-card" style="background: url(images/15.jpg);background-size: cover;">
+        <div class="card-bg-glow"></div>
+        <h3 style="color: white; font-size: 40px;">紫 脸</h3>
+        <div class="mask-sub">沉稳果敢 · 徐延昭</div>
+        <div class="mask-desc">紫色象征沉稳、果敢、忠贞。徐延昭紫脸，刚正不阿。</div>
+        <div class="corner-deco"></div>
+      </div>
+
+      <div class="mask-card" style="background: url(images/16.jpg);background-size: cover;">
+        <div class="card-bg-glow"></div>
+        <h3 style="color: white; font-size: 40px;">金 脸</h3>
+        <div class="mask-sub">神佛仙道 · 二郎神</div>
+        <div class="mask-desc">金色象征神佛、仙道、威严。二郎神金脸，神通广大。</div>
+        <div class="corner-deco"></div>
+      </div>
+			
+			<div class="mask-card" style="background: url(images/25.jpg);background-size: cover;">
+        <div class="card-bg-glow"></div>
+        <h3 style="color: white; font-size: 40px;">蓝 脸</h3>
+        <div class="mask-sub">刚猛忠直 · 窦尔敦</div>
+        <div class="mask-desc">蓝色象征刚猛、忠直、粗犷。窦尔敦蓝脸，绿林好汉。</div>
+        <div class="corner-deco"></div>
+     </div>
+
+      <div class="mask-card" style="background: url(images/24.jpg);background-size: cover;">
+        <div class="card-bg-glow"></div>
+        <h3 style="color: white; font-size: 40px;">绿 脸</h3>
+        <div class="mask-sub">侠肝义胆 · 程咬金</div>
+        <div class="mask-desc">绿色象征侠义、勇猛、草莽。程咬金绿脸，豪气冲天。</div>
+        <div class="corner-deco"></div>
+      </div>
+      <div class="mask-card" style="background: url(images/17.jpg);background-size: cover;">
+        <div class="card-bg-glow"></div>
+        <h3 style="color: white; font-size: 40px;">白 脸</h3>
+        <div class="mask-sub">奸诈多疑 · 曹操</div>
+        <div class="mask-desc">白色象征奸诈、多疑、阴险。曹操白脸，一代枭雄。</div>
+        <div class="corner-deco"></div>
+      </div>
+    </div>
+  </section>	
+	<header class="page-header">
+        <div class="container">
+            <h1 class="page-title">京剧流派艺术</h1>
+            <p class="page-subtitle">探索京剧丰富多彩的流派艺术，了解各派独特的表演风格、唱腔特点和代表艺术家，感受京剧艺术的博大精深。</p >
+        </div>
+    </header>
+
+    <!-- 流派展示区域 -->
+    <section class="schools-section" style="max-width: 1500px; margin: 0 auto;">
+        <div class="container">
+            <div class="schools-filter">
+                <button class="filter-btn active" data-filter="all">全部流派</button>
+                <button class="filter-btn" data-filter="dan">旦角流派</button>
+                <button class="filter-btn" data-filter="sheng">生角流派</button>
+            </div>
+
+            <div class="schools-grid">
+                <!-- 梅派 -->
+                <div class="school-card" data-type="dan">
+                    <div class="school-img">
+                        <img src="images/51.jpg" />
+                        <div class="school-type">旦角</div>
+                    </div>
+                    <div class="school-content">
+                        <h2 class="school-name">梅派</h2>
+                        <p class="school-founder">创始人：梅兰芳</p >
+                        <p class="school-desc">梅派艺术风格中正平和，端庄典雅，唱腔圆润流畅，表演细腻精美，塑造了众多优美的古代妇女形象。</p >
+                        <div class="school-features">
+                            <span class="feature-tag">端庄典雅</span>
+                            <span class="feature-tag">中正平和</span>
+                            <span class="feature-tag">唱做并重</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 程派 -->
+                <div class="school-card" data-type="dan">
+                    <div class="school-img">
+                        <img src="images/52.jpg" />
+                        <div class="school-type">旦角</div>
+                    </div>
+                    <div class="school-content">
+                        <h2 class="school-name">程派</h2>
+                        <p class="school-founder">创始人：程砚秋</p >
+                        <p class="school-desc">程派艺术以幽咽婉转、曲折低回的唱腔著称，善于表现悲剧人物，表演深沉含蓄，身段水袖功夫精湛。</p >
+                        <div class="school-features">
+                            <span class="feature-tag">幽咽婉转</span>
+                            <span class="feature-tag">唱腔独特</span>
+                            <span class="feature-tag">水袖功夫</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 荀派 -->
+                <div class="school-card" data-type="dan">
+                    <div class="school-img">
+                        <img src="images/53.jpg" />
+                        <div class="school-type">旦角</div>
+                    </div>
+                    <div class="school-content">
+                        <h2 class="school-name">荀派</h2>
+                        <p class="school-founder">创始人：荀慧生</p >
+                        <p class="school-desc">荀派艺术活泼俏丽，柔媚娇婉，唱腔柔美动听，表演生活化，尤其擅长刻画天真活泼的少女形象。</p >
+                        <div class="school-features">
+                            <span class="feature-tag">活泼俏丽</span>
+                            <span class="feature-tag">柔媚娇婉</span>
+                            <span class="feature-tag">表演生活化</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 尚派 -->
+                <div class="school-card" data-type="dan">
+                    <div class="school-img">
+                        <img src="images/54.jpg" />
+                        <div class="school-type">旦角</div>
+                    </div>
+                    <div class="school-content">
+                        <h2 class="school-name">尚派</h2>
+                        <p class="school-founder">创始人：尚小云</p >
+                        <p class="school-desc">尚派艺术刚健婀娜，唱腔高亢激昂，表演节奏鲜明，文武兼备，擅长塑造巾帼英雄和侠女形象。</p >
+                        <div class="school-features">
+                            <span class="feature-tag">刚健婀娜</span>
+                            <span class="feature-tag">文武兼备</span>
+                            <span class="feature-tag">高亢激昂</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 余派 -->
+                <div class="school-card" data-type="sheng">
+                    <div class="school-img">
+                        <img src="images/55.jpg" />
+                        <div class="school-type">旦角</div>
+                    </div>
+                    <div class="school-content">
+                        <h2 class="school-name">余派</h2>
+                        <p class="school-founder">创始人：余叔岩</p >
+                        <p class="school-desc">余派老生艺术唱腔刚劲苍醇，简练大方，表演细腻深刻，讲究音律，注重人物内心世界的刻画。</p >
+                        <div class="school-features">
+                            <span class="feature-tag">刚劲苍醇</span>
+                            <span class="feature-tag">简练大方</span>
+                            <span class="feature-tag">注重内心</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 马派 -->
+                <div class="school-card" data-type="sheng">
+                    <div class="school-img">
+                        <img src="images/56.jpg" />
+                        <div class="school-type">旦角</div>
+                    </div>
+                    <div class="school-content">
+                        <h2 class="school-name">马派</h2>
+                        <p class="school-founder">创始人：马连良</p >
+                        <p class="school-desc">马派艺术潇洒飘逸，唱腔流畅舒展，表演细腻传神，善于运用各种艺术手段塑造不同性格的人物。</p >
+                        <div class="school-features">
+                            <span class="feature-tag">潇洒飘逸</span>
+                            <span class="feature-tag">流畅舒展</span>
+                            <span class="feature-tag">细腻传神</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="technique-section" style="max-width: 1500px; margin: 0 auto;">
+        <div class="container">
+            <div class="technique-header">
+                <h2 class="section-title">唱腔技巧学习</h2>
+                <p class="section-subtitle">掌握京剧唱腔的基本技巧和方法，提高演唱水平，更好地表现人物情感。</p >
+            </div>
+            
+            <div class="technique-grid">
+                <!-- 发声技巧 -->
+                <div class="technique-card">
+                    <div class="technique-icon">
+                        <i class="fas fa-volume-up"></i>
+                    </div>
+                    <h3 class="technique-name">发声技巧</h3>
+                    <p class="technique-desc">京剧唱腔的发声方法独特，需要掌握正确的呼吸和共鸣技巧。</p >
+                    <ul class="technique-steps">
+                        <li>采用腹式呼吸，气沉丹田</li>
+                        <li>保持喉部放松，避免紧张</li>
+                        <li>运用头腔、鼻腔和胸腔共鸣</li>
+                        <li>根据行当选择真声或假声</li>
+                    </ul>
+                </div>
+                
+                <!-- 咬字技巧 -->
+                <div class="technique-card">
+                    <div class="technique-icon">
+                        <i class="fas fa-comment-dots"></i>
+                    </div>
+                    <h3 class="technique-name">咬字技巧</h3>
+                    <p class="technique-desc">京剧唱腔注重字正腔圆，咬字清晰是演唱的基本要求。</p >
+                    <ul class="technique-steps">
+                        <li>分清字头、字腹和字尾</li>
+                        <li>运用"喷口"技巧增强力度</li>
+                        <li>注意四声和韵母的准确发音</li>
+                        <li>保持口型正确，吐字清晰</li>
+                    </ul>
+                </div>
+                
+                <!-- 气息控制 -->
+                <div class="technique-card">
+                    <div class="technique-icon">
+                        <i class="fas fa-wind"></i>
+                    </div>
+                    <h3 class="technique-name">气息控制</h3>
+                    <p class="technique-desc">良好的气息控制是唱好京剧的关键，需要长期练习。</p >
+                    <ul class="technique-steps">
+                        <li>练习长音，增强气息持久力</li>
+                        <li>掌握偷气、换气技巧</li>
+                        <li>根据唱腔节奏调整呼吸</li>
+                        <li>保持气息平稳，避免波动</li>
+                    </ul>
+                </div>
+                
+                <!-- 情感表达 -->
+                <div class="technique-card">
+                    <div class="technique-icon">
+                        <i class="fas fa-heart"></i>
+                    </div>
+                    <h3 class="technique-name">情感表达</h3>
+                    <p class="technique-desc">唱腔不仅是技巧的展示，更是人物情感的表达。</p >
+                    <ul class="technique-steps">
+                        <li>理解人物性格和剧情背景</li>
+                        <li>通过音色变化表现不同情绪</li>
+                        <li>运用颤音、滑音等装饰技巧</li>
+                        <li>注重唱腔与表演的有机结合</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- 学习路径区域 -->
+    <section class="learning-path">
+        <div class="container">
+            <div class="path-header">
+                <h2 class="section-title">学习路径</h2>
+                <p class="section-subtitle">遵循专业设计的学习路径，循序渐进地掌握京剧艺术</p >
+            </div>
+            
+            <div class="path-steps">
+                <div class="path-step active">
+                    <div class="step-icon">
+                        <i class="fas fa-book-open"></i>
+                        <div class="step-number">1</div>
+                    </div>
+                    <h3 class="step-title">基础知识</h3>
+                    <p class="step-desc">了解京剧历史、行当分类和基本概念</p >
+                </div>
+                
+                <div class="path-step">
+                    <div class="step-icon">
+                        <i class="fas fa-music"></i>
+                        <div class="step-number">2</div>
+                    </div>
+                    <h3 class="step-title">唱腔学习</h3>
+                    <p class="step-desc">掌握西皮、二黄等基本唱腔和发声技巧</p >
+                </div>
+                
+                <div class="path-step">
+                    <div class="step-icon">
+                        <i class="fas fa-theater-masks"></i>
+                        <div class="step-number">3</div>
+                    </div>
+                    <h3 class="step-title">表演技巧</h3>
+                    <p class="step-desc">学习身段、手势、步法和表情运用</p >
+                </div>
+                
+                <div class="path-step">
+                    <div class="step-icon">
+                        <i class="fas fa-mask"></i>
+                        <div class="step-number">4</div>
+                    </div>
+                    <h3 class="step-title">脸谱化妆</h3>
+                    <p class="step-desc">了解脸谱含义和化妆技巧</p >
+                </div>
+                
+                <div class="path-step">
+                    <div class="step-icon">
+                        <i class="fas fa-tshirt"></i>
+                        <div class="step-number">5</div>
+                    </div>
+                    <h3 class="step-title">服饰道具</h3>
+                    <p class="step-desc">认识戏服、盔头和道具的使用方法</p >
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- 页面标题 -->
+    <header class="page-header">
+        <div class="container">
+            <h1 class="page-title">京剧唱腔技巧</h1>
+            <p class="page-subtitle">探索京剧唱腔的独特魅力，学习西皮、二黄等不同声腔的发声技巧和表演方法，感受京剧音乐的艺术之美。</p >
+        </div>
+    </header>
+    <section class="vocal-section">
+        <div class="container">
+            <div class="vocal-grid">
+                <!-- 西皮 -->
+                <div class="vocal-card">
+                    <div class="vocal-header">
+                        <h2 class="vocal-name">西皮</h2>
+                        <p class="vocal-desc">高亢激昂、明快流畅的声腔，适合表现欢快、激动或紧张的情绪。</p >
+                    </div>
+                    <div class="vocal-content">
+                        <div class="vocal-feature">
+                            <h3 class="feature-title"><i class="fas fa-music"></i> 特点</h3>
+                            <ul class="feature-list">
+                                <li>节奏明快，旋律跳跃</li>
+                                <li>多用小嗓（假声）演唱</li>
+                                <li>适合表现欢快、激动情绪</li>
+                                <li>胡琴定弦为la-mi</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 二黄 -->
+                <div class="vocal-card">
+                    <div class="vocal-header">
+                        <h2 class="vocal-name">二黄</h2>
+                        <p class="vocal-desc">深沉凝重、舒缓平稳的声腔，适合表现沉思、悲伤或庄严的情绪。</p >
+                    </div>
+                    <div class="vocal-content">
+                        <div class="vocal-feature">
+                            <h3 class="feature-title"><i class="fas fa-music"></i> 特点</h3>
+                            <ul class="feature-list">
+                                <li>节奏舒缓，旋律平稳</li>
+                                <li>多用大嗓（真声）演唱</li>
+                                <li>适合表现深沉、悲伤情绪</li>
+                                <li>胡琴定弦为sol-re</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 反二黄 -->
+                <div class="vocal-card">
+                    <div class="vocal-header">
+                        <h2 class="vocal-name">反二黄</h2>
+                        <p class="vocal-desc">悲壮凄凉、哀怨缠绵的声腔，适合表现极度悲伤或绝望的情绪。</p >
+                    </div>
+                    <div class="vocal-content">
+                        <div class="vocal-feature">
+                            <h3 class="feature-title"><i class="fas fa-music"></i> 特点</h3>
+                            <ul class="feature-list">
+                                <li>旋律低沉，音域较宽</li>
+                                <li>多用于悲剧性唱段</li>
+                                <li>表现极度悲伤情绪</li>
+                                <li>胡琴定弦为do-sol</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+  <!-- ===== 颜色寓意 ===== -->
+  <section class="color-meaning-section" id="colors">
+    <h2 class="section-title">颜 色 寓 意</h2>
+    <p class="section-sub" style="color: white;">— 色彩语言 · 解读人物性格 —</p >
+	 <div class="color-scroll">
+      <div class="color-item">
+        <div class="color-swatch" style="background: #c0392b;"></div>
+        <h4>红</h4>
+        <p>忠勇 · 正义</p >
+      </div>
+      <div class="color-item">
+        <div class="color-swatch" style="background: #2c3e50;"></div>
+        <h4>黑</h4>
+        <p>刚直 · 无私</p >
+      </div>
+      <div class="color-item">
+        <div class="color-swatch" style="background: #f1c40f;"></div>
+        <h4>黄</h4>
+        <p>骁勇 · 剽悍</p >
+      </div>
+      <div class="color-item">
+        <div class="color-swatch" style="background: #8e44ad;"></div>
+        <h4>紫</h4>
+        <p>沉稳 · 果敢</p >
+      </div>
+      <div class="color-item">
+        <div class="color-swatch" style="background: #e67e22;"></div>
+        <h4>金</h4>
+        <p>神佛 · 威严</p >
+      </div>
+      <div class="color-item">
+        <div class="color-swatch" style="background: #ecf0f1; border-color: rgba(200,170,140,0.1);"></div>
+        <h4>白</h4>
+        <p>奸诈 · 多疑</p >
+      </div>
+      <div class="color-item">
+        <div class="color-swatch" style="background: #27ae60;"></div>
+        <h4>绿</h4>
+        <p>侠义 · 勇猛</p >
+      </div>
+      <div class="color-item">
+        <div class="color-swatch" style="background: #2980b9;"></div>
+        <h4>蓝</h4>
+        <p>刚猛 · 忠直</p >
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 科普视频弹窗 ===== -->
+  <div class="video-modal-overlay" id="videoModal">
+    <div class="video-modal">
+      <video id="modalVideo" controls playsinline preload="metadata">
+        <source src="images/video5.mov" type="video/mp4">
+      </video>
+      <button class="modal-close" id="closeModalBtn"><i class="fas fa-times"></i></button>
+      <div class="modal-title">
+        <i class="fas fa-graduation-cap"></i> 京剧脸谱科普 · 色彩与性格
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== 底部 ===== -->
+  <footer class="footer" id="footer">
+    <div class="social">
+      <a href=" "><i class="fab fa-weixin"></i></a >
+      <a href="#"><i class="fab fa-weibo"></i></a >
+      <a href="#"><i class="fab fa-bilibili"></i></a >
+      <a href="#"><i class="fab fa-youtube"></i></a >
+    </div>
+    <p>© 2026 脸谱·艺术 ｜ 传承国粹 ｜ 色彩演绎人生</p >
+  </footer>
+	<script src="js/lianpu.js"></script>
+
+  <script>
+    (function() {
+      // ===== 背景音乐 =====
+      const bgMusic = document.getElementById('bgMusic');
+      const musicHint = document.getElementById('musicHint');
+      let musicStarted = false;
+
+      document.addEventListener('click', function() {
+        if (!musicStarted) {
+          bgMusic.play().then(() => { musicStarted = true; musicHint.classList.add('hidden'); }).catch(() => {});
+        }
+      }, { once: false });
+      setTimeout(() => {
+        bgMusic.play().then(() => { musicStarted = true; musicHint.classList.add('hidden'); }).catch(() => {});
+      }, 1200);
+
+      // ===== 水墨开场 =====
+      const inkIntro = document.getElementById('inkIntro');
+      const inkCanvas = document.getElementById('inkCanvas');
+      const ictx = inkCanvas.getContext('2d');
+
+      function resizeInk() { inkCanvas.width = window.innerWidth; inkCanvas.height = window.innerHeight; }
+      resizeInk();
+      window.addEventListener('resize', resizeInk);
+
+      let inkParticles = [];
+      const INK_COUNT = 70;
+      class InkParticle {
+        constructor() {
+          this.x = Math.random() * inkCanvas.width;
+          this.y = Math.random() * inkCanvas.height;
+          this.size = Math.random() * 55 + 15;
+          this.speedX = (Math.random() - 0.5) * 0.9;
+          this.speedY = (Math.random() - 0.5) * 0.9 - 0.3;
+          this.opacity = Math.random() * 0.15 + 0.04;
+          this.growth = Math.random() * 0.5 + 0.1;
+        }
+        update() {
+          this.x += this.speedX; this.y += this.speedY;
+          this.size += this.growth * 0.15;
+          if (this.x < 0 || this.x > inkCanvas.width) this.speedX *= -1;
+          if (this.y < 0 || this.y > inkCanvas.height) this.speedY *= -1;
+          if (this.size > 110) this.size = 15;
+        }
+        draw() {
+          const gradient = ictx.createRadialGradient(this.x, this.y, 0, this.x, this.y, this.size);
+          gradient.addColorStop(0, `rgba(80, 60, 40, ${this.opacity * 1.5})`);
+          gradient.addColorStop(0.4, `rgba(50, 35, 25, ${this.opacity})`);
+          gradient.addColorStop(1, `rgba(20, 15, 10, 0)`);
+          ictx.fillStyle = gradient;
+          ictx.beginPath();
+          ictx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+          ictx.fill();
+        }
+      }
+      for (let i = 0; i < INK_COUNT; i++) inkParticles.push(new InkParticle());
+
+      function animateInk() {
+        ictx.clearRect(0, 0, inkCanvas.width, inkCanvas.height);
+        inkParticles.forEach(p => { p.update(); p.draw(); });
+        requestAnimationFrame(animateInk);
+      }
+      animateInk();
+
+      setTimeout(() => {
+        inkIntro.classList.add('fade-out');
+        setTimeout(() => { inkIntro.style.display = 'none'; }, 1600);
+      }, 2200);
+
+      // ===== 粒子背景 =====
+      const canvas = document.getElementById('particles-canvas');
+      const ctx = canvas.getContext('2d');
+      let w, h, particles = [];
+      const COUNT = 120;
+
+      function resizeCanvas() {
+        const hero = document.querySelector('.hero-mask');
+        w = hero.offsetWidth; h = hero.offsetHeight;
+        canvas.width = w; canvas.height = h;
+      }
+      window.addEventListener('resize', resizeCanvas);
+
+      class Particle {
+        constructor() { this.reset(); }
+        reset() {
+          this.x = Math.random() * w; this.y = Math.random() * h;
+          this.size = Math.random() * 5 + 1.5;
+          this.speedX = (Math.random() - 0.5) * 0.4;
+          this.speedY = (Math.random() - 0.5) * 0.4;
+          this.opacity = Math.random() * 0.35 + 0.1;
+          const colors = [`rgba(220,190,160,${this.opacity})`, `rgba(200,160,120,${this.opacity})`, `rgba(240,210,180,${this.opacity})`, `rgba(180,140,100,${this.opacity})`];
+          this.color = colors[Math.floor(Math.random() * colors.length)];
+          this.glow = this.size > 3;
+        }
+        update() {
+          this.x += this.speedX; this.y += this.speedY;
+          if (this.x < 0 || this.x > w) this.speedX *= -1;
+          if (this.y < 0 || this.y > h) this.speedY *= -1;
+        }
+        draw() {
+          ctx.beginPath();
+          ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+          ctx.fillStyle = this.color;
+          ctx.fill();
+          if (this.glow) {
+            ctx.shadowColor = 'rgba(200,170,140,0.2)';
+            ctx.shadowBlur = 18;
+            ctx.fill();
+            ctx.shadowBlur = 0;
+          }
+        }
+      }
+      function initParticles() { particles = []; for (let i = 0; i < COUNT; i++) particles.push(new Particle()); }
+      function animateParticles() {
+        ctx.clearRect(0, 0, w, h);
+        particles.forEach(p => { p.update(); p.draw(); });
+        requestAnimationFrame(animateParticles);
+      }
+
+      setTimeout(() => { resizeCanvas(); initParticles(); animateParticles(); }, 100);
+
+      // ===== 导航 =====
+      const navToggle = document.getElementById('navToggle');
+      const navLinks = document.getElementById('navLinks');
+      navToggle.addEventListener('click', function() { navLinks.classList.toggle('open'); });
+      document.querySelectorAll('.nav-links a').forEach(link => {
+        link.addEventListener('click', function() {
+          navLinks.classList.remove('open');
+          document.querySelectorAll('.nav-links a').forEach(l => l.classList.remove('active'));
+          this.classList.add('active');
+        });
+      });
+      window.addEventListener('scroll', function() {
+        const sections = document.querySelectorAll('section[id], footer[id]');
+        const scrollY = window.scrollY + 120;
+        sections.forEach(sec => {
+          const top = sec.offsetTop, height = sec.offsetHeight, id = sec.getAttribute('id');
+          if (scrollY >= top && scrollY < top + height) {
+            document.querySelectorAll('.nav-links a').forEach(l => {
+              l.classList.remove('active');
+              if (l.getAttribute('href') === '#' + id) l.classList.add('active');
+            });
+          }
+        });
+      });
+
+      // ===== 鼠标跟随光效 (3D凸出辅助) =====
+      document.querySelectorAll('.mask-card').forEach(card => {
+        card.addEventListener('mousemove', function(e) {
+          const rect = this.getBoundingClientRect();
+          const x = ((e.clientX - rect.left) / rect.width) * 100;
+          const y = ((e.clientY - rect.top) / rect.height) * 100;
+          this.style.setProperty('--mouse-x', x + '%');
+          this.style.setProperty('--mouse-y', y + '%');
+
+          // 3D倾斜跟随鼠标
+          const centerX = rect.left + rect.width / 2;
+          const centerY = rect.top + rect.height / 2;
+          const deltaX = (e.clientX - centerX) / rect.width;
+          const deltaY = (e.clientY - centerY) / rect.height;
+          this.style.transform =
+            `translateZ(40px) rotateX(${deltaY * -4}deg) rotateY(${deltaX * 4}deg) scale(1.03)`;
+        });
+        card.addEventListener('mouseleave', function() {
+          this.style.transform = '';
+        });
+      });
+
+      // ===== 科普视频弹窗 =====
+      const videoModal = document.getElementById('videoModal');
+      const modalVideo = document.getElementById('modalVideo');
+      const openBtn = document.getElementById('openVideoBtn');
+      const closeBtn = document.getElementById('closeModalBtn');
+
+      function openModal() {
+        videoModal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+        modalVideo.play().catch(() => {});
+      }
+
+      function closeModal() {
+        videoModal.classList.remove('active');
+        document.body.style.overflow = '';
+        modalVideo.pause();
+        modalVideo.currentTime = 0;
+      }
+
+      openBtn.addEventListener('click', function(e) {
+        e.stopPropagation();
+        openModal();
+      });
+
+      closeBtn.addEventListener('click', closeModal);
+
+      videoModal.addEventListener('click', function(e) {
+        if (e.target === videoModal) closeModal();
+      });
+
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') closeModal();
+      });
+
+      // 探索按钮
+      document.getElementById('exploreBtn').addEventListener('click', function() {
+        document.getElementById('gallery').scrollIntoView({ behavior: 'smooth' });
+      });
+
+      window.addEventListener('resize', () => { resizeCanvas(); initParticles(); resizeInk(); });
+
+    })();
+  </script>
+</body>
+</html>

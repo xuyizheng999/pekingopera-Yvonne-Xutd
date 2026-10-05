@@ -1,0 +1,1437 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>京剧戏台 · 百科 · 臻品</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" type="text/css" href="css/3D.css"/>
+</head>
+<body>
+
+    <div class="top-deco">
+        <i class="fas fa-circle" style="font-size:0.2rem;"></i>
+        生 · 旦 · 净 · 末 · 丑
+        <i class="fas fa-circle" style="font-size:0.2rem;"></i>
+        唱 · 念 · 做 · 打
+        <i class="fas fa-circle" style="font-size:0.2rem;"></i>
+        手 · 眼 · 身 · 法 · 步
+        <i class="fas fa-circle" style="font-size:0.2rem;"></i>
+        皮黄 · 锣鼓 · 京胡
+    </div>
+
+    <nav class="navbar">
+        <div class="logo"><i class="fas fa-mask"></i>戏台·百科</div>
+        <a href="shouye.html"><button class="btn-home" id="btnHome" style="color: white; font-size: 20px; font-weight: 900;"><i class="fas fa-home"></i> 返回首页 ></button></a>
+    </nav>
+
+    <div class="container">
+
+        <div class="left-panel" id="leftPanel">
+            <div class="panel-title" style="color: white;">— 戏 台 组 件 —</div>
+            <button class="item-btn active" data-id="0">
+                <span class="icon"><i class="fas fa-layer-group"></i></span> 戏台地基
+            </button>
+            <button class="item-btn" data-id="1">
+                <span class="icon"><i class="fas fa-columns"></i></span> 立柱
+            </button>
+            <button class="item-btn" data-id="2">
+                <span class="icon"><i class="fas fa-border-all"></i></span> 台面
+            </button>
+            <button class="item-btn" data-id="3">
+                <span class="icon"><i class="fas fa-archway"></i></span> 顶棚飞檐
+            </button>
+            <button class="item-btn" data-id="4">
+                <span class="icon"><i class="fas fa-palette"></i></span> 雕梁画栋
+            </button>
+            <button class="item-btn" data-id="5">
+                <span class="icon"><i class="fas fa-door-open"></i></span> 出将入相
+            </button>
+            <button class="item-btn" data-id="6">
+                <span class="icon"><i class="fas fa-chair"></i></span> 一桌二椅
+            </button>
+            <button class="item-btn" data-id="7">
+                <span class="icon"><i class="fas fa-lightbulb"></i></span> 灯笼
+            </button>
+            <button class="assemble-btn" id="assembleBtn">
+                <span class="icon"><i class="fas fa-puzzle-piece"></i></span> 拼起来
+            </button>
+            <div class="left-knowledge">
+                <div class="k-title">📖 戏台小知识</div>
+                <div class="k-item"><i class="fas fa-circle"></i> 戏台又称"舞榭歌台"</div>
+                <div class="k-item"><i class="fas fa-circle"></i> "出将"为上场门</div>
+                <div class="k-item"><i class="fas fa-circle"></i> "入相"为下场门</div>
+                <div class="k-item"><i class="fas fa-circle"></i> 一桌二椅可化万物</div>
+            </div>
+        </div>
+
+        <div class="center-panel" id="centerPanel">
+            <div class="hint-3d" style="color: white;">🖱 拖拽旋转 · 滚轮缩放</div>
+
+            <!-- 3D实时信息HUD -->
+            <div class="hud-overlay" id="hudOverlay">
+                <div class="hud-item"><i class="fas fa-cube"></i> 模型 <span id="hudModel">戏台组件</span></div>
+                <div class="hud-item"><i class="fas fa-arrows-alt"></i> 旋转 <span id="hudRotate">0°</span></div>
+                <div class="hud-item"><i class="fas fa-search-plus"></i> 缩放 <span id="hudZoom">1.0x</span></div>
+                <div class="hud-item"><i class="fas fa-layer-group"></i> 组件 <span id="hudComponent">地基</span></div>
+            </div>
+
+            <!-- 右下角实时监控 -->
+            <div class="monitor-overlay" id="monitorOverlay">
+                <div class="monitor-item"><i class="fas fa-microchip"></i> 帧率 <span class="val" id="monitorFps">60 fps</span></div>
+                <div class="monitor-item"><i class="fas fa-cube"></i> 三角面 <span class="val" id="monitorTri">0</span></div>
+                <div class="monitor-item"><i class="fas fa-clock"></i> 渲染时间 <span class="val" id="monitorRender">0 ms</span></div>
+                <div class="monitor-item"><i class="fas fa-thermometer-half"></i> 光晕强度 <span class="val" id="monitorGlow">0.00</span></div>
+            </div>
+        </div>
+
+        <div class="right-panel" id="rightPanel">
+            <div class="detail-title" id="detailTitle">戏台地基</div>
+            <div class="detail-sub" id="detailSub">🏛️ 台基 · 稳固根基</div>
+            <div class="detail-desc" id="detailDesc">
+                戏台的地基是整个建筑的基础，通常由砖石砌成，高出地面数尺。台基稳固象征着戏曲艺术根基深厚，同时也起到防潮、防虫的作用。
+            </div>
+            <div class="detail-fact">
+                <div class="fact-label">📌 小知识</div>
+                <div class="fact-value" id="detailFact">传统戏台的地基讲究"三合土"工艺，由石灰、黄土、细沙混合夯实，坚固耐用。</div>
+            </div>
+            <div class="detail-usage">
+                <div class="usage-label">🎭 功能与用途</div>
+                <div class="usage-value" id="detailUsage">为整座戏台提供稳定的支撑，防止地面湿气侵蚀木结构，同时抬高台面便于观众观看。</div>
+            </div>
+
+            <div class="right-extra">
+                <div class="extra-card">
+                    <span class="e-icon"><i class="fas fa-user-tie"></i></span>
+                    <span class="e-name">生</span>
+                    <span class="e-sub">老生·小生·武生</span>
+                </div>
+                <div class="extra-card">
+                    <span class="e-icon"><i class="fas fa-female"></i></span>
+                    <span class="e-name">旦</span>
+                    <span class="e-sub">青衣·花旦·武旦</span>
+                </div>
+                <div class="extra-card">
+                    <span class="e-icon"><i class="fas fa-mask"></i></span>
+                    <span class="e-name">净</span>
+                    <span class="e-sub">铜锤·架子·武净</span>
+                </div>
+                <div class="extra-card">
+                    <span class="e-icon"><i class="fas fa-user-astronaut"></i></span>
+                    <span class="e-name">丑</span>
+                    <span class="e-sub">文丑·武丑</span>
+                </div>
+            </div>
+
+            <button class="speak-btn" id="speakBtn"><i class="fas fa-volume-up"></i> 点击朗读</button>
+        </div>
+
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js">
+    </script>
+    <script>
+        (function() {
+            'use strict';
+
+            // ============================================================
+            // 1. 数据
+            // ============================================================
+            var componentData = [{
+                id: 0,
+                name: '戏台地基',
+                sub: '🏛️ 台基 · 稳固根基',
+                desc: '戏台的地基是整个建筑的基础，通常由砖石砌成，高出地面数尺。台基稳固象征着戏曲艺术根基深厚，同时也起到防潮、防虫的作用。',
+                fact: '传统戏台的地基讲究"三合土"工艺，由石灰、黄土、细沙混合夯实，坚固耐用。',
+                usage: '为整座戏台提供稳定的支撑，防止地面湿气侵蚀木结构，同时抬高台面便于观众观看。'
+            }, {
+                id: 1,
+                name: '立柱',
+                sub: '🏛️ 红色 · 撑起戏台',
+                desc: '四根红色立柱是戏台的骨架，撑起整个建筑。柱子漆成红色，象征吉祥喜庆。立柱的数量和间距也有讲究，体现了中国传统建筑的对称美学。',
+                fact: '传统戏台的立柱多为红松或杉木，经过防虫防腐处理，可保存数百年。',
+                usage: '支撑顶棚和屋顶，形成戏台的主体空间结构，是戏台最重要的承重部件。'
+            }, {
+                id: 2,
+                name: '台面',
+                sub: '🪵 舞台 · 方寸天地',
+                desc: '台面是演员表演的空间，讲究平整光滑。京剧的"一桌二椅"就摆放在台面上，演员在方寸之间演绎千军万马、悲欢离合。',
+                fact: '传统戏台台面多用桐油涂刷，既能防潮又能让台面光滑，方便演员做各种动作。',
+                usage: '演员表演的主要区域，所有的唱念做打都在此完成，是戏台的核心功能空间。'
+            }, {
+                id: 3,
+                name: '顶棚飞檐',
+                sub: '🏮 飞檐翘角 · 如鸟翼展',
+                desc: '顶棚是戏台的"天"，飞檐翘角如鸟翼展开，寓意"飞黄腾达"。顶棚彩绘精美，龙凤呈祥，是中式建筑最美的部分之一。',
+                fact: '飞檐的弧度经过精心计算，既能排水又美观，是中国古建筑智慧的结晶。',
+                usage: '保护戏台免受风雨侵蚀，同时飞檐翘角的造型具有极高的装饰性和象征意义。'
+            },
+            {
+                id: 4,
+                name: '雕梁画栋',
+                sub: '🎨 雕刻 · 彩绘 · 匠心',
+                desc: '戏台的装饰极为讲究，梁柱上雕刻花鸟鱼虫、历史故事，彩绘色彩艳丽。每一处雕刻都是工匠的心血，也是中华美学的集中体现。',
+                fact: '传统戏台的雕刻采用"镂空雕"技法，图案立体感强，人物栩栩如生。',
+                usage: '装饰戏台，提升艺术美感，展现中国传统文化和审美情趣，是戏台的点睛之笔。'
+            }, {
+                id: 5,
+                name: '出将入相',
+                sub: '🚪 两扇门 · 登场亮相',
+                desc: '"出将"、"入相"是戏台两侧的门，分别供演员出场和退场。演员由此登场亮相，仪式感十足，象征人生如戏、戏如人生。',
+                fact: '"出将"门多为武将出场，"入相"门多为文官退场，体现古代礼仪制度。',
+                usage: '演员上下场的通道，是戏台重要的仪式空间，分隔台前幕后，增加神秘感。'
+            }, {
+                id: 6,
+                name: '一桌二椅',
+                sub: '🪑 极简 · 百变道具',
+                desc: '一桌二椅是京剧舞台上最重要的道具。一张桌子、两把椅子，可以变作山、桥、城楼、床榻，演员靠表演赋予它们不同的含义。',
+                fact: '京剧舞台上有"一桌二椅，天下万物"的说法，体现了写意美学的精髓。',
+                usage: '作为表演道具，一桌二椅在演员的表演下可以代表各种不同的场景和物品。'
+            }, {
+                id: 7,
+                name: '灯笼',
+                sub: '🏮 照明 · 喜庆气氛',
+                desc: '戏台上的灯笼不仅用于照明，更是营造喜庆气氛的重要装饰。红灯笼高挂，象征吉祥如意，是传统戏台不可或缺的元素。',
+                fact: '传统戏台灯笼多为纸制或绸制，内部点蜡烛，现在多改用灯泡。',
+                usage: '照明和装饰，营造热闹喜庆的演出氛围，是戏台视觉美感的重要组成部分。'
+            }];
+
+            // ============================================================
+            // 2. DOM
+            // ============================================================
+            var leftBtns = document.querySelectorAll('.item-btn');
+            var assembleBtn = document.getElementById('assembleBtn');
+            var detailTitle = document.getElementById('detailTitle');
+            var detailSub = document.getElementById('detailSub');
+            var detailDesc = document.getElementById('detailDesc');
+            var detailFact = document.getElementById('detailFact');
+            var detailUsage = document.getElementById('detailUsage');
+            var speakBtn = document.getElementById('speakBtn');
+            var btnHome = document.getElementById('btnHome');
+            var centerPanel = document.getElementById('centerPanel');
+
+            var hudModel = document.getElementById('hudModel');
+            var hudRotate = document.getElementById('hudRotate');
+            var hudZoom = document.getElementById('hudZoom');
+            var hudComponent = document.getElementById('hudComponent');
+            var monitorFps = document.getElementById('monitorFps');
+            var monitorTri = document.getElementById('monitorTri');
+            var monitorRender = document.getElementById('monitorRender');
+            var monitorGlow = document.getElementById('monitorGlow');
+
+            // ============================================================
+            // 3. 语音合成
+            // ============================================================
+            var speechSynth = window.speechSynthesis;
+            var currentUtterance = null;
+            var isSpeaking = false;
+
+            function speakText(text) {
+                if (!window.speechSynthesis) {
+                    alert('您的浏览器不支持语音朗读功能，请使用Chrome、Edge等现代浏览器。');
+                    return;
+                }
+                if (currentUtterance) {
+                    speechSynth.cancel();
+                    currentUtterance = null;
+                }
+                if (isSpeaking) {
+                    isSpeaking = false;
+                    speakBtn.classList.remove('speaking');
+                    speakBtn.innerHTML = '<i class="fas fa-volume-up"></i> 点击朗读';
+                    return;
+                }
+                var utterance = new SpeechSynthesisUtterance(text);
+                utterance.lang = 'zh-CN';
+                utterance.rate = 0.85;
+                utterance.pitch = 1.0;
+                utterance.volume = 0.9;
+                var voices = speechSynth.getVoices();
+                for (var i = 0; i < voices.length; i++) {
+                    if (voices[i].lang.indexOf('zh') === 0) {
+                        utterance.voice = voices[i];
+                        break;
+                    }
+                }
+                isSpeaking = true;
+                speakBtn.classList.add('speaking');
+                speakBtn.innerHTML = '<i class="fas fa-stop"></i> 停止朗读';
+                utterance.onend = function() {
+                    isSpeaking = false;
+                    speakBtn.classList.remove('speaking');
+                    speakBtn.innerHTML = '<i class="fas fa-volume-up"></i> 点击朗读';
+                };
+                utterance.onerror = function() {
+                    isSpeaking = false;
+                    speakBtn.classList.remove('speaking');
+                    speakBtn.innerHTML = '<i class="fas fa-volume-up"></i> 点击朗读';
+                };
+                currentUtterance = utterance;
+                speechSynth.speak(utterance);
+            }
+
+            if (window.speechSynthesis) {
+                speechSynth.getVoices();
+                speechSynth.onvoiceschanged = function() {
+                    speechSynth.getVoices();
+                };
+            }
+
+            // ============================================================
+            // 4. Three.js - 高级版 + 专业元素
+            // ============================================================
+            var scene = new THREE.Scene();
+            scene.background = new THREE.Color(0x0a0604);
+            scene.fog = new THREE.Fog(0x0a0604, 8, 15);
+
+            var containerRect = centerPanel.getBoundingClientRect();
+            var width = containerRect.width || window.innerWidth * 0.5;
+            var height = containerRect.height || window.innerHeight * 0.7;
+
+            var camera = new THREE.PerspectiveCamera(35, width / height, 0.1, 100);
+            camera.position.set(0, 1.2, 4.5);
+            camera.lookAt(0, 0.3, 0);
+
+            var renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+            renderer.setSize(width, height);
+            renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+            renderer.shadowMap.enabled = true;
+            renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+            renderer.toneMapping = THREE.ACESFilmicToneMapping;
+            renderer.toneMappingExposure = 1.2;
+            centerPanel.appendChild(renderer.domElement);
+
+            // ===== 灯光 =====
+            var ambientLight = new THREE.AmbientLight(0x444466, 0.3);
+            scene.add(ambientLight);
+
+            var mainLight = new THREE.DirectionalLight(0xffeedd, 2.0);
+            mainLight.position.set(5, 10, 6);
+            mainLight.castShadow = true;
+            mainLight.shadow.mapSize.width = 2048;
+            mainLight.shadow.mapSize.height = 2048;
+            scene.add(mainLight);
+
+            var fillLight = new THREE.DirectionalLight(0x4488ff, 0.4);
+            fillLight.position.set(-4, 2, -3);
+            scene.add(fillLight);
+
+            var rimLight = new THREE.DirectionalLight(0xff8844, 0.35);
+            rimLight.position.set(-2, -1, 5);
+            scene.add(rimLight);
+                        var pointLight1 = new THREE.PointLight(0xc99e6d, 0.5, 15);
+            pointLight1.position.set(0, 4, 2);
+            scene.add(pointLight1);
+
+            var pointLight2 = new THREE.PointLight(0xff6644, 0.3, 12);
+            pointLight2.position.set(-3, 2, 3);
+            scene.add(pointLight2);
+
+            var pointLight3 = new THREE.PointLight(0x44aaff, 0.3, 12);
+            pointLight3.position.set(3, 2, -2);
+            scene.add(pointLight3);
+
+            // ===== 粒子 =====
+            var particleCount = 2000;
+            var particleGeo = new THREE.BufferGeometry();
+            var pPositions = new Float32Array(particleCount * 3);
+            var pColors = new Float32Array(particleCount * 3);
+            var pSizes = new Float32Array(particleCount);
+            var pVelocities = [];
+
+            for (var i = 0; i < particleCount; i++) {
+                var radius = 3 + Math.random() * 8;
+                var theta = Math.random() * Math.PI * 2;
+                var phi = Math.acos((Math.random() * 2) - 1);
+                pPositions[i * 3] = radius * Math.sin(phi) * Math.cos(theta);
+                pPositions[i * 3 + 1] = radius * Math.cos(phi) * 0.3 + 0.5;
+                pPositions[i * 3 + 2] = radius * Math.sin(phi) * Math.sin(theta);
+
+                var hue = 0.02 + Math.random() * 0.15;
+                var c = new THREE.Color().setHSL(hue, 0.8, 0.2 + Math.random() * 0.3);
+                pColors[i * 3] = c.r;
+                pColors[i * 3 + 1] = c.g;
+                pColors[i * 3 + 2] = c.b;
+                pSizes[i] = 0.02 + Math.random() * 0.08;
+                pVelocities.push({
+                    x: (Math.random() - 0.5) * 0.002,
+                    y: (Math.random() - 0.5) * 0.002,
+                    z: (Math.random() - 0.5) * 0.002,
+                });
+            }
+            particleGeo.setAttribute('position', new THREE.BufferAttribute(pPositions, 3));
+            particleGeo.setAttribute('color', new THREE.BufferAttribute(pColors, 3));
+            particleGeo.setAttribute('size', new THREE.BufferAttribute(pSizes, 1));
+
+            var particleMat = new THREE.PointsMaterial({
+                size: 0.06,
+                vertexColors: true,
+                transparent: true,
+                opacity: 0.6,
+                blending: THREE.AdditiveBlending,
+                depthWrite: false,
+                sizeAttenuation: true,
+            });
+            var particles = new THREE.Points(particleGeo, particleMat);
+            scene.add(particles);
+
+            // ===== 光环 =====
+            var glowGroup = new THREE.Group();
+            scene.add(glowGroup);
+
+            var glowColors = [0xff4422, 0xff22aa, 0x22aaff, 0xffdd44, 0xaa44ff];
+            for (var g = 0; g < 12; g++) {
+                var radius = 2.0 + g * 0.6;
+                var color = glowColors[g % glowColors.length];
+                var opacity = 0.008 + g * 0.002;
+                var geo = new THREE.RingGeometry(radius * 0.7, radius, 64);
+                var mat = new THREE.MeshBasicMaterial({
+                    color: color,
+                    transparent: true,
+                    opacity: opacity,
+                    side: THREE.DoubleSide,
+                    blending: THREE.AdditiveBlending,
+                    depthWrite: false,
+                });
+                var mesh = new THREE.Mesh(geo, mat);
+                mesh.position.y = -0.2 + g * 0.04;
+                mesh.rotation.x = 0.2 + Math.random() * 0.2;
+                mesh.rotation.z = g * 0.3;
+                glowGroup.add(mesh);
+            }
+
+            // ===== 地面 =====
+            var sceneGroup = new THREE.Group();
+            sceneGroup.scale.set(0.65, 0.65, 0.65);
+            scene.add(sceneGroup);
+
+            var groundGroup = new THREE.Group();
+            sceneGroup.add(groundGroup);
+
+            var tileMat = new THREE.MeshPhysicalMaterial({
+                color: 0x2a1a0a,
+                roughness: 0.5,
+                metalness: 0.1,
+                emissive: 0x0a0604,
+                emissiveIntensity: 0.05,
+            });
+            var tileMatLight = new THREE.MeshPhysicalMaterial({
+                color: 0x3a2a1a,
+                roughness: 0.5,
+                metalness: 0.1,
+                emissive: 0x0a0604,
+                emissiveIntensity: 0.05,
+            });
+
+            var gridSize = 8;
+            var tileSize = 0.6;
+            var halfGrid = (gridSize * tileSize) / 2;
+
+            for (var x = 0; x < gridSize; x++) {
+                for (var z = 0; z < gridSize; z++) {
+                    var mat = (x + z) % 2 === 0 ? tileMat : tileMatLight;
+                    var tile = new THREE.Mesh(
+                        new THREE.PlaneGeometry(tileSize * 0.95, tileSize * 0.95),
+                        mat
+                    );
+                    var posX = -halfGrid + x * tileSize + tileSize / 2;
+                    var posZ = -halfGrid + z * tileSize + tileSize / 2;
+                    tile.position.set(posX, -0.12, posZ);
+                    tile.rotation.x = -Math.PI / 2;
+                    tile.receiveShadow = true;
+                    groundGroup.add(tile);
+                }
+            }
+
+            var floorGlowMat = new THREE.MeshBasicMaterial({
+                color: 0xc99e6d,
+                transparent: true,
+                opacity: 0.02,
+                side: THREE.DoubleSide,
+                blending: THREE.AdditiveBlending,
+                depthWrite: false,
+            });
+            var floorGlow = new THREE.Mesh(
+                new THREE.RingGeometry(2.0, 4.5, 48),
+                floorGlowMat
+            );
+            floorGlow.position.y = -0.1;
+            floorGlow.rotation.x = -Math.PI / 2;
+            groundGroup.add(floorGlow);
+
+            // ===== 托盘 =====
+            var trayGroup = new THREE.Group();
+            sceneGroup.add(trayGroup);
+
+            var trayMat = new THREE.MeshPhysicalMaterial({
+                color: 0x1a0f0a,
+                roughness: 0.3,
+                metalness: 0.5,
+                transparent: true,
+                opacity: 0.6,
+                emissive: 0x0a0604,
+                emissiveIntensity: 0.05,
+                clearcoat: 0.2,
+            });
+            var trayGeo = new THREE.CylinderGeometry(2.0, 2.2, 0.12, 48);
+            var tray = new THREE.Mesh(trayGeo, trayMat);
+            tray.position.y = -0.06;
+            tray.receiveShadow = true;
+            tray.castShadow = true;
+            trayGroup.add(tray);
+
+            var topMat = new THREE.MeshPhysicalMaterial({
+                color: 0x1a0f0a,
+                roughness: 0.1,
+                metalness: 0.6,
+                transparent: true,
+                opacity: 0.25,
+                emissive: 0x0a0604,
+                emissiveIntensity: 0.03,
+                clearcoat: 0.3,
+            });
+            var topGeo = new THREE.CircleGeometry(1.9, 48);
+            var topMesh = new THREE.Mesh(topGeo, topMat);
+            topMesh.position.y = 0.01;
+            topMesh.rotation.x = -Math.PI / 2;
+            topMesh.receiveShadow = true;
+            trayGroup.add(topMesh);
+
+            var edgeGlowMat = new THREE.MeshBasicMaterial({
+                color: 0xc99e6d,
+                transparent: true,
+                opacity: 0.05,
+                side: THREE.DoubleSide,
+                blending: THREE.AdditiveBlending,
+                depthWrite: false,
+            });
+            var edgeGlow = new THREE.Mesh(
+                new THREE.RingGeometry(1.85, 2.05, 48),
+                edgeGlowMat
+            );
+            edgeGlow.position.y = 0.02;
+            trayGroup.add(edgeGlow);
+
+            var bottomGlowMat = new THREE.MeshBasicMaterial({
+                color: 0x6644aa,
+                transparent: true,
+                opacity: 0.03,
+                side: THREE.DoubleSide,
+                blending: THREE.AdditiveBlending,
+                depthWrite: false,
+            });
+            var bottomGlow = new THREE.Mesh(
+                new THREE.RingGeometry(1.5, 2.3, 48),
+                bottomGlowMat
+            );
+            bottomGlow.position.y = -0.08;
+            bottomGlow.rotation.x = -Math.PI / 2;
+            trayGroup.add(bottomGlow);
+
+            // ============================================================
+            // 5. 组件系统
+            // ============================================================
+            var currentGroup = new THREE.Group();
+            trayGroup.add(currentGroup);
+
+            var currentId = 0;
+            var isAssembled = false;
+            var allComponentGroups = [];
+            var assembleProgress = 0;
+            var isAssembling = false;
+
+            // ===== 材质 =====
+            var woodMat = new THREE.MeshPhysicalMaterial({
+                color: 0x8B4513,
+                roughness: 0.4,
+                metalness: 0.1,
+                emissive: 0x2a1506,
+                emissiveIntensity: 0.05,
+                clearcoat: 0.1,
+            });
+            var redMat = new THREE.MeshPhysicalMaterial({
+                color: 0x8B0000,
+                roughness: 0.3,
+                metalness: 0.15,
+                emissive: 0x3a0000,
+                emissiveIntensity: 0.08,
+                clearcoat: 0.2,
+            });
+            var goldMat = new THREE.MeshPhysicalMaterial({
+                color: 0xD4A017,
+                roughness: 0.2,
+                metalness: 0.7,
+                emissive: 0x5a3a00,
+                emissiveIntensity: 0.05,
+                clearcoat: 0.3,
+            });
+            var floorMat = new THREE.MeshPhysicalMaterial({
+                color: 0x6B3410,
+                roughness: 0.5,
+                metalness: 0.05,
+                emissive: 0x1a0a04,
+                emissiveIntensity: 0.05,
+            });
+            var lanternMat = new THREE.MeshPhysicalMaterial({
+                color: 0xff2200,
+                roughness: 0.2,
+                metalness: 0.1,
+                emissive: 0xcc1100,
+                emissiveIntensity: 0.4,
+                transparent: true,
+                opacity: 0.9,
+                clearcoat: 0.1,
+            });
+            var doorMat = new THREE.MeshPhysicalMaterial({
+                color: 0x5a2a0a,
+                roughness: 0.4,
+                metalness: 0.05,
+                emissive: 0x1a0a04,
+                emissiveIntensity: 0.05,
+            });
+            var carpetMat = new THREE.MeshPhysicalMaterial({
+                color: 0x8B0000,
+                roughness: 0.7,
+                metalness: 0.0,
+                emissive: 0x3a0000,
+                emissiveIntensity: 0.05,
+            });
+            var beamMat = new THREE.MeshPhysicalMaterial({
+                color: 0x5a2a0a,
+                roughness: 0.4,
+                metalness: 0.05,
+                emissive: 0x1a0a04,
+                emissiveIntensity: 0.05,
+            });
+            var roofMat = new THREE.MeshPhysicalMaterial({
+                color: 0x1a0a04,
+                roughness: 0.4,
+                metalness: 0.1,
+                transparent: true,
+                opacity: 0.85,
+                emissive: 0x0a0604,
+                emissiveIntensity: 0.02,
+            });
+
+            // ===== 构建组件 =====
+            function buildComponentGroup(id) {
+                var group = new THREE.Group();
+                var scaleFactor = 0.7;
+
+                switch (id) {
+                    case 0:
+                        buildFoundation(group);
+                        break;
+                    case 1:
+                        buildPillars(group);
+                        break;
+                    case 2:
+                        buildStage(group);
+                        break;
+                    case 3:
+                        buildRoof(group);
+                        break;
+                    case 4:
+                        buildDecoration(group);
+                        break;
+                    case 5:
+                        buildDoors(group);
+                        break;
+                    case 6:
+                        buildFurniture(group);
+                        break;
+                    case 7:
+                        buildLanterns(group);
+                        break;
+                }
+
+                group.scale.set(scaleFactor, scaleFactor, scaleFactor);
+                return group;
+            }
+
+            function buildFoundation(group) {
+                var base = new THREE.Mesh(new THREE.BoxGeometry(2.8, 0.2, 2.0), woodMat);
+                base.position.y = 0.1;
+                base.receiveShadow = true;
+                base.castShadow = true;
+                group.add(base);
+                for (var s = 0; s < 2; s++) {
+                    var step = new THREE.Mesh(
+                        new THREE.BoxGeometry(2.4 - s * 0.3, 0.08, 0.6 - s * 0.15),
+                        woodMat
+                    );
+                    step.position.set(0, -0.04 + s * 0.1, -1.0 - s * 0.12);
+                    step.receiveShadow = true;
+                    step.castShadow = true;
+                    group.add(step);
+                }
+                var lineMat = new THREE.LineBasicMaterial({ color: 0xd4a373, transparent: true, opacity: 0.15 });
+                for (var l = 0; l < 4; l++) {
+                    var pts = [
+                        new THREE.Vector3(-1.4 + l * 0.93, 0.22, -1.0),
+                        new THREE.Vector3(-1.4 + l * 0.93, 0.22, 1.0)
+                    ];
+                    var line = new THREE.Line(new THREE.BufferGeometry().setFromPoints(pts), lineMat);
+                    group.add(line);
+                }
+            }
+
+            function buildPillars(group) {
+                var pillarPos = [
+                    [-1.0, -0.6],
+                    [1.0, -0.6],
+                    [-1.0, 0.6],
+                    [1.0, 0.6]
+                ];
+                for (var p = 0; p < pillarPos.length; p++) {
+                    var pillar = new THREE.Mesh(
+                        new THREE.CylinderGeometry(0.1, 0.13, 1.8, 12),
+                        redMat
+                    );
+                    pillar.position.set(pillarPos[p][0], 0.9, pillarPos[p][1]);
+                    pillar.castShadow = true;
+                    pillar.receiveShadow = true;
+                    group.add(pillar);
+                    var baseP = new THREE.Mesh(
+                        new THREE.CylinderGeometry(0.15, 0.18, 0.06, 12),
+                        woodMat
+                    );
+                    baseP.position.set(pillarPos[p][0], 0.03, pillarPos[p][1]);
+                    group.add(baseP);
+                    var topP = new THREE.Mesh(
+                        new THREE.CylinderGeometry(0.13, 0.1, 0.06, 12),
+                        goldMat
+                    );
+                    topP.position.set(pillarPos[p][0], 1.83, pillarPos[p][1]);
+                    group.add(topP);
+
+                    var deco = new THREE.Mesh(
+                        new THREE.SphereGeometry(0.04, 6, 6),
+                        goldMat
+                    );
+                    deco.position.set(pillarPos[p][0], 1.87, pillarPos[p][1]);
+                    group.add(deco);
+                }
+                var beamPos = [
+                    [-1.0, 0, 0],
+                    [1.0, 0, 0],
+                    [0, -0.6, 0],
+                    [0, 0.6, 0]
+                ];
+                for (var b = 0; b < beamPos.length; b++) {
+                    var isX = (b < 2);
+                    var beam = new THREE.Mesh(
+                        new THREE.BoxGeometry(isX ? 2.0 : 0.06, 0.05, isX ? 0.06 : 1.2),
+                        beamMat
+                    );
+                    beam.position.set(beamPos[b][0], 1.4, beamPos[b][2]);
+                    group.add(beam);
+                }
+            }
+
+            function buildStage(group) {
+                var floor = new THREE.Mesh(
+                    new THREE.BoxGeometry(2.2, 0.04, 1.6),
+                    floorMat
+                     );
+                floor.position.y = 0.02;
+                floor.receiveShadow = true;
+                floor.castShadow = true;
+                group.add(floor);
+                var carpet = new THREE.Mesh(
+                    new THREE.PlaneGeometry(1.6, 1.0),
+                    carpetMat
+                );
+                carpet.position.y = 0.05;
+                carpet.rotation.x = -Math.PI / 2;
+                group.add(carpet);
+                var patternMat = new THREE.MeshPhysicalMaterial({
+                    color: 0xD4A017,
+                    roughness: 0.3,
+                    metalness: 0.3,
+                    emissive: 0x5a3a00,
+                    emissiveIntensity: 0.02,
+                });
+                for (var p = 0; p < 8; p++) {
+                    var dot = new THREE.Mesh(
+                        new THREE.PlaneGeometry(0.04, 0.04),
+                        patternMat
+                    );
+                    var angle = (p / 8) * Math.PI * 2;
+                    var rad = 0.4 + Math.random() * 0.3;
+                    dot.position.set(Math.cos(angle) * rad, 0.052, Math.sin(angle) * rad);
+                    dot.rotation.x = -Math.PI / 2;
+                    group.add(dot);
+                }
+            }
+
+            function buildRoof(group) {
+                var roof = new THREE.Mesh(
+                    new THREE.BoxGeometry(2.6, 0.06, 2.0),
+                    roofMat
+                );
+                roof.position.y = 1.9;
+                roof.castShadow = true;
+                group.add(roof);
+                var eaveMat2 = new THREE.MeshPhysicalMaterial({
+                    color: 0x1a0a04,
+                    roughness: 0.3,
+                    metalness: 0.1,
+                    transparent: true,
+                    opacity: 0.6,
+                });
+                for (var e = -1; e <= 1; e += 2) {
+                    for (var e2 = -1; e2 <= 1; e2 += 2) {
+                        var eave = new THREE.Mesh(
+                            new THREE.BoxGeometry(0.5, 0.03, 0.25),
+                            eaveMat2
+                        );
+                        eave.position.set(e * 1.5, 1.94, e2 * 1.2);
+                        eave.rotation.z = e * 0.06;
+                        eave.rotation.x = e2 * 0.05;
+                        group.add(eave);
+                    }
+                }
+                var ridgeMat2 = new THREE.MeshPhysicalMaterial({
+                    color: 0x8B0000,
+                    roughness: 0.2,
+                    metalness: 0.3,
+                    emissive: 0x3a0000,
+                    emissiveIntensity: 0.05,
+                });
+                var ridge = new THREE.Mesh(
+                    new THREE.BoxGeometry(0.25, 0.04, 1.9),
+                    ridgeMat2
+                );
+                ridge.position.y = 1.96;
+                group.add(ridge);
+
+                var beastMat = new THREE.MeshPhysicalMaterial({
+                    color: 0xD4A017,
+                    roughness: 0.2,
+                    metalness: 0.6,
+                });
+                for (var b = -1; b <= 1; b += 2) {
+                    var beast = new THREE.Mesh(
+                        new THREE.ConeGeometry(0.04, 0.08, 6),
+                        beastMat
+                    );
+                    beast.position.set(b * 1.3, 1.98, 0);
+                    beast.rotation.z = b * 0.2;
+                    group.add(beast);
+                }
+            }
+
+            function buildDecoration(group) {
+                var plaqueMat = new THREE.MeshPhysicalMaterial({
+                    color: 0xD4A017,
+                    roughness: 0.2,
+                    metalness: 0.6,
+                    emissive: 0x5a3a00,
+                    emissiveIntensity: 0.05,
+                    clearcoat: 0.2,
+                });
+                var plaque = new THREE.Mesh(
+                    new THREE.BoxGeometry(0.7, 0.12, 0.02),
+                    plaqueMat
+                );
+                plaque.position.set(0, 1.2, 0.6);
+                group.add(plaque);
+
+                var decoMat = new THREE.MeshPhysicalMaterial({
+                    color: 0xD4A017,
+                    roughness: 0.2,
+                    metalness: 0.4,
+                });
+                for (var d = 0; d < 6; d++) {
+                    var deco = new THREE.Mesh(
+                        new THREE.BoxGeometry(0.04, 0.04, 0.005),
+                        decoMat
+                    );
+                    var angle = (d / 6) * Math.PI * 2;
+                    deco.position.set(Math.cos(angle) * 0.4, 0.6 + Math.sin(angle) * 0.2, 0.6);
+                    group.add(deco);
+                }
+                var lineMat2 = new THREE.LineBasicMaterial({ color: 0xd4a373, transparent: true, opacity: 0.08 });
+                for (var l2 = 0; l2 < 6; l2++) {
+                    var pts2 = [
+                        new THREE.Vector3(-1.0 + l2 * 0.4, 0.4, 0.5),
+                        new THREE.Vector3(-1.0 + l2 * 0.4, 1.2, 0.5)
+                    ];
+                    var line2 = new THREE.Line(new THREE.BufferGeometry().setFromPoints(pts2), lineMat2);
+                    group.add(line2);
+                }
+                var paintMat = new THREE.MeshPhysicalMaterial({
+                    color: 0xff6644,
+                    roughness: 0.3,
+                    metalness: 0.1,
+                    emissive: 0xcc2200,
+                    emissiveIntensity: 0.02,
+                });
+                for (var p = 0; p < 8; p++) {
+                    var dot = new THREE.Mesh(
+                        new THREE.SphereGeometry(0.015, 4, 4),
+                        paintMat
+                    );
+                    var angle2 = (p / 8) * Math.PI * 2;
+                    dot.position.set(Math.cos(angle2) * 0.5, 0.8 + Math.sin(angle2) * 0.2, 0.6);
+                    group.add(dot);
+                }
+            }
+
+            function buildDoors(group) {
+                var doorPos = [
+                    [-0.6, 0.5, 0.6],
+                    [0.6, 0.5, 0.6]
+                ];
+                for (var d = 0; d < doorPos.length; d++) {
+                    var door = new THREE.Mesh(
+                        new THREE.BoxGeometry(0.25, 0.35, 0.02),
+                        doorMat
+                    );
+                    door.position.set(doorPos[d][0], doorPos[d][1], doorPos[d][2]);
+                    group.add(door);
+                    var frameMat2 = new THREE.MeshPhysicalMaterial({
+                        color: 0x8B0000,
+                        roughness: 0.3,
+                        metalness: 0.1,
+                        emissive: 0x3a0000,
+                        emissiveIntensity: 0.05,
+                    });
+                    var ft = new THREE.Mesh(new THREE.BoxGeometry(0.28, 0.015, 0.02), frameMat2);
+                    ft.position.set(doorPos[d][0], 0.68, doorPos[d][2]);
+                    group.add(ft);
+                    var fl = new THREE.Mesh(new THREE.BoxGeometry(0.015, 0.35, 0.02), frameMat2);
+                    fl.position.set(doorPos[d][0] - 0.14, 0.5, doorPos[d][2]);
+                    group.add(fl);
+                    var fr = new THREE.Mesh(new THREE.BoxGeometry(0.015, 0.35, 0.02), frameMat2);
+                    fr.position.set(doorPos[d][0] + 0.14, 0.5, doorPos[d][2]);
+                    group.add(fr);
+                    var labelMat2 = new THREE.MeshPhysicalMaterial({
+                        color: 0xD4A017,
+                        roughness: 0.2,
+                        metalness: 0.5,
+                    });
+                    var labels = (d === 0) ? ['出', '将'] : ['入', '相'];
+                    for (var ch = 0; ch < 2; ch++) {
+                        var cm = new THREE.Mesh(
+                            new THREE.BoxGeometry(0.035, 0.045, 0.005),
+                            labelMat2
+                        );
+                        var offset = (ch === 0) ? -0.05 : 0.05;
+                        cm.position.set(doorPos[d][0] + offset, 0.52 - ch * 0.08, 0.62);
+                        group.add(cm);
+                    }
+                }
+            }
+
+            function buildFurniture(group) {
+                var tableMat2 = new THREE.MeshPhysicalMaterial({
+                    color: 0x4a2a0a,
+                    roughness: 0.4,
+                    metalness: 0.05,
+                });
+                var table = new THREE.Mesh(
+                    new THREE.BoxGeometry(0.5, 0.03, 0.35),
+                    tableMat2
+                );
+                table.position.set(0.3, 0.15, 0.2);
+                table.castShadow = true;
+                group.add(table);
+                var legPos2 = [
+                    [-0.2, -0.15],
+                    [0.2, -0.15],
+                    [-0.2, 0.15],
+                    [0.2, 0.15]
+                ];
+                for (var lp2 = 0; lp2 < legPos2.length; lp2++) {
+                    var leg2 = new THREE.Mesh(
+                        new THREE.CylinderGeometry(0.02, 0.025, 0.14, 6),
+                        tableMat2
+                    );
+                    leg2.position.set(0.3 + legPos2[lp2][0], 0.07, 0.2 + legPos2[lp2][1]);
+                    group.add(leg2);
+                }
+                for (var c2 = -1; c2 <= 1; c2 += 2) {
+                    var chairMat2 = new THREE.MeshPhysicalMaterial({
+                        color: 0x4a2a0a,
+                        roughness: 0.4,
+                        metalness: 0.05,
+                    });
+                    var seat2 = new THREE.Mesh(
+                        new THREE.BoxGeometry(0.2, 0.02, 0.2),
+                        chairMat2
+                    );
+                    seat2.position.set(-0.2 + c2 * 0.25, 0.16, -0.3 + c2 * 0.15);
+                    group.add(seat2);
+                    var back2 = new THREE.Mesh(
+                        new THREE.BoxGeometry(0.2, 0.12, 0.015),
+                        chairMat2
+                    );
+                    back2.position.set(-0.2 + c2 * 0.25, 0.23, -0.3 + c2 * 0.15 + 0.12 * c2);
+                    group.add(back2);
+                    for (var cl2 = -1; cl2 <= 1; cl2 += 2) {
+                        var clm = new THREE.Mesh(
+                            new THREE.CylinderGeometry(0.01, 0.015, 0.12, 6),
+                            chairMat2
+                        );
+                        clm.position.set(-0.2 + c2 * 0.25 + cl2 * 0.07, 0.07, -0.3 + c2 * 0.15 + cl2 * 0.07);
+                        group.add(clm);
+                    }
+                }
+            }
+
+            function buildLanterns(group) {
+                var lanternPos2 = [
+                    [-0.8, 0.5],
+                    [0.8, 0.5],
+                    [-0.8, -0.5],
+                    [0.8, -0.5]
+                ];
+                for (var ln2 = 0; ln2 < lanternPos2.length; ln2++) {
+                    var lantern2 = new THREE.Mesh(
+                    	  new THREE.SphereGeometry(0.12, 10, 10),
+                        lanternMat
+                    );
+                    lantern2.position.set(lanternPos2[ln2][0], 1.7, lanternPos2[ln2][1]);
+                    lantern2.scale.set(1, 0.8, 1);
+                    group.add(lantern2);
+                    var glowLanternMat = new THREE.MeshBasicMaterial({
+                        color: 0xff4400,
+                        transparent: true,
+                        opacity: 0.06,
+                        side: THREE.DoubleSide,
+                        blending: THREE.AdditiveBlending,
+                        depthWrite: false,
+                    });
+                    var glowLantern = new THREE.Mesh(
+                        new THREE.SphereGeometry(0.18, 8, 8),
+                        glowLanternMat
+                    );
+                    glowLantern.position.set(lanternPos2[ln2][0], 1.7, lanternPos2[ln2][1]);
+                    group.add(glowLantern);
+                    var tassel2 = new THREE.Mesh(
+                        new THREE.CylinderGeometry(0.008, 0.02, 0.1, 6),
+                        new THREE.MeshPhysicalMaterial({ color: 0xffcc00, roughness: 0.4, metalness: 0.2 })
+                    );
+                    tassel2.position.set(lanternPos2[ln2][0], 1.58, lanternPos2[ln2][1]);
+                    group.add(tassel2);
+                }
+            }
+
+            // ============================================================
+            // 6. 组件管理
+            // ============================================================
+            function buildAllComponents() {
+                allComponentGroups = [];
+                for (var i = 0; i < componentData.length; i++) {
+                    var g = buildComponentGroup(i);
+                    var angle = (i / componentData.length) * Math.PI * 2;
+                    var radius = 1.8;
+                    g.position.x = Math.cos(angle) * radius;
+                    g.position.z = Math.sin(angle) * radius;
+                    g.position.y = 0.2;
+                    g.rotation.y = Math.random() * Math.PI * 2;
+                    allComponentGroups.push(g);
+                    trayGroup.add(g);
+                }
+                assembleProgress = 0;
+                isAssembled = false;
+            }
+
+            function assembleAll() {
+                if (isAssembling) return;
+                isAssembling = true;
+                assembleProgress = 0;
+
+                var startPositions = [];
+                var startRotations = [];
+                for (var i = 0; i < allComponentGroups.length; i++) {
+                    startPositions.push(allComponentGroups[i].position.clone());
+                    startRotations.push(allComponentGroups[i].rotation.y);
+                }
+
+                var duration = 100;
+                var frame = 0;
+
+                function animateAssemble() {
+                    frame++;
+                    var progress = Math.min(frame / duration, 1);
+                    var ease = 1 - Math.pow(1 - progress, 3);
+
+                    for (var i = 0; i < allComponentGroups.length; i++) {
+                        var g = allComponentGroups[i];
+                        g.position.x = startPositions[i].x * (1 - ease);
+                        g.position.z = startPositions[i].z * (1 - ease);
+                        g.position.y = 0.2 + ease * 0.2;
+                        g.rotation.y = startRotations[i] * (1 - ease);
+                        var scale = 1 + 0.12 * Math.sin(progress * Math.PI);
+                        g.scale.set(0.7 * scale, 0.7 * scale, 0.7 * scale);
+                    }
+
+                    if (progress < 1) {
+                        requestAnimationFrame(animateAssemble);
+                    } else {
+                        for (var i = 0; i < allComponentGroups.length; i++) {
+                            allComponentGroups[i].position.set(0, 0.2, 0);
+                            allComponentGroups[i].rotation.y = 0;
+                            allComponentGroups[i].scale.set(0.7, 0.7, 0.7);
+                        }
+                        isAssembled = true;
+                        isAssembling = false;
+                        assembleProgress = 1;
+                        detailTitle.textContent = '🏮 戏台 · 完整';
+                        detailSub.textContent = '🎭 百戏之台 · 万象之美';
+                        detailDesc.textContent = '一座完整的京剧戏台，由地基、立柱、台面、顶棚、雕饰、门窗、道具和灯笼共同构成。每一个部件都承载着中国传统建筑的精髓与戏曲文化的灵魂。';
+                        detailFact.textContent = '京剧戏台讲究"出将入相"，两侧门分别供演员上下场，寓意人生如戏、戏如人生。';
+                        detailUsage.textContent = '戏台是京剧艺术的载体，方寸之间演绎天地万象，传承千年文化。';
+                    }
+                }
+
+                animateAssemble();
+            }
+
+            // ============================================================
+            // 7. 切换逻辑
+            // ============================================================
+            function selectItem(id) {
+                if (isAssembling) return;
+                if (isAssembled) {
+                    resetAssemble();
+                }
+                currentId = id;
+                leftBtns.forEach(function(btn) {
+                    btn.classList.toggle('active', parseInt(btn.dataset.id) === id);
+                });
+                var data = componentData[id];
+                detailTitle.textContent = data.name;
+                detailSub.textContent = data.sub;
+                detailDesc.textContent = data.desc;
+                detailFact.textContent = data.fact;
+                detailUsage.textContent = data.usage;
+
+                // 更新HUD
+                hudComponent.textContent = data.name;
+
+                for (var i = 0; i < allComponentGroups.length; i++) {
+                    allComponentGroups[i].visible = (i === id);
+                    if (i === id) {
+                        allComponentGroups[i].position.set(0, 0.2, 0);
+                        allComponentGroups[i].rotation.y = 0;
+                        allComponentGroups[i].scale.set(0.7, 0.7, 0.7);
+                    }
+                }
+                isAssembled = false;
+                assembleProgress = 0;
+
+                if (isSpeaking) {
+                    isSpeaking = false;
+                    speakBtn.classList.remove('speaking');
+                    speakBtn.innerHTML = '<i class="fas fa-volume-up"></i> 点击朗读';
+                    if (currentUtterance) {
+                        speechSynth.cancel();
+                        currentUtterance = null;
+                    }
+                }
+            }
+
+            function resetAssemble() {
+                for (var i = 0; i < allComponentGroups.length; i++) {
+                    allComponentGroups[i].visible = true;
+                    var angle = (i / componentData.length) * Math.PI * 2;
+                    var radius = 1.8;
+                    allComponentGroups[i].position.x = Math.cos(angle) * radius;
+                    allComponentGroups[i].position.z = Math.sin(angle) * radius;
+                    allComponentGroups[i].position.y = 0.2;
+                    allComponentGroups[i].rotation.y = Math.random() * Math.PI * 2;
+                    allComponentGroups[i].scale.set(0.7, 0.7, 0.7);
+                }
+                isAssembled = false;
+                assembleProgress = 0;
+                selectItem(0);
+            }
+
+            // ============================================================
+            // 8. 初始化
+            // ============================================================
+            buildAllComponents();
+            for (var i = 0; i < allComponentGroups.length; i++) {
+                allComponentGroups[i].visible = (i === 0);
+                if (i === 0) {
+                    allComponentGroups[i].position.set(0, 0.2, 0);
+                    allComponentGroups[i].rotation.y = 0;
+                    allComponentGroups[i].scale.set(0.7, 0.7, 0.7);
+                }
+            }
+            hudComponent.textContent = '地基';
+
+            // ============================================================
+            // 9. 事件绑定
+            // ============================================================
+            leftBtns.forEach(function(btn) {
+                btn.addEventListener('click', function() {
+                    var id = parseInt(this.dataset.id);
+                    selectItem(id);
+                });
+            });
+
+            assembleBtn.addEventListener('click', function() {
+                if (isAssembled) {
+                    resetAssemble();
+                    assembleBtn.innerHTML = '<span class="icon"><i class="fas fa-puzzle-piece"></i></span> 拼起来';
+                    return;
+                }
+                for (var i = 0; i < allComponentGroups.length; i++) {
+                    allComponentGroups[i].visible = true;
+                    var angle = (i / componentData.length) * Math.PI * 2;
+                    var radius = 1.8;
+                    allComponentGroups[i].position.x = Math.cos(angle) * radius;
+                    allComponentGroups[i].position.z = Math.sin(angle) * radius;
+                    allComponentGroups[i].position.y = 0.2;
+                    allComponentGroups[i].rotation.y = Math.random() * Math.PI * 2;
+                    allComponentGroups[i].scale.set(0.7, 0.7, 0.7);
+                }
+                leftBtns.forEach(function(btn) {
+                    btn.classList.remove('active');
+                });
+                assembleBtn.innerHTML = '<span class="icon"><i class="fas fa-puzzle-piece"></i></span> 拼装中...';
+                assembleAll();
+                var checkComplete = setInterval(function() {
+                    if (isAssembled) {
+                        assembleBtn.innerHTML =
+                            '<span class="icon"><i class="fas fa-check-circle"></i></span> 已拼好';
+                        clearInterval(checkComplete);
+                    }
+                }, 200);
+            });
+
+            speakBtn.addEventListener('click', function() {
+                var text = detailTitle.textContent + '。' +
+                    detailSub.textContent.replace(/[🏛️🪵🏮🎨🚪🪑]/g, '') + '。' +
+                    detailDesc.textContent + '。' +
+                    detailFact.textContent + '。' +
+                    detailUsage.textContent;
+                speakText(text);
+            });
+
+            btnHome.addEventListener('click', function() {
+                if (isAssembled) {
+                    resetAssemble();
+                }
+                selectItem(0);
+                leftBtns.forEach(function(btn) {
+                    btn.classList.remove('active');
+                    if (parseInt(btn.dataset.id) === 0) {
+                        btn.classList.add('active');
+                    }
+                });
+                assembleBtn.innerHTML = '<span class="icon"><i class="fas fa-puzzle-piece"></i></span> 拼起来';
+                targetRotX = 0.3;
+                targetRotY = 0.5;
+                targetZoom = 4.5;
+            });
+
+            // ============================================================
+            // 10. 交互
+            // ============================================================
+            var isDragging = false;
+            var prevMouse = { x: 0, y: 0 };
+            var rotX = 0.3,
+                rotY = 0.5;
+            var targetRotX = rotX,
+                targetRotY = rotY;
+            var zoomDistance = 4.5;
+            var targetZoom = 4.5;
+
+            renderer.domElement.addEventListener('mousedown', function(e) {
+                isDragging = true;
+                prevMouse.x = e.clientX;
+                prevMouse.y = e.clientY;
+            });
+            window.addEventListener('mousemove', function(e) {
+                if (isDragging) {
+                    var deltaX = e.clientX - prevMouse.x;
+                    var deltaY = e.clientY - prevMouse.y;
+                    targetRotY += deltaX * 0.008;
+                    targetRotX += deltaY * 0.008;
+                    targetRotX = Math.max(-1.2, Math.min(1.2, targetRotX));
+                    prevMouse.x = e.clientX;
+                    prevMouse.y = e.clientY;
+                    // 更新HUD旋转
+                    var deg = ((targetRotY * 180 / Math.PI) % 360).toFixed(0);
+                    hudRotate.textContent = deg + '°';
+                }
+            });
+
+            window.addEventListener('mouseup', function() { isDragging = false; });
+
+            var touchStart2 = { x: 0, y: 0, dist: 0 };
+            renderer.domElement.addEventListener('touchstart', function(e) {
+                if (e.touches.length === 1) {
+                    isDragging = true;
+                    touchStart2.x = e.touches[0].clientX;
+                    touchStart2.y = e.touches[0].clientY;
+                }
+                if (e.touches.length === 2) {
+                    var dx = e.touches[0].clientX - e.touches[1].clientX;
+                    var dy = e.touches[0].clientY - e.touches[1].clientY;
+                    touchStart2.dist = Math.sqrt(dx * dx + dy * dy);
+                }
+            }, { passive: true });
+
+            renderer.domElement.addEventListener('touchmove', function(e) {
+                e.preventDefault();
+                if (e.touches.length === 1 && isDragging) {
+                    var deltaX = e.touches[0].clientX - touchStart2.x;
+                    var deltaY = e.touches[0].clientY - touchStart2.y;
+                    targetRotY += deltaX * 0.008;
+                    targetRotX += deltaY * 0.008;
+                    targetRotX = Math.max(-1.2, Math.min(1.2, targetRotX));
+                    touchStart2.x = e.touches[0].clientX;
+                    touchStart2.y = e.touches[0].clientY;
+                    var deg = ((targetRotY * 180 / Math.PI) % 360).toFixed(0);
+                    hudRotate.textContent = deg + '°';
+                }
+                if (e.touches.length === 2) {
+                    var dx = e.touches[0].clientX - e.touches[1].clientX;
+                    var dy = e.touches[0].clientY - e.touches[1].clientY;
+                    var dist = Math.sqrt(dx * dx + dy * dy);
+                    var delta = touchStart2.dist - dist;
+                    targetZoom = Math.max(2.5, Math.min(8.0, targetZoom + delta * 0.03));
+                    touchStart2.dist = dist;
+                    hudZoom.textContent = (targetZoom / 4.5).toFixed(1) + 'x';
+                }
+            }, { passive: false });
+
+            renderer.domElement.addEventListener('touchend', function() { isDragging = false; }, { passive: true });
+
+            renderer.domElement.addEventListener('wheel', function(e) {
+                e.preventDefault();
+                targetZoom = Math.max(2.5, Math.min(8.0, targetZoom + e.deltaY * 0.008));
+                hudZoom.textContent = (targetZoom / 4.5).toFixed(1) + 'x';
+            }, { passive: false });
+
+            // ============================================================
+            // 11. 窗口自适应
+            // ============================================================
+            function resizeRenderer() {
+                var rect = centerPanel.getBoundingClientRect();
+                var w = rect.width || window.innerWidth * 0.5;
+                var h = rect.height || window.innerHeight * 0.7;
+                camera.aspect = w / h;
+                camera.updateProjectionMatrix();
+                renderer.setSize(w, h);
+            }
+
+            window.addEventListener('resize', resizeRenderer);
+            setTimeout(resizeRenderer, 100);
+
+            // ============================================================
+            // 12. 动画 + 实时监控
+            // ============================================================
+            var clock = new THREE.Clock();
+            var frameCount = 0;
+            var lastFpsUpdate = 0;
+            var totalTriangles = 0;
+
+            function updateMonitor() {
+                // 计算三角面数量
+                var triCount = 0;
+                scene.traverse(function(obj) {
+                    if (obj.isMesh && obj.geometry) {
+                        var geo = obj.geometry;
+                        if (geo.index) {
+                            triCount += geo.index.count / 3;
+                        } else if (geo.attributes.position) {
+                            triCount += geo.attributes.position.count / 3;
+                        }
+                    }
+                });
+                totalTriangles = Math.round(triCount);
+                monitorTri.textContent = totalTriangles.toLocaleString();
+
+                // 光晕强度 (基于光环旋转速度)
+                var glowIntensity = (Math.sin(clock.getElapsedTime() * 0.3) * 0.3 + 0.5).toFixed(2);
+                monitorGlow.textContent = glowIntensity;
+            }
+
+            function animate() {
+                var time = clock.getElapsedTime();
+                var delta = clock.getDelta();
+
+                rotX += (targetRotX - rotX) * 0.08;
+                rotY += (targetRotY - rotY) * 0.08;
+                if (!isDragging) targetRotY += 0.002;
+
+                sceneGroup.rotation.x = rotX;
+                sceneGroup.rotation.y = rotY;
+
+                var pos = particles.geometry.attributes.position.array;
+                for (var i = 0; i < particleCount; i++) {
+                    pos[i * 3] += pVelocities[i].x;
+                    pos[i * 3 + 1] += pVelocities[i].y;
+                    pos[i * 3 + 2] += pVelocities[i].z;
+                    var r = Math.sqrt(pos[i * 3] * pos[i * 3] + pos[i * 3 + 2] * pos[i * 3 + 2]);
+                    if (r > 12) {
+                        pVelocities[i].x *= -1;
+                        pVelocities[i].z *= -1;
+                    }
+                    if (Math.abs(pos[i * 3 + 1]) > 5) {
+                        pVelocities[i].y *= -1;
+                    }
+                }
+                particles.geometry.attributes.position.needsUpdate = true;
+                particles.rotation.y = time * 0.002;
+
+                glowGroup.rotation.y = time * 0.015;
+                glowGroup.rotation.x = 0.04 * Math.sin(time * 0.02);
+
+                pointLight1.position.x = 2.5 * Math.sin(time * 0.15);
+                pointLight1.position.z = 2.5 * Math.cos(time * 0.15);
+                pointLight2.position.x = 3 * Math.sin(time * 0.1 + 1);
+                pointLight2.position.z = 3 * Math.cos(time * 0.1 + 1);
+                pointLight3.position.x = 3 * Math.sin(time * 0.08 + 2);
+                pointLight3.position.z = 3 * Math.cos(time * 0.08 + 2);
+
+                if (!isAssembled && !isAssembling) {
+                    for (var i = 0; i < allComponentGroups.length; i++) {
+                        if (allComponentGroups[i].visible) {
+                            var offset = (i / componentData.length) * Math.PI * 2;
+                            allComponentGroups[i].position.y = 0.2 + 0.025 * Math.sin(time * 0.7 + offset);
+                        }
+                    }
+                }
+
+                zoomDistance += (targetZoom - zoomDistance) * 0.06;
+                camera.position.z = zoomDistance;
+
+                // 帧率监控
+                frameCount++;
+                if (time - lastFpsUpdate >= 0.5) {
+                    var fps = Math.round(frameCount / (time - lastFpsUpdate));
+                    monitorFps.textContent = fps + ' fps';
+                    frameCount = 0;
+                    lastFpsUpdate = time;
+                    updateMonitor();
+                }
+
+                renderer.render(scene, camera);
+                requestAnimationFrame(animate);
+            }
+
+            // ============================================================
+            // 13. 启动
+            // ============================================================
+            animate();
+
+            var loadingEl = document.querySelector('.loading');
+            if (loadingEl) loadingEl.classList.add('hidden');
+
+        })();
+    </script>
+
+</body>
+</html>

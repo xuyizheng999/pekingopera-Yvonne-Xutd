@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>京剧 · 行当 · Tab</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" type="text/css" href="css/hangdang.css"/>
+</head>
+<body>
+
+    <!-- 水墨开场 -->
+    <div class="ink-intro" id="inkIntro">
+        <canvas class="ink-canvas" id="inkCanvas"></canvas>
+        <div class="ink-text">行 · 当</div>
+    </div>
+
+    <!-- ===== 导航 ===== -->
+    <nav class="navbar">
+    <a href="index.html"><div class="logo"><i class="fas fa-mask"></i>国粹·京剧</div></a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="shouye.html">首页</a ></li>
+      <li><a href="hangdang.html" style="color: white;">行当</a ></li>
+      <li><a href="lianpu.html">脸谱</a ></li>
+      <li><a href="fushi.html">服饰</a ></li>
+      <li><a href="3D.html">3D戏台课堂</a ></li>
+      <li><a href="chuancheng.html">传承</a ></li>
+      <li><a href="chuangguan.html">答题</a ></li>
+    </ul>
+    <div class="nav-toggle" id="navToggle"><i class="fas fa-bars"></i></div>
+  </nav>
+
+    <!-- ===== Tab 布局 ===== -->
+    <div class="tab-layout">
+
+        <!-- 左侧 Tab 导航 -->
+        <div class="tab-sidebar">
+            <div class="tab-title">— 行 当 选 择 —</div>
+            <button class="tab-btn active" data-tab="sheng">
+                <span class="icon"><i class="fas fa-user-tie"></i></span> 生
+                <span class="tab-badge">男性</span>
+            </button>
+            <button class="tab-btn" data-tab="dan">
+                <span class="icon"><i class="fas fa-female"></i></span> 旦
+                <span class="tab-badge">女性</span>
+            </button>
+            <button class="tab-btn" data-tab="jing">
+                <span class="icon"><i class="fas fa-mask"></i></span> 净
+                <span class="tab-badge">花脸</span>
+            </button>
+            <button class="tab-btn" data-tab="mo">
+                <span class="icon"><i class="fas fa-user-graduate"></i></span> 末
+                <span class="tab-badge">配角</span>
+            </button>
+            <button class="tab-btn" data-tab="chou">
+                <span class="icon"><i class="fas fa-user-astronaut"></i></span> 丑
+                <span class="tab-badge">喜剧</span>
+            </button>
+        </div>
+
+        <!-- 右侧内容 -->
+        <div class="tab-content">
+
+            <!-- 生 -->
+            <div class="tab-panel active" id="panel-sheng">
+                <div class="panel-header">
+                    <img src="images/7.jpg" style="width: 7%; border-radius: 20px;"/>
+                    <div>
+                        <span class="panel-title">生</span>
+                        <span class="panel-pinyin" style="color: white;">Shēng</span>
+                        <div class="panel-color-tag" style="color: white;">🎨 红色 · 忠勇</div>
+                    </div>
+                    <span class="panel-badge">男性角色</span>
+                </div>
+                <p class="panel-desc">定义：净、丑之外所有男性角色统称；俊扮（不画花脸），以本嗓（真嗓子）为主，细分五大类：老生、小生、武生、红生、娃娃生中国戏曲学...。<br />
+1. 老生（须生、正生）
+扮演中年、老年男子，佩戴髯口（胡子），全部大嗓本嗓演唱，念韵白。
+安工老生（唱功老生）：以唱为主，多帝王文官谋士，动作稳重。
+代表：诸葛亮《空城计》、杨延辉《四郎探母》、陈宫《捉放曹》。其中专门演皇帝又叫王帽老生，刘秀《上天台》。
+衰派老生（做功老生）：重表情、身段表演，多落魄、愁苦老人。
+代表：宋士杰《四进士》。
+靠把老生：武将，扎铠甲大靠，唱念与武打并重。
+代表：岳飞《满江红》、杨继业《李陵碑》。<br />
+2. 小生
+年轻男子，不挂胡子；真假嗓结合，高音用小嗓，低音大嗓，音色清亮儒雅。
+翎子生（雉尾生）：头盔插雉鸡翎，少年将帅王侯。周瑜《群英会》、吕布《白门楼》。
+纱帽生（官生）：年轻官员。王金龙《玉堂春》。
+扇子生：文雅书生，手持折扇。梁山伯《十八相送》。
+穷生：贫寒落魄书生，穿富贵衣。吕蒙正《彩楼配》。
+武小生：少年武将，偏重武打。杨宗保《辕门斩子》。<br />
+3. 武生
+武艺高强男性，重武打、把子功、毯子功。
+长靠武生：穿铠甲大靠、厚底靴，大将，兼顾唱念。赵云《长坂坡》。
+短打武生：短衣短打，江湖侠客、绿林人物。武松《打虎》、石秀。
+猴戏孙悟空，很多归武生应工。<br />
+4. 红生
+特殊分支，勾红色脸谱的老生，文武兼备。
+代表：关羽《单刀会》、赵匡胤《千里送京娘》，唱腔高亢凝重。<br />
+5. 娃娃生
+孩童角色，少年儿童，多由少年演员扮演。薛丁山、甘罗。</p >
+                <div class="panel-gallery">
+                    <div class="gallery-item" data-name="老生" data-sub="苍劲沉稳 · 髯口功" data-desc="老生是生行中的重要分支，扮演中年以上男性角色，挂髯口，唱腔苍劲浑厚。代表剧目有《空城计》《四进士》等。">
+                        <img src="images/18.jpg" alt="老生">
+                        <div class="img-label">🎭 老生 · 苍劲沉稳</div>
+                    </div>
+                    <div class="gallery-item" data-name="小生" data-sub="儒雅俊秀 · 扇子功" data-desc="小生扮演年轻英俊的男性角色，不挂髯口，用真声演唱，表演潇洒儒雅。代表剧目有《玉堂春》《西厢记》等。">
+                        <img src="images/19.jpg" alt="小生">
+                        <div class="img-label">🎭 小生 · 儒雅俊秀</div>
+                    </div>
+                    <div class="gallery-item" data-name="武生" data-sub="英武矫健 · 把子功" data-desc="武生扮演擅长武打的男性角色，分长靠武生和短打武生，身手矫健，气宇轩昂。代表剧目有《长坂坡》《挑滑车》等。">
+                        <img src="images/20.jpg" alt="武生">
+                        <div class="img-label">🎭 武生 · 英武矫健</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 旦 -->
+            <div class="tab-panel" id="panel-dan">
+                <div class="panel-header">
+                    <img src="images/8.jpg" style="width: 7%; border-radius: 20px;"/>
+                    <div>
+                        <span class="panel-title">旦</span>
+                        <span class="panel-pinyin" style="color: white;">Dàn</span>
+                        <div class="panel-color-tag" style="color: white;">🎨 粉色 · 柔美</div>
+                    </div>
+                    <span class="panel-badge">女性角色</span>
+                </div>
+                <p class="panel-desc">定义：全部女性角色；细分：青衣、花旦、花衫、刀马旦、武旦、老旦、彩旦（彩旦归丑行）抖音百科。<br />
+1. 青衣（正旦）
+中青年端庄正派女性，贤妻烈女，多穿青色长衫。重唱功，念韵白，动作收敛端庄。
+代表：王宝钏《三击掌》、秦香莲《铡美案》、蔡文姬。<br />
+2. 花旦
+年轻活泼民间女子，服饰艳丽，重做功身段，多用京白（生活化口语），细分：
+闺门旦：深闺少女，孙玉姣《拾玉镯》、刘玉兰《柜中缘》。
+玩笑旦：俏皮打闹，多喜剧。
+泼辣旦：性格刚烈泼辣。
+刺杀旦：有刺杀情节的女性。
+代表：红娘《红娘》。<br />
+3. 花衫
+梅兰芳开创，融合青衣、花旦、刀马旦，唱念做打全能，是综合性旦角。
+代表：虞姬《霸王别姬》、杨玉环《贵妃醉酒》。<br />
+4. 刀马旦
+巾帼女将，扎靠，有武打，但不以拼命打斗为主，侧重身段工架，还要会唱。
+代表：穆桂英《穆桂英挂帅》、樊梨花。<br />
+5. 武旦
+江湖女侠，重武打特技（打出手），短打装束，武打激烈。
+代表：杨排风《打焦赞》、白素贞《盗仙草》。
+✨区分：刀马旦重气度、唱念；武旦重格斗特技。<br />
+6. 老旦
+老年妇女，用本嗓大嗓演唱，不用小嗓。
+代表：佘太君《四郎探母》、康氏《钓金龟》。</p >
+                <div class="panel-gallery">
+                    <div class="gallery-item" data-name="青衣" data-sub="端庄贤淑 · 水袖功" data-desc="青衣扮演端庄稳重的女性角色，以唱功为主，表演细腻含蓄。代表剧目有《贵妃醉酒》《霸王别姬》等。">
+                        <img src="images/21.jpg" alt="青衣">
+                        <div class="img-label">🎭 青衣 · 端庄贤淑</div>
+                    </div>
+                    <div class="gallery-item" data-name="花旦" data-sub="活泼俏丽 · 手绢功" data-desc="花旦扮演活泼俏丽的年轻女性，以做功和念白见长，表演灵动可爱。代表剧目有《红娘》《金玉奴》等。">
+                        <img src="images/22.jpg" alt="花旦">
+                        <div class="img-label">🎭 花旦 · 活泼俏丽</div>
+                    </div>
+                    <div class="gallery-item" data-name="武旦" data-sub="英姿飒爽 · 刀枪功" data-desc="武旦扮演擅长武打的女性角色，身手敏捷，英姿飒爽。代表剧目有《穆桂英挂帅》《杨门女将》等。">
+                        <img src="images/23.jpg" alt="武旦">
+                        <div class="img-label">🎭 武旦 · 英姿飒爽</div>
+                    </div>
+                </div>
+            </div>
+              <!-- 净 -->
+            <div class="tab-panel" id="panel-jing">
+                <div class="panel-header">
+                    <img src="images/9.jpg" style="width: 7%; border-radius: 20px;"/>
+                    <div>
+                        <span class="panel-title">净</span>
+                        <span class="panel-pinyin" style="color: white;">Jìng</span>
+                        <div class="panel-color-tag" style="color: white;">🎨 花脸 · 多彩</div>
+                    </div>
+                    <span class="panel-badge">花脸角色</span>
+                </div>
+                <p class="panel-desc">定义：大多男性，勾画彩色脸谱；嗓音洪亮粗犷，动作大开大阖，人物性格极端，或刚正、或粗犷、或奸诈凶狠北京京剧院。
+三大分支：正净（铜锤花脸）、副净（架子花脸）、武净。<br />
+1. 正净（铜锤花脸，大花脸）
+以唱功为主，人物多忠臣重臣。名字出自《二进宫》徐延昭手持御赐铜锤。
+代表：包拯《铡美案》、徐延昭《二进宫》、单雄信《锁五龙》。<br />
+2. 副净（架子花脸，二花脸）
+重身段、工架、念白，唱为辅；可以是豪爽英雄，也可以是奸雄反派。
+代表：张飞《芦花荡》、鲁智深《野猪林》、窦尔敦《盗御马》、曹操《群英会》。<br />
+3. 武净（武花脸）
+几乎不唱，专门武打，多为猛将、反派武将。
+代表：典韦、马武。
+脸谱颜色寓意回顾：红忠勇、黑刚正、白奸诈、黄凶狠、紫持重、金 / 银神佛神将。</p >
+                <div class="panel-gallery">
+                    <div class="gallery-item" data-name="正净" data-sub="铜锤花脸 · 唱功为主" data-desc="正净又称铜锤花脸，以唱功见长，扮演忠厚刚直的人物，如包拯、姚期等。代表剧目有《铡美案》《大保国》等。">
+                        <img src="images/24.jpg" alt="正净">
+                        <div class="img-label">🎭 正净 · 铜锤花脸</div>
+                    </div>
+                    <div class="gallery-item" data-name="副净" data-sub="架子花脸 · 做功为主" data-desc="副净又称架子花脸，以做功和念白见长，扮演性格豪迈或奸诈的人物，如曹操、张飞等。代表剧目有《群英会》《芦花荡》等。">
+                        <img src="images/25.jpg" alt="副净">
+                        <div class="img-label">🎭 副净 · 架子花脸</div>
+                    </div>
+                    <div class="gallery-item" data-name="武净" data-sub="武打花脸 · 身手不凡" data-desc="武净以武打见长，扮演擅长武打的花脸角色，如典韦、许褚等。代表剧目有《金沙滩》《战马超》等。">
+                        <img src="images/26.jpg" alt="武净">
+                        <div class="img-label">🎭 武净 · 勇猛花脸</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 末 -->
+            <div class="tab-panel" id="panel-mo">
+                <div class="panel-header">
+                    <img src="images/10.jpg" style="width: 7%; border-radius: 20px;"/>
+                    <div>
+                        <span class="panel-title">末</span>
+                        <span class="panel-pinyin" style="color: white;">Mò</span>
+                        <div class="panel-color-tag" style="color: white;">🎨 灰色 · 沉稳</div>
+                    </div>
+                    <span class="panel-badge">次要男性</span>
+                </div>
+                <p class="panel-desc">京剧早期独立行当，来自汉剧。<br />
+1. 人物：中年以上中老年男性，多剧中次要配角：老臣、家院、老仆人。<br />
+2. 表演特点：重念白、做功，不重大段唱腔；传统规矩：老生挂三缕胡子，末行挂满髯（整片大胡须），早期 “生不演末，末不演生”。<br />
+3. 功能：最早有 “引戏”，开场引导剧情。<br />
+4. 代表人物：乔福《龙凤呈祥》。<br />
+5. 演变：谭鑫培改革之后，末行和衰派老生界限模糊，民国之后彻底归入生行，现代京剧不再单独提末行概念，但汉剧等地方戏依旧保留末行独立行当。</p >
+                <div class="panel-gallery">
+                    <div class="gallery-item" data-name="家院" data-sub="忠厚老仆 · 稳重朴实" data-desc="家院是末行中常见的角色，扮演府邸中的管家或老仆，表演朴实稳重。代表剧目有《打严嵩》《三堂会审》等。">
+                        <img src="images/27.jpg" alt="家院">
+                        <div class="img-label">🎭 家院 · 忠厚老仆</div>
+                    </div>
+                    <div class="gallery-item" data-name="老仆" data-sub="朴实无华 · 忠厚老实" data-desc="老仆是末行中常见的配角，扮演忠厚老实的仆从角色，为剧情增添生活气息。">
+                        <img src="images/28.jpg" alt="老仆">
+                        <div class="img-label">🎭 老仆 · 朴实稳重</div>
+                    </div>
+                    <div class="gallery-item" data-name="衙役" data-sub="稳重干练 · 公门中人" data-desc="衙役是末行中扮演官府差役的角色，表演稳重干练，体现公门中人的气质。">
+                        <img src="images/29.jpg" alt="衙役">
+                        <div class="img-label">🎭 衙役 · 稳重干练</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 丑 -->
+            <div class="tab-panel" id="panel-chou">
+                <div class="panel-header">
+                    <img src="images/11.jpg" style="width: 7%; border-radius: 20px;"/>
+                    <div>
+                        <span class="panel-title">丑</span>
+                        <span class="panel-pinyin" style="color: white;">Chǒu</span>
+                        <div class="panel-color-tag" style="color: white;">🎨 白色 · 诙谐</div>
+                    </div>
+                    <span class="panel-badge">喜剧角色</span>
+                </div>
+                <p class="panel-desc">标志性化妆：鼻梁中间涂抹一块白色方块。角色有喜剧诙谐人物，也有坏人，分文丑、武丑；彩旦属于丑行女性角色。<br />
+1. 文丑（不重武打，靠语言神态表演）
+方巾丑：戴方巾，酸腐文人、谋士。
+袍带丑：做官的小官，王侯身边滑稽官员。
+茶衣丑：平民百姓，店小二、普通劳动者。
+老丑：诙谐老年平民。
+彩旦（丑婆子）：丑行女性，媒婆、刁大妈，滑稽搞笑。代表：王婆。<br />
+2. 武丑（开口跳）
+武功极高，动作灵巧敏捷，既要会翻打，又要念白流利。多江湖侠客、义盗。
+代表：时迁《时迁盗甲》。</p >
+                <div class="panel-gallery">
+                    <div class="gallery-item" data-name="文丑" data-sub="幽默风趣 · 插科打诨" data-desc="文丑以念白和做功见长，表演幽默风趣，常扮演机智或滑稽的人物。代表剧目有《女起解》《春草闯堂》等。">
+                        <img src="images/30.jpg" alt="文丑">
+                        <div class="img-label">🎭 文丑 · 幽默风趣</div>
+                    </div>
+                    <div class="gallery-item" data-name="武丑" data-sub="身手矫健 · 动作滑稽" data-desc="武丑以武打和技巧见长，动作滑稽而身手矫健，扮演机智敏捷的人物。代表剧目有《三岔口》《挡马》等。">
+                        <img src="images/31.jpg" alt="武丑">
+                        <div class="img-label">🎭 武丑 · 身手矫健</div>
+                    </div>
+                    <div class="gallery-item" data-name="彩旦" data-sub="诙谐滑稽 · 丑中带美" data-desc="彩旦是丑行中扮演女性角色的分支，表演诙谐滑稽，丑中带美，别具一格。代表剧目有《凤还巢》《拾玉镯》等。">
+                        <img src="images/32.jpg" alt="彩旦">
+                        <div class="img-label">🎭 彩旦 · 诙谐滑稽</div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- ===== 弹窗 ===== -->
+    <div class="modal-overlay" id="modalOverlay">
+        <div class="modal-card">
+            <button class="modal-close" id="modalClose"><i class="fas fa-times"></i></button>
+            <div class="modal-img">
+                <img id="modalImg" src="" alt="">
+            </div>
+            <h3 id="modalName">角色名称</h3>
+            <div class="modal-sub" id="modalSub">角色特点</div>
+            <p class="modal-desc" id="modalDesc">角色详细介绍</p >
+        </div>
+    </div>
+
+    <script>
+        (function() {
+            // ===== 背景音乐 =====
+            var bgMusic = document.getElementById('bgMusic');
+            var musicHint = document.getElementById('musicHint');
+            var musicStarted = false;
+
+            document.addEventListener('click', function() {
+                if (!musicStarted) {
+                    bgMusic.play().then(function() {
+                        musicStarted = true;
+                        musicHint.classList.add('hidden');
+                    }).catch(function() {});
+                }
+            }, { once: false });
+            setTimeout(function() {
+                bgMusic.play().then(function() {
+                    musicStarted = true;
+                    musicHint.classList.add('hidden');
+                }).catch(function() {});
+            }, 1200);
+
+            // ===== 水墨开场 =====
+            var inkIntro = document.getElementById('inkIntro');
+            var inkCanvas = document.getElementById('inkCanvas');
+            var ictx = inkCanvas.getContext('2d');
+
+            function resizeInk() {
+                inkCanvas.width = window.innerWidth;
+                inkCanvas.height = window.innerHeight;
+            }
+            resizeInk();
+            window.addEventListener('resize', resizeInk);
+
+            var inkParticles = [];
+            var INK_COUNT = 70;
+
+            function InkParticle() {
+                this.x = Math.random() * inkCanvas.width;
+                this.y = Math.random() * inkCanvas.height;
+                this.size = Math.random() * 55 + 15;
+                this.speedX = (Math.random() - 0.5) * 0.9;
+                this.speedY = (Math.random() - 0.5) * 0.9 - 0.3;
+                this.opacity = Math.random() * 0.15 + 0.04;
+                this.growth = Math.random() * 0.5 + 0.1;
+                this.update = function() {
+                    this.x += this.speedX;
+                    this.y += this.speedY;
+                    this.size += this.growth * 0.15;
+                    if (this.x < 0 || this.x > inkCanvas.width) this.speedX *= -1;
+                    if (this.y < 0 || this.y > inkCanvas.height) this.speedY *= -1;
+                    if (this.size > 110) this.size = 15;
+                };
+                this.draw = function() {
+                    var gradient = ictx.createRadialGradient(this.x, this.y, 0, this.x, this.y, this.size);
+                    gradient.addColorStop(0, 'rgba(80, 60, 40, ' + (this.opacity * 1.5) + ')');
+                    gradient.addColorStop(0.4, 'rgba(50, 35, 25, ' + this.opacity + ')');
+                    gradient.addColorStop(1, 'rgba(20, 15, 10, 0)');
+                    ictx.fillStyle = gradient;
+                    ictx.beginPath();
+                    ictx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                    ictx.fill();
+                };
+                }
+
+            for (var i = 0; i < INK_COUNT; i++) {
+                inkParticles.push(new InkParticle());
+            }
+
+            function animateInk() {
+                ictx.clearRect(0, 0, inkCanvas.width, inkCanvas.height);
+                for (var i = 0; i < inkParticles.length; i++) {
+                    inkParticles[i].update();
+                    inkParticles[i].draw();
+                }
+                requestAnimationFrame(animateInk);
+            }
+            animateInk();
+
+            setTimeout(function() {
+                inkIntro.classList.add('fade-out');
+                setTimeout(function() {
+                    inkIntro.style.display = 'none';
+                }, 1600);
+            }, 2200);
+
+            // ===== Tab 切换功能 =====
+            var tabBtns = document.querySelectorAll('.tab-btn');
+            var tabPanels = document.querySelectorAll('.tab-panel');
+
+            function switchTab(tabId) {
+                // 左侧按钮
+                tabBtns.forEach(function(btn) {
+                    btn.classList.toggle('active', btn.dataset.tab === tabId);
+                });
+                // 右侧面板
+                tabPanels.forEach(function(panel) {
+                    panel.classList.toggle('active', panel.id === 'panel-' + tabId);
+                });
+                // 顶部导航
+                topNavLinks.forEach(function(link) {
+                    link.classList.toggle('active', link.dataset.tab === tabId);
+                });
+            }
+
+            tabBtns.forEach(function(btn) {
+                btn.addEventListener('click', function() {
+                    var tabId = this.dataset.tab;
+                    switchTab(tabId);
+                });
+            });
+
+            topNavLinks.forEach(function(link) {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    var tabId = this.dataset.tab;
+                    switchTab(tabId);
+                });
+            });
+
+            // ===== 弹窗功能 =====
+            var modalOverlay = document.getElementById('modalOverlay');
+            var modalImg = document.getElementById('modalImg');
+            var modalName = document.getElementById('modalName');
+            var modalSub = document.getElementById('modalSub');
+            var modalDesc = document.getElementById('modalDesc');
+            var modalClose = document.getElementById('modalClose');
+
+            document.querySelectorAll('.gallery-item').forEach(function(item) {
+                item.addEventListener('click', function() {
+                    var imgSrc = this.querySelector('img').getAttribute('src');
+                    var name = this.dataset.name || '角色';
+                    var sub = this.dataset.sub || '';
+                    var desc = this.dataset.desc || '京剧艺术的瑰宝。';
+                    modalImg.setAttribute('src', imgSrc);
+                    modalName.textContent = name;
+                    modalSub.textContent = sub;
+                    modalDesc.textContent = desc;
+                    modalOverlay.classList.add('active');
+                    document.body.style.overflow = 'hidden';
+                });
+            });
+
+            function closeModal() {
+                modalOverlay.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+
+            modalClose.addEventListener('click', closeModal);
+            modalOverlay.addEventListener('click', function(e) {
+                if (e.target === modalOverlay) closeModal();
+            });
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape') closeModal();
+            });
+
+            // ===== 导航菜单切换 =====
+            var navToggle = document.getElementById('navToggle');
+            var navLinks = document.getElementById('navLinks');
+            navToggle.addEventListener('click', function() {
+                navLinks.classList.toggle('open');
+            });
+
+            window.addEventListener('resize', function() {
+                resizeInk();
+            });
+
+        })();
+    </script>
+
+</body>
+</html>
